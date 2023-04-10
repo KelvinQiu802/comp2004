@@ -15,9 +15,9 @@ public class Player {
     }
 
     /***
-     * Take two card when it's your turn to play. If there aren't enough card for you to draw, return false.
+     * Draw a card from draw pile.
      */
-    public boolean takeCard(){
+    public boolean draw(){
         return false;
     }
 
@@ -38,7 +38,7 @@ public class Player {
     /***
      * Judge if you have won the game.
      */
-    private boolean isWin(){
+    public boolean isWin(){
         return false;
     }
 }
