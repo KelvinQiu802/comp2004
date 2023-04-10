@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Player {
     public String name;
-    public boolean win;
-    public List hand = new ArrayList<AbstractCard> ();
-    public List bank = new ArrayList<AbstractCard> ();
+    public List<AbstractCard> hand;
+    public List<AbstractCard> bank;
 
-    public Player(String n){
-        name = n;
-        win = false;
+    public Player(String name){
+        this.name = name;
+        hand = new ArrayList<> ();
+        bank = new ArrayList<> ();
     }
 
     /***
