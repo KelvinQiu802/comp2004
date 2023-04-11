@@ -20,6 +20,7 @@ classDiagram
 	MoneyCard <|-- IBankCard
 	ActionCard <|-- IBankCard
 	Player "1" *-- "1" Bank
+	DrawPile o-- AbstractCard
 	
 	class AbstractCard{
 		<<Abstract>>
@@ -61,5 +62,14 @@ classDiagram
 		MONEY
 		ACTION
 		PROPERTY
+	}
+	
+	class DrawPile{
+		-List~AbstractCard~usingCards
+		-List~AbstractCard~usedCards
+		+swap()
+		+drop()
+		+take()
+		+shuffle()
 	}
 ```
