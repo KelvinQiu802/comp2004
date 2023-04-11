@@ -1,5 +1,9 @@
 # Monopoly Deal
 
+<p align="center">
+  <img src="https://imgbed.codingkelvin.fun/uPic/favpng_monopoly-rich-uncle-pennybags-logo-board-game.png" alt="Monopoly Icon" style="height:150px;" />
+</p>
+
 ## Configure Commit Lint Hook
 
 ```shell
