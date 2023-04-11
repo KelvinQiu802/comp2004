@@ -34,7 +34,7 @@ public class DrawPile {
      * Take a card from using cards.
      * @return the card that player will take
      */
-    public AbstractCard remove() {
+    public AbstractCard take() {
         AbstractCard card = usingCard.get(0);
         usingCard.remove(0);
         return card;
