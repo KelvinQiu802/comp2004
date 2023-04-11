@@ -22,7 +22,7 @@ classDiagram
 	class AbstractCard
 		<<Abstract>> AbstractCard
 		AbstractCard : -String name
-		AbstractCard : -CardTyps type
+		AbstractCard : -CardTypes type
 		AbstractCard : -int value
 		AbstractCard : -String description
 		AbstractCard : play()*

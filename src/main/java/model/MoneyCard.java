@@ -1,6 +1,6 @@
 package model;
 
-public class MoneyCard extends AbstractCard {
+public class MoneyCard extends AbstractCard implements IBankCard {
     public MoneyCard(int value) {
         super("Money", CardTypes.MONEY, value, "Money");
     }
