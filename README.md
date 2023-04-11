@@ -24,11 +24,13 @@ classDiagram
 	MoneyCard <|-- IBankCard
 	ActionCard <|-- IBankCard
 	Player "1" *-- "1" Bank
+  Player "1" *-- "1" PropertyDeck
 	DrawPile o-- AbstractCard
 	PropertyCard <|-- SingleColorProperty
 	PropertyCard <|-- DoubleColorProperty
 	PropertyCard <|-- WildCard
 	PropertyCard <.. Colors
+	PropertyDeck o-- PropertySet
 	
 	class AbstractCard{
 		<<Abstract>>
@@ -101,6 +103,18 @@ classDiagram
 		+drop()
 		+take()
 		+shuffle()
+	}
+	
+	class PropertyDeck{
+		+List~PropertySet~propertySets
+	}
+	
+	class PropertySet{
+		-List~PropertyCard~properties
+		-Colors color
+		+add()
+		+remove()
+		+isFullSet()
 	}
 ```
 
