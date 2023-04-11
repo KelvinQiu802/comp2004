@@ -34,7 +34,7 @@ public class DrawPileTest {
 
     @Test
     public void addCard() {
-        assertEquals(4, pile.getUsingCard().size());
+        assertEquals(4, pile.getUsingCards().size());
     }
 
     @Test
