@@ -2,7 +2,7 @@ import model.AbstractCard;
 import model.ActionCard;
 import model.DrawPile;
 import model.MoneyCard;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,15 +11,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DrawPileTest {
-    private static DrawPile pile;
-    private static MoneyCard m1;
-    private static MoneyCard m2;
-    private static ActionCard a1;
-    private static ActionCard a2;
+    private DrawPile pile;
+    private MoneyCard m1;
+    private MoneyCard m2;
+    private ActionCard a1;
+    private ActionCard a2;
 
 
-    @BeforeAll
-    public static void createDrawPile() {
+    @BeforeEach
+    public void createDrawPile() {
         m1 = new MoneyCard(1);
         m2 = new MoneyCard(5);
         a1 = new ActionCard("Test", 10, "This is a test card");
