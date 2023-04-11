@@ -16,16 +16,19 @@ classDiagram
 	AbstractCard <|-- MoneyCard
 	AbstractCard <|-- ActionCard
 	AbstractCard <|-- PropertyCard
+	AbstractCard <.. CardTypes
 	MoneyCard <|-- IBankCard
 	ActionCard <|-- IBankCard
+	Player "1" *-- "1" Bank
 	
-	class AbstractCard
-		<<Abstract>> AbstractCard
-		AbstractCard : -String name
-		AbstractCard : -CardTypes type
-		AbstractCard : -int value
-		AbstractCard : -String description
-		AbstractCard : play()*
+	class AbstractCard{
+		<<Abstract>>
+		-String name
+		-CardTypes type
+		-int value
+		-String description
+		+play()*
+	}
 		
 	class MoneyCard
 	
@@ -33,6 +36,30 @@ classDiagram
 	
 	class PropertyCard
 	
-	class IBankCard
-		<<Interface>> IBankCard
+	class IBankCard{
+			<<Interface>>
+	}
+		
+	class Player{
+		-String name
+		-List~AbstractCard~ handCards
+		-Bank bank
+		+draw()
+		+play()
+		-dropToCenter()
+		+isWin()
+	}
+
+	class Bank{
+		-List~IBankCard~ bankCards
+		+add()
+		+remove()
+	}
+	
+	class CardTypes{
+		<<Enumeration>>
+		MONEY
+		ACTION
+		PROPERTY
+	}
 ```
