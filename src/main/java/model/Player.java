@@ -5,40 +5,40 @@ import java.util.List;
 
 public class Player {
     public String name;
-    public List<AbstractCard> hand;
-    public List<AbstractCard> bank;
+    public List<AbstractCard> handCards;
+    public Bank bank;
 
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
-        hand = new ArrayList<> ();
-        bank = new ArrayList<> ();
+        handCards = new ArrayList<>();
+        bank = new Bank();
     }
 
     /***
-     * Take two card when it's your turn to play. If there aren't enough card for you to draw, return false.
+     * Draw a card from draw pile.
      */
-    public boolean takeCard(){
+    public boolean draw() {
         return false;
     }
 
     /***
      * Choose the card to use and modify the layout of your properties.
      */
-    public void play(){
+    public void play() {
 
     }
 
     /***
      * Drop the card to the center.
      */
-    private void dropToCenter(){
+    private void dropToCenter() {
 
     }
 
     /***
      * Judge if you have won the game.
      */
-    private boolean isWin(){
+    public boolean isWin() {
         return false;
     }
 }
