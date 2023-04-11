@@ -2,44 +2,64 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class DrawPile {
-    ArrayList<AbstractCard> usingCard=new ArrayList<>();
-    ArrayList<AbstractCard> usedCard=new ArrayList<>();
+    private List<AbstractCard> usingCard;
+    private List<AbstractCard> usedCard;
 
-    /***
-     * swap the using cards and the used cards when the using cards is empty
-     */
-    public void swap(){
-        if(usingCard.isEmpty()){
-            ArrayList<AbstractCard> temp=usingCard;
-            usingCard=usedCard;
-            usedCard=temp;
-        }
+    public DrawPile() {
+        usingCard = new ArrayList<>();
+        usedCard = new ArrayList<>();
     }
 
     /***
-     * put the card into  used cards
+     * Swap the using cards and the used cards.
+     */
+    public void swap() {
+        List<AbstractCard> temp = usingCard;
+        usingCard = usedCard;
+        usedCard = temp;
+    }
+
+    /***
+     * Put the card into  used cards.
      * @param abstractCard the card that player used
      */
-    public void add(AbstractCard abstractCard){
+    public void add(AbstractCard abstractCard) {
         usedCard.add(abstractCard);
     }
 
     /***
-     * take a card from using cards
+     * Take a card from using cards.
      * @return the card that player will take
      */
-    public AbstractCard remove(){
-        AbstractCard card=usingCard.get(0);
+    public AbstractCard remove() {
+        AbstractCard card = usingCard.get(0);
         usingCard.remove(0);
         return card;
     }
 
     /***
-     * shuffle the using cards
+     * Shuffle the using cards
      */
-    public void shuffle(){
+    public void shuffle() {
         Collections.shuffle(usingCard);
+    }
+
+    /***
+     * Getter of using cards.
+     * @return using cards
+     */
+    public List<AbstractCard> getUsingCard() {
+        return new ArrayList<>(usingCard);
+    }
+
+    /***
+     * Getter of used cards.
+     * @return used cards
+     */
+    public List<AbstractCard> getUsedCard() {
+        return new ArrayList<>(usedCard);
     }
 }
