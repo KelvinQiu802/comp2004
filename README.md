@@ -21,6 +21,10 @@ classDiagram
 	ActionCard <|-- IBankCard
 	Player "1" *-- "1" Bank
 	DrawPile o-- AbstractCard
+	PropertyCard <|-- SingleColorProperty
+	PropertyCard <|-- DoubleColorProperty
+	PropertyCard <|-- WildCard
+	PropertyCard <.. Colors
 	
 	class AbstractCard{
 		<<Abstract>>
@@ -35,7 +39,29 @@ classDiagram
 	
 	class ActionCard
 	
-	class PropertyCard
+	class PropertyCard{
+		-Colors currentColor
+	}
+	
+	class SingleColorProperty
+	
+	class DoubleColorProperty
+	
+	class WildCard
+	
+	class Colors{
+		<<Enumeration>>
+		GREEN
+		DARK_BLUE
+		LIGHT_BLUE
+		RED
+		UTILITY
+		YELLOW
+		ORANGE
+		BROWN
+		PURPLE
+		RAILROAD
+	}
 	
 	class IBankCard{
 			<<Interface>>
