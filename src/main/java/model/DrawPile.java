@@ -8,8 +8,8 @@ public class DrawPile {
     private List<AbstractCard> usingCard;
     private List<AbstractCard> usedCard;
 
-    public DrawPile() {
-        usingCard = new ArrayList<>();
+    public DrawPile(List<AbstractCard> cardList) {
+        usingCard = cardList;
         usedCard = new ArrayList<>();
     }
 
