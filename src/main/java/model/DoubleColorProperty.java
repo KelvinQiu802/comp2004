@@ -17,4 +17,17 @@ public class DoubleColorProperty extends PropertyCard{
         }
         return currentColor;
     }
+
+    public Colors getFirst() {
+        return first;
+    }
+
+    public Colors getSecond() {
+        return second;
+    }
+
+    public Colors getCurrentColor() {
+        return currentColor;
+    }
+
 }
