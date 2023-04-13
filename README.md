@@ -107,7 +107,7 @@ classDiagram
 	}
 	
 	class PropertyDeck{
-		+List~PropertySet~propertySets
+		-List~PropertySet~propertySets
 	}
 	
 	class PropertySet{
