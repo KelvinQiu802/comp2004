@@ -102,7 +102,11 @@ classDiagram
 	
 	class SingleColorProperty
 	
-	class DoubleColorProperty
+	class DoubleColorProperty{
+		-Colors first
+		-Colors second
+		+switchColor()
+	}
 	
 	class WildCard
 	
@@ -118,6 +122,7 @@ classDiagram
 		BROWN
 		PURPLE
 		RAILROAD
+		ANY
 	}
 	
 	class IBankCard{
