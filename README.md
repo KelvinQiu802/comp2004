@@ -31,6 +31,7 @@ classDiagram
 	PropertyCard <|-- WildCard
 	PropertyCard <.. Colors
 	PropertyDeck o-- PropertySet
+	PropertyCard <.. PropertyInfo
 	
 	class AbstractCard{
 		<<Abstract>>
@@ -106,7 +107,7 @@ classDiagram
 	}
 	
 	class PropertyDeck{
-		+List~PropertySet~propertySets
+		-List~PropertySet~propertySets
 	}
 	
 	class PropertySet{
@@ -115,6 +116,19 @@ classDiagram
 		+add()
 		+remove()
 		+isFullSet()
+	}
+	
+	class PropertyInfo{
+		-Map green
+		-Map darkBlue
+		-Map lightBlue
+		-Map red
+		-Map utility
+		-Map yellow
+		-Map orange
+		-Map brown
+		-Map purple
+		-Map railraod
 	}
 ```
 
