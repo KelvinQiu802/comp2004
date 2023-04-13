@@ -10,5 +10,6 @@ public enum Colors {
     ORANGE,
     BROWN,
     PURPLE,
-    RAILROAD
+    RAILROAD,
+    ANY
 }
