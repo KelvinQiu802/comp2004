@@ -119,16 +119,16 @@ classDiagram
 	}
 	
 	class PropertyInfo{
-		-Map~Integer, Integer~green
-		-Map~Integer, Integer~darkBlue
-		-Map~Integer, Integer~lightBlue
-		-Map~Integer, Integer~red
-		-Map~Integer, Integer~utility
-		-Map~Integer, Integer~yellow
-		-Map~Integer, Integer~orange
-		-Map~Integer, Integer~brown
-		-Map~Integer, Integer~purple
-		-Map~Integer, Integer~railraod
+		-Map green
+		-Map darkBlue
+		-Map lightBlue
+		-Map red
+		-Map utility
+		-Map yellow
+		-Map orange
+		-Map brown
+		-Map purple
+		-Map railraod
 	}
 ```
 
