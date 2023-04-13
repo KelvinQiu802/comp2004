@@ -13,6 +13,56 @@ $ git config core.hooksPath .githooks
 
 [🌈Conventional Commits😋](https://www.conventionalcommits.org/en/v1.0.0/)
 
+## Sequence Diagram (Example)
+
+```mermaid
+sequenceDiagram
+		actor User
+    participant ATM
+    participant BankServer
+    participant BankAccount
+    
+    User ->> ATM : Insert Card
+    activate ATM
+    ATM ->> BankServer : Verify Card
+    activate BankServer
+    alt if card is valid
+    		BankServer -->> ATM: Card OK
+    		ATM ->> User : Request PIN
+    else else
+    		BankServer -->> ATM: Card Invalid
+    		ATM ->> User : Eject Card
+    end
+    		User -->> ATM : PIN Entered
+    		ATM ->> BankServer : Verify PIN
+    alt if PIN is valid
+    		BankServer -->> ATM : PIN OK
+    		ATM ->> User : Request Amount
+    else else
+     	 	BankServer -->> ATM : PIN Invalid
+    		ATM ->> User : Eject Card 	
+    end
+    		User -->> ATM : Amount Entered
+    		ATM ->> BankServer : Start Transaction
+    		BankServer ->> BankAccount : Sufficient Funds?
+    		activate BankAccount
+    alt if founds are sufficient
+    		BankAccount -->> BankServer : Funds OK
+    		BankServer ->> BankAccount : Withdraw Amount
+        BankAccount -->> BankServer : Withdraw Successfully
+        BankServer -->> ATM : Transaction Successfully
+        ATM ->> User : Dispense Cash
+    else else
+        BankAccount -->> BankServer : Insufficient Funds
+        BankAccount -->> BankServer : Transaction Unsuccessfully
+        deactivate BankAccount
+        BankServer -->> ATM : Transaction Successfully
+        deactivate BankServer
+    end
+    ATM ->> User : Eject Card
+    deactivate ATM
+```
+
 ## Class Diagram
 
 ```mermaid
