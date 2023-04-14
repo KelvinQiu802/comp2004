@@ -1,33 +1,32 @@
 package model;
 
-public class DoubleColorProperty extends PropertyCard{
+public class DoubleColorProperty extends PropertyCard {
     private Colors first;
     private Colors second;
-    private Colors currentColor;
+
     public DoubleColorProperty(String name, int value, String description, Colors first, Colors second) {
-        super(name, value, description, first);
-        this.currentColor=first;
+        super(name, value, description, first);  // current color is the first color by default
     }
 
-    public Colors switchColor(){
-        if(currentColor==first){
-            currentColor=second;
-        }else {
-            currentColor=first;
+    /***
+     * Switch the Double Color Property Card's color.
+     * @return The current color after the switch.
+     */
+    public Colors switchColor() {
+        Colors currentColor = getCurrentColor();
+        if (currentColor.equals(first)) {
+            setCurrentColor(second);
+        } else {
+            setCurrentColor(first);
         }
         return currentColor;
     }
 
-    public Colors getFirst() {
+    public Colors getFirstColor() {
         return first;
     }
 
-    public Colors getSecond() {
+    public Colors getSecondColor() {
         return second;
     }
-
-    public Colors getCurrentColor() {
-        return currentColor;
-    }
-
 }
