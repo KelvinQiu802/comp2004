@@ -6,6 +6,8 @@ public class DoubleColorProperty extends PropertyCard {
 
     public DoubleColorProperty(String name, int value, String description, Colors first, Colors second) {
         super(name, value, description, first);  // current color is the first color by default
+        this.first=first;
+        this.second=second;
     }
 
     /***
