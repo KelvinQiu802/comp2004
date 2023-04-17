@@ -63,6 +63,19 @@ sequenceDiagram
     deactivate ATM
 ```
 
+## Controller
+
+```mermaid
+classDiagram
+	class Main{
+		-DrawPile drawPile
+		-List~Player~ players
+		-dealCards()
+	}
+```
+
+
+
 ## Class Diagram
 
 ```mermaid
