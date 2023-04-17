@@ -38,8 +38,12 @@ public class DrawPileTest {
     }
 
     @Test
-    public  void takeCards(){
-        pile.takeCards(4);
-        assertEquals(4,pile.getUsingCards().size());
+    public void takeCards() {
+        List<AbstractCard> cards = pile.takeCards(2);
+        pile.add(cards.get(0));
+        pile.add(cards.get(1));
+        pile.takeCards(2);
+        assertEquals(2, pile.getUsingCards().size());
+        assertEquals(cards,pile.getUsingCards());
     }
 }
