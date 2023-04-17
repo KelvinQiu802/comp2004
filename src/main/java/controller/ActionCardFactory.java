@@ -1,7 +1,6 @@
 package controller;
 
 import model.AbstractCard;
-import model.DoubleColorProperty;
 import model.actioncards.*;
 
 public class ActionCardFactory {
