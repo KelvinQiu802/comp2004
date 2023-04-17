@@ -23,11 +23,17 @@ public class Player {
     }
 
     /***
-     * Choose the card to use and modify the layout of your properties.
+     * Choose the card to play and drop it to the center.
      */
-    public void play() {
-
+    public void playAndDrop(AbstractCard card, DrawPile pile) {
+        // TODO
+        dropToCenter(card, pile);
     }
+
+    // TODO
+    // 1. playAndDrop
+    // 2. putIntoBank
+    // 3. putIntoProperty
 
     /***
      * Drop the card to the center.
