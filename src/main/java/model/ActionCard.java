@@ -1,14 +1,17 @@
 package model;
 
-public class ActionCard extends AbstractCard implements IBankCard {
-    public ActionCard(String name, int value, String description) {
-        super(name, CardTypes.ACTION, value, description);
+import model.actioncards.ActionCardsName;
+
+public abstract class ActionCard extends AbstractCard implements IBankCard {
+    private ActionCardsName actionName;
+
+    public ActionCard(ActionCardsName actionName, int value, String description) {
+        super(actionName.getCardName(), CardTypes.ACTION, value, description);
+        this.actionName = actionName;
     }
 
     @Override
-    public void play() {
-
-    }
+    abstract public void play();
 
     /***
      * Drop the card to the center.

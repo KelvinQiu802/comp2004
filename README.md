@@ -82,6 +82,8 @@ classDiagram
 	PropertyCard <.. Colors
 	PropertyDeck o-- PropertySet
 	PropertyCard <.. PropertyInfo
+	ActionCard <|-- DealBreaker
+	ActionCard <|-- DebtCollector
 	
 	class AbstractCard{
 		<<Abstract>>
@@ -90,11 +92,15 @@ classDiagram
 		-int value
 		-String description
 		+play()*
+		-dropToCenter()
 	}
 		
 	class MoneyCard
 	
-	class ActionCard
+	class ActionCard{
+		<<Abstract>>
+		-ActionCardName actionName
+	}
 	
 	class PropertyCard{
 		-Colors currentColor
@@ -185,6 +191,10 @@ classDiagram
 		-Map purple
 		-Map railraod
 	}
+	
+	class DealBreaker
+	
+	class DebtCollector
 ```
 
 ## Game Rules
