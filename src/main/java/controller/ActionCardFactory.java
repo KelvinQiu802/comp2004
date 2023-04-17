@@ -1,10 +1,12 @@
 package controller;
 
 import model.AbstractCard;
+import model.WildCard;
 import model.actioncards.*;
 
 public class ActionCardFactory {
     public static AbstractCard create(ActionCardsName cardName) {
+        // not include two colors rent cards because it needs parameters.
         switch (cardName) {
             case DEAL_BREAKER:
                 return new DealBreaker();
@@ -26,6 +28,8 @@ public class ActionCardFactory {
                 return new PassGo();
             case SLY_DEAL:
                 return new SlyDeal();
+            case WILD_RENT:
+                return new WildCard();
             default:
                 return null;
         }

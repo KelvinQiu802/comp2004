@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import model.actioncards.ActionCardsName;
+import model.actioncards.Rent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,17 @@ public class CardFactory {
         cards.addAll(createActionCards(ActionCardsName.HOUSE, 3));
         cards.addAll(createActionCards(ActionCardsName.HOTEL, 3));
         cards.addAll(createActionCards(ActionCardsName.DOUBLE_THE_RENT, 2));
+
+        cards.addAll(createActionCards(ActionCardsName.WILD_RENT, 3));
+        cards.add(new Rent(Colors.DARK_BLUE, Colors.GREEN));
+        cards.add(new Rent(Colors.DARK_BLUE, Colors.GREEN));
+        cards.add(new Rent(Colors.BROWN, Colors.LIGHT_BLUE));
+        cards.add(new Rent(Colors.BROWN, Colors.LIGHT_BLUE));
+        cards.add(new Rent(Colors.ORANGE, Colors.PURPLE));
+        cards.add(new Rent(Colors.ORANGE, Colors.PURPLE));
+        cards.add(new Rent(Colors.RAILROAD, Colors.UTILITY));
+        cards.add(new Rent(Colors.RAILROAD, Colors.UTILITY));
+        cards.add(new Rent(Colors.RED, Colors.YELLOW));
         return cards;
     }
 
