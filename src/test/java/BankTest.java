@@ -1,6 +1,8 @@
 import model.ActionCard;
 import model.Bank;
 import model.MoneyCard;
+import model.actioncards.DealBreaker;
+import model.actioncards.DoubleTheRent;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +20,8 @@ public class BankTest {
         bank = new Bank();
         m1 = new MoneyCard(1);
         m2 = new MoneyCard(5);
-        a1 = new ActionCard("Test", 10, "This is a test card");
-        a2 = new ActionCard("Test", 20, "This is a test card");
+        a1 = new DealBreaker();
+        a2 = new DoubleTheRent();
     }
 
     @Test
