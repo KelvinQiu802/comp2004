@@ -27,7 +27,7 @@ public class PlayerCreationView {
         Scanner scanner = new Scanner(System.in);
         String numberOfPlayer = "";
         do {
-            System.out.println("The Number of Players: ");
+            System.out.print("The Number of Players: ");
             numberOfPlayer = scanner.nextLine();
         } while (!StringChecker.isInteger(numberOfPlayer));
         return Integer.parseInt(numberOfPlayer);
