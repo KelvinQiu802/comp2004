@@ -2,6 +2,7 @@ package controller;
 
 import model.DrawPile;
 import model.Player;
+import view.PlayerCreationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +12,46 @@ public class Game {
     private static DrawPile drawPile = new DrawPile(CardFactory.createCards());
 
     public static void main(String[] args) {
-        //TODO: Create Player
-        players.add(new Player("A"));
-        players.add(new Player("B"));
-
+        createPlayers();
         dealFiveCardsToAllPlayer();
+    }
 
+    /***
+     * Create players list.
+     */
+    public static void createPlayers() {
+        int numberOfPlayer = PlayerCreationView.getNumberOfPlayer();
+        for (int i = 0; i < numberOfPlayer; i++) {
+            createUniquePlayer();
+        }
+    }
+
+    /***
+     * Create player without name repetition.
+     */
+    private static void createUniquePlayer() {
         while (true) {
-            for (Player player : players) {
-                // 出牌
+            String name = PlayerCreationView.getPlayerName();
+            if (!haveSameName(name)) {
+                players.add(new Player(name));
+                break;
+            }
+            System.out.println("The player's name cannot be repeated!");
+        }
+    }
+
+    /***
+     * Check whether the name is repeated.
+     * @param name the name want to use
+     * @return true if the name is repeated.
+     */
+    private static boolean haveSameName(String name) {
+        for (Player p : players) {
+            if (p.getName().equals(name)) {
+                return true;
             }
         }
+        return false;
     }
 
     /***
