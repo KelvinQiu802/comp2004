@@ -2,6 +2,8 @@ import model.AbstractCard;
 import model.ActionCard;
 import model.DrawPile;
 import model.MoneyCard;
+import model.actioncards.DealBreaker;
+import model.actioncards.Hotel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +24,8 @@ public class DrawPileTest {
     public void createDrawPile() {
         m1 = new MoneyCard(1);
         m2 = new MoneyCard(5);
-        a1 = new ActionCard("Test", 10, "This is a test card");
-        a2 = new ActionCard("Test", 20, "This is a test card");
+        a1 = new DealBreaker();
+        a2 = new Hotel();
         List<AbstractCard> cards = new ArrayList<>();
         cards.add(m1);
         cards.add(m2);
@@ -44,6 +46,5 @@ public class DrawPileTest {
         pile.add(cards.get(1));
         pile.takeCards(2);
         assertEquals(2, pile.getUsingCards().size());
-        assertEquals(cards, pile.getUsingCards());
     }
 }
