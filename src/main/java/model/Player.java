@@ -7,11 +7,13 @@ public class Player {
     private String name;
     private List<AbstractCard> handCards;
     private Bank bank;
+    private int numberOfPlays;
 
     public Player(String name) {
         this.name = name;
         handCards = new ArrayList<>();
         bank = new Bank();
+        numberOfPlays = 0;
     }
 
     /***
@@ -28,12 +30,27 @@ public class Player {
     public void playAndDrop(AbstractCard card, DrawPile pile) {
         // TODO
         dropToCenter(card, pile);
+        numberOfPlays++;
     }
 
-    // TODO
-    // 1. playAndDrop
-    // 2. putIntoBank
-    // 3. putIntoProperty
+    /***
+     * Put the card from hand into bank.
+     * @param card the card want to put
+     */
+    public void putIntoBank(IBankCard card) {
+        handCards.remove(card);
+        bank.add(card);
+        numberOfPlays++;
+    }
+
+    /***
+     * Put the card from hand into property.
+     * @param card the card want to put
+     */
+    public void putIntoProperty(PropertyCard card) {
+        // TODO
+        numberOfPlays++;
+    }
 
     /***
      * Drop the card to the center.
@@ -54,5 +71,20 @@ public class Player {
 
     public List<AbstractCard> getHandCards() {
         return handCards;
+    }
+
+    /***
+     * Check whether player can keep playing card.
+     * @return true if player can keep playing card.
+     */
+    public boolean canPlayCard() {
+        return numberOfPlays < 3;
+    }
+
+    /***
+     * Set number of plays to 0.
+     */
+    public void resetNumberOfPlays() {
+        numberOfPlays = 0;
     }
 }
