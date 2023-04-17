@@ -16,9 +16,10 @@ public class Player {
 
     /***
      * Draw a card from draw pile.
+     * @param pile the draw pile
      */
-    public boolean draw() {
-        return false;
+    public void draw(DrawPile pile) {
+        handCards.add(pile.takeCard());
     }
 
     /***
@@ -30,9 +31,12 @@ public class Player {
 
     /***
      * Drop the card to the center.
+     * @param card the card want to drop
+     * @param pile the draw pile
      */
-    private void dropToCenter() {
-
+    private void dropToCenter(AbstractCard card, DrawPile pile) {
+        handCards.remove(card);
+        pile.add(card);
     }
 
     /***
