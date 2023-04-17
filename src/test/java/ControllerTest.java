@@ -13,7 +13,7 @@ public class ControllerTest {
         List<Player> players = Game.getPlayers();
         Game.dealFiveCardsToAllPlayer();
         for (Player p : players) {
-            assertEquals(5, p.handCards.size());
+            assertEquals(5, p.getHandCards().size());
         }
     }
 }
