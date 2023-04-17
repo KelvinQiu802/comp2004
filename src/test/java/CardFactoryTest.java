@@ -10,6 +10,6 @@ public class CardFactoryTest {
     @Test
     public void createCards() {
         List<AbstractCard> cards = CardFactory.createCards();
-        assertEquals(106, cards.size());
+        assertEquals(108, cards.size());
     }
 }

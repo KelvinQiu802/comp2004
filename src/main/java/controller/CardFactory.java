@@ -66,6 +66,7 @@ public class CardFactory {
         cards.add(new Rent(Colors.RAILROAD, Colors.UTILITY));
         cards.add(new Rent(Colors.RAILROAD, Colors.UTILITY));
         cards.add(new Rent(Colors.RED, Colors.YELLOW));
+        cards.add(new Rent(Colors.RED, Colors.YELLOW));
         return cards;
     }
 
