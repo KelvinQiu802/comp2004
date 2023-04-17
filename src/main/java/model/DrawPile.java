@@ -31,21 +31,16 @@ public class DrawPile {
     }
 
     /***
-     * Take num cards at one time
-     * @param num the number of the cards that the player takes at one time
-     * @return a list of cards that the player takes
+     * Take one cards from the draw pile.
+     * @return the card that was taken out.
      */
-    public List<AbstractCard> takeCards(int num) {
-        List<AbstractCard> cards = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-            AbstractCard card = usingCards.remove(0);
-            cards.add(card);
-            if (usingCards.size() == 0) {
-                swap();
-                shuffle();
-            }
+    public AbstractCard takeCard() {
+        AbstractCard card = usingCards.remove(0);
+        if (usingCards.size() == 0) {
+            swap();
+            shuffle();
         }
-        return cards;
+        return card;
     }
 
     /***
