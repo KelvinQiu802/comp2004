@@ -73,6 +73,10 @@ public class Player {
         return handCards;
     }
 
+    public String getName() {
+        return name;
+    }
+
     /***
      * Check whether player can keep playing card.
      * @return true if player can keep playing card.

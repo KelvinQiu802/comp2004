@@ -228,6 +228,23 @@ classDiagram
 	class DebtCollector
 ```
 
+## View
+
+```mermaid
+classDiagram
+	PlayerCreationView <.. StringChecker
+	
+	class PlayerCreationView{
+		+getNumberOfPlayer()$
+		-getAnyBumberOfPlayer()$
+		+getPlayerName()$
+	}
+	
+	class StringChecker{
+		+isInteger()$
+	}
+```
+
 ## Game Rules
 
 ### Useful Links and Resources
