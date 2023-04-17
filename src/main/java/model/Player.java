@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    public String name;
-    public List<AbstractCard> handCards;
-    public Bank bank;
+    private String name;
+    private List<AbstractCard> handCards;
+    private Bank bank;
 
     public Player(String name) {
         this.name = name;
@@ -44,5 +44,9 @@ public class Player {
      */
     public boolean isWin() {
         return false;
+    }
+
+    public List<AbstractCard> getHandCards() {
+        return handCards;
     }
 }
