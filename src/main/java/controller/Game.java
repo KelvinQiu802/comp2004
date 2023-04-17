@@ -16,6 +16,12 @@ public class Game {
         players.add(new Player("B"));
 
         dealFiveCardsToAllPlayer();
+
+        while (true) {
+            for (Player player : players) {
+                // 出牌
+            }
+        }
     }
 
     /***
