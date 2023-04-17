@@ -16,7 +16,7 @@ public class DrawPile {
     /***
      * Swap the using cards and the used cards.
      */
-    public void swap() {
+    private void swap() {
         List<AbstractCard> temp = usingCards;
         usingCards = usedCards;
         usedCards = temp;
@@ -31,17 +31,27 @@ public class DrawPile {
     }
 
     /***
-     * Take a card from using cards.
-     * @return the card that player will take
+     * Take num cards at one time
+     * @param num the number of the cards that the player takes at one time
+     * @return a list of cards that the player takes
      */
-    public AbstractCard take() {
-        return usingCards.remove(0);
+    public List<AbstractCard> takeCards(int num) {
+        List<AbstractCard> cards = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            AbstractCard card = usingCards.remove(0);
+            cards.add(card);
+            if (usingCards.size() == 0) {
+                swap();
+                shuffle();
+            }
+        }
+        return cards;
     }
 
     /***
      * Shuffle the using cards
      */
-    public void shuffle() {
+    private void shuffle() {
         Collections.shuffle(usingCards);
     }
 

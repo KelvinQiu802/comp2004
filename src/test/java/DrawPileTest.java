@@ -38,19 +38,12 @@ public class DrawPileTest {
     }
 
     @Test
-    public void removeCard() {
-        AbstractCard removed = pile.take();
-        assertEquals(m1, removed);
-    }
-
-    @Test
-    public  void swapCards(){
-        List<AbstractCard> usedCards = new ArrayList<>();
-        usedCards.add(a1);
-        usedCards.add(a2);
-        pile.take();
-        pile.take();
-        pile.swap();
-        assertEquals(usedCards,pile.getUsedCards());
+    public void takeCards() {
+        List<AbstractCard> cards = pile.takeCards(2);
+        pile.add(cards.get(0));
+        pile.add(cards.get(1));
+        pile.takeCards(2);
+        assertEquals(2, pile.getUsingCards().size());
+        assertEquals(cards, pile.getUsingCards());
     }
 }
