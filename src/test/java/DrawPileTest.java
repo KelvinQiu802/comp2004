@@ -39,11 +39,6 @@ public class DrawPileTest {
 
     @Test
     public  void takeCards(){
-        List<AbstractCard> usedCards = new ArrayList<>();
-        usedCards.add(m1);
-        usedCards.add(m2);
-        usedCards.add(a1);
-        usedCards.add(a2);
         pile.takeCards(4);
         assertEquals(4,pile.getUsingCards().size());
     }
