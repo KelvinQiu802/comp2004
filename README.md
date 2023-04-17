@@ -67,10 +67,28 @@ sequenceDiagram
 
 ```mermaid
 classDiagram
-	class Main{
+	Game <.. CardFactory
+	CardFactory <.. ActionCardFactory
+	
+	class Game{
 		-DrawPile drawPile
 		-List~Player~ players
-		-dealCards()
+		+main()$
+		+dealCards()$
+		+dealFiveCardsToAllPlayer()$
+	}
+	
+	class CardFactory{
+		+createCards()$
+		-createMoenyCards()$
+		-getAllMoneyCards()$
+		-createActionCards()$
+		-getAllActionCards()$
+		-getAllPropertyCards()$
+	}
+	
+	class ActionCardFactory{
+		+create()$
 	}
 ```
 
