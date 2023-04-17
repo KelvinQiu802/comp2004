@@ -36,12 +36,12 @@ public class DrawPile {
      * @return a list of cards that the player takes
      */
     public List<AbstractCard> takeCards(int num) {
-        List<AbstractCard> cards=new ArrayList<>();
-        for (int i=0;i<num;i++){
-            AbstractCard card=usingCards.remove(0);
+        List<AbstractCard> cards = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            AbstractCard card = usingCards.remove(0);
             usedCards.add(card);
             cards.add(card);
-            if(usingCards.size()==0){
+            if (usingCards.size() == 0) {
                 swap();
                 shuffle();
             }
