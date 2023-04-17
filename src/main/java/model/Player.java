@@ -30,10 +30,22 @@ public class Player {
         dropToCenter(card, pile);
     }
 
-    // TODO
-    // 1. playAndDrop
-    // 2. putIntoBank
-    // 3. putIntoProperty
+    /***
+     * Put the card from hand into bank.
+     * @param card the card want to put
+     */
+    public void putIntoBank(IBankCard card) {
+        handCards.remove(card);
+        bank.add(card);
+    }
+
+    /***
+     * Put the card from hand into property.
+     * @param card the card want to put
+     */
+    public void putIntoProperty(PropertyCard card) {
+        // TODO
+    }
 
     /***
      * Drop the card to the center.
