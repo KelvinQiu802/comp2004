@@ -3,7 +3,8 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PropertyInfo {
+public class
+PropertyInfo {
     private static Map<Integer, Integer> green = genGreenInfo();
     private static Map<Integer, Integer> darkBlue = genDarkBlueInfo();
     private static Map<Integer, Integer> lightBlue = genLightBlueInfo();

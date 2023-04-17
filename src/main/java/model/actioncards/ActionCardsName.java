@@ -10,7 +10,9 @@ public enum ActionCardsName {
     ITS_MY_BIRTHDAY("IT'S MY BIRTHDAY"),
     JUST_SAY_NO("JUST SAY NO"),
     PASS_GO("PASS GO"),
-    SLY_DEAL("SLY DEAL");
+    SLY_DEAL("SLY DEAL"),
+    RENT("RENT"),
+    WILD_RENT("WILD RENT");
 
     private String cardName;
 

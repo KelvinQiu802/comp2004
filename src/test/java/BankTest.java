@@ -37,7 +37,6 @@ public class BankTest {
     @Test
     public void removeCard() {
         bank.remove(m1);
-
         assertEquals(3, bank.getBankCards().size());
         assertFalse(bank.getBankCards().contains(m1));
     }
