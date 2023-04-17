@@ -44,6 +44,6 @@ public class DrawPileTest {
         pile.add(cards.get(1));
         pile.takeCards(2);
         assertEquals(2, pile.getUsingCards().size());
-        assertEquals(cards,pile.getUsingCards());
+        assertEquals(cards, pile.getUsingCards());
     }
 }
