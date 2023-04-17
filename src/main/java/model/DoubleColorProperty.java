@@ -4,8 +4,8 @@ public class DoubleColorProperty extends PropertyCard {
     private Colors first;
     private Colors second;
 
-    public DoubleColorProperty(String name, int value, Colors first, Colors second) {
-        super(name, value, "Two Colors Property Wild Card", first);  // current color is the first color by default
+    public DoubleColorProperty(int value, Colors first, Colors second) {
+        super("Two Colors Wild Card", value, "Two Colors Property Wild Card", first);  // current color is the first color by default
         this.first = first;
         this.second = second;
     }
