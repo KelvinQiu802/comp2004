@@ -1,6 +1,6 @@
 package model;
 
-public class PropertyCard extends AbstractCard {
+public class PropertyCard extends AbstractCard implements IPropertyCard {
     private Colors currentColor;
 
     public PropertyCard(String name, int value, String description, Colors currentColor) {
