@@ -102,8 +102,8 @@ classDiagram
 	AbstractCard <|-- ActionCard
 	AbstractCard <|-- PropertyCard
 	AbstractCard <.. CardTypes
-	MoneyCard <|-- IBankCard
-	ActionCard <|-- IBankCard
+	IBankCard <|-- MoneyCard
+	IBankCard <|-- ActionCard
 	Player "1" *-- "1" Bank
   Player "1" *-- "1" PropertyDeck
 	DrawPile o-- AbstractCard
@@ -115,6 +115,19 @@ classDiagram
 	PropertyCard <.. PropertyInfo
 	ActionCard <|-- DealBreaker
 	ActionCard <|-- DebtCollector
+  ActionCard <|--	DoubleTheRent
+  ActionCard <|--	ForcedDeal
+  ActionCard <|--	JustSayNo
+  ActionCard <|--	MyBirthday
+  ActionCard <|--	PassGo
+  ActionCard <|--	Rent
+  ActionCard <|--	SlyDeal
+  ActionCard <|--	WildRent
+	ActionCard <|-- House
+	ActionCard <|-- Hotel
+	IPropertyCard <|-- House
+  IPropertyCard <|-- Hotel
+	IPropertyCard <|-- PropertyCard
 	
 	class AbstractCard{
 		<<Abstract>>
@@ -163,6 +176,10 @@ classDiagram
 	}
 	
 	class IBankCard{
+			<<Interface>>
+	}
+	
+	class IPropertyCard{
 			<<Interface>>
 	}
 		
@@ -226,6 +243,26 @@ classDiagram
 	class DealBreaker
 	
 	class DebtCollector
+	
+	class DoubleTheRent
+	
+	class ForcedDeal
+	
+	class JustSayNo
+	
+	class MyBirthday
+	
+	class PassGo
+	
+	class Rent
+	
+	class SlyDeal
+	
+	class WildRent
+	
+	class House
+	
+	class Hotel
 ```
 
 ## View

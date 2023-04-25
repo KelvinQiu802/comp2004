@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PropertySet {
-    private List<PropertyCard> properties;
+    private List<IPropertyCard> properties;
     private Colors color;
 
     public PropertySet(Colors color) {
@@ -16,7 +16,7 @@ public class PropertySet {
      * Add property to set.
      * @param card card will be added
      */
-    public void add(PropertyCard card) {
+    public void add(IPropertyCard card) {
         properties.add(card);
     }
 
@@ -25,7 +25,7 @@ public class PropertySet {
      * @param index The index want to remove.
      * @return Removed property.
      */
-    public PropertyCard remove(int index) {
+    public IPropertyCard remove(int index) {
         return properties.remove(index);
     }
 
