@@ -299,7 +299,8 @@ classDiagram
 1. **SHUFFLE** the cards together and deal **5** to each player, **FACE DOWN**.
 2. Look at your cards, but keep them a **SECRET**.
 3. Put the remaining cards face down in the center to create the **DRAW PILE**.
-4. Decide **WHO GO FIRST**. Play continues **CLOCKWISE**.
+4. Decide **WHO GO FIRST**. 
+5. Play continues **CLOCKWISE**.
 
 ### On Your Turn
 
