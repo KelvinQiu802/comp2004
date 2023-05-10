@@ -17,16 +17,13 @@ public class PropertyDisplayView {
         for (int i = 0; i < sets.size(); i++) {
             outerHeader[i] = sets.get(i).getColor().toString();
         }
+
         String[] innerHeader = {"Index", "Name"};
         int counter = 0;
         for (int i = 0; i < sets.size(); i++) {
-            String[][] innerData = new String[sets.size()][2];
             PropertySet ps = sets.get(i);
-            List<IPropertyCard> properties = ps.getProperties();
-            for (int j = 0; j < properties.size(); j++) {
-                AbstractCard prop = (AbstractCard) properties.get(i);
-                innerData[i] = new String[]{String.valueOf(counter++), prop.getName()};
-            }
+            String[][] innerData = getPropertySetData(ps, counter);
+            counter += ps.getProperties().size();
             String inner = FlipTable.of(innerHeader, innerData);
             outerData[1][i] = inner;
         }
@@ -34,15 +31,21 @@ public class PropertyDisplayView {
     }
 
     public static void printPropertySet(PropertySet ps) {
+        String[] header = {"Index", "Name"};
+        String[][] data = getPropertySetData(ps, 0);
+        System.out.printf("###%s###\n", ps.getColor());
+        System.out.println(FlipTable.of(header, data));
+        Printer.printDashLine();
+    }
+
+    private static String[][] getPropertySetData(PropertySet ps, int counter) {
         List<IPropertyCard> properties = ps.getProperties();
         String[] header = {"Index", "Name"};
         String[][] data = new String[properties.size()][2];
         for (int i = 0; i < properties.size(); i++) {
             AbstractCard prop = (AbstractCard) properties.get(i);
-            data[i] = new String[]{String.valueOf(i), prop.getName()};
+            data[i] = new String[]{String.valueOf(counter++), prop.getName()};
         }
-        System.out.printf("###%s###\n", ps.getColor());
-        System.out.println(FlipTable.of(header, data));
-        Printer.printDashLine();
+        return data;
     }
 }
