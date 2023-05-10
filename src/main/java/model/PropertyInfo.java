@@ -16,6 +16,36 @@ PropertyInfo {
     private static Map<Integer, Integer> purple = genPurpleInfo();
     private static Map<Integer, Integer> railroad = genRailroadInfo();
 
+    public static Map<Integer, Integer> getByColor(Colors color) {
+        switch (color) {
+            case GREEN:
+                return new HashMap<>(green);
+            case DARK_BLUE:
+                return new HashMap<>(darkBlue);
+            case LIGHT_BLUE:
+                return new HashMap<>(lightBlue);
+            case RED:
+                return new HashMap<>(red);
+            case UTILITY:
+                return new HashMap<>(utility);
+            case YELLOW:
+                return new HashMap<>(yellow);
+            case ORANGE:
+                return new HashMap<>(orange);
+            case BROWN:
+                return new HashMap<>(brown);
+            case PURPLE:
+                return new HashMap<>(purple);
+            case RAILROAD:
+                return new HashMap<>(railroad);
+            case ANY:
+                // TODO: ANY的话要返回什么？
+                return null;
+            default:
+                return null;
+        }
+    }
+
     private static Map<Integer, Integer> genGreenInfo() {
         Map<Integer, Integer> info = new HashMap<>();
         info.put(1, 2);
@@ -92,45 +122,5 @@ PropertyInfo {
         info.put(3, 3);
         info.put(4, 4);
         return info;
-    }
-
-    public static Map<Integer, Integer> getGreen() {
-        return new HashMap<>(green);
-    }
-
-    public static Map<Integer, Integer> getDarkBlue() {
-        return new HashMap<>(darkBlue);
-    }
-
-    public static Map<Integer, Integer> getLightBlue() {
-        return new HashMap<>(lightBlue);
-    }
-
-    public static Map<Integer, Integer> getRed() {
-        return new HashMap<>(red);
-    }
-
-    public static Map<Integer, Integer> getUtility() {
-        return new HashMap<>(utility);
-    }
-
-    public static Map<Integer, Integer> getYellow() {
-        return new HashMap<>(yellow);
-    }
-
-    public static Map<Integer, Integer> getOrange() {
-        return new HashMap<>(orange);
-    }
-
-    public static Map<Integer, Integer> getBrown() {
-        return new HashMap<>(brown);
-    }
-
-    public static Map<Integer, Integer> getPurple() {
-        return new HashMap<>(purple);
-    }
-
-    public static Map<Integer, Integer> getRailroad() {
-        return new HashMap<>(railroad);
     }
 }
