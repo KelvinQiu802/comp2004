@@ -67,9 +67,7 @@ sequenceDiagram
 
 ```mermaid
 classDiagram
-	Game <.. CardFactory
 	Game <.. PlayerController
-	CardFactory <.. ActionCardFactory
 	
 	class Game{
 		-DrawPile drawPile
@@ -82,19 +80,6 @@ classDiagram
 		+dealFiveCardsToAllPlayer()$
 		+gameLoop()$
 		+gameOver()$
-	}
-	
-	class CardFactory{
-		+createCards()$
-		-createMoenyCards()$
-		-getAllMoneyCards()$
-		-createActionCards()$
-		-getAllActionCards()$
-		-getAllPropertyCards()$
-	}
-	
-	class ActionCardFactory{
-		+create()$
 	}
 	
 	class PlayerController {

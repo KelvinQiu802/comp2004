@@ -3,6 +3,7 @@ package controller;
 import model.AbstractCard;
 import model.DrawPile;
 import model.Player;
+import utils.Printer;
 import view.CardDisplayView;
 import view.PlayerInputView;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class Game {
     private static List<Player> players = new ArrayList<>();
-    private static DrawPile drawPile = new DrawPile(CardFactory.createCards());
+    private static DrawPile drawPile = new DrawPile(Printer.CardFactory.createCards());
 
     public static void main(String[] args) {
         createPlayers();
