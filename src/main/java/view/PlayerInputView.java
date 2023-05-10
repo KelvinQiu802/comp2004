@@ -57,7 +57,7 @@ public class PlayerInputView {
         do {
             System.out.printf("Input Card Index (0-%d): ", numOfCards);
             index = scanner.nextLine();
-        } while (!StringChecker.isInteger(index) && IntegerChecker.inRange(Integer.parseInt(index), 0, numOfCards));
+        } while (!StringChecker.isInteger(index) || !IntegerChecker.inRange(Integer.parseInt(index), 0, numOfCards));
         return Integer.parseInt(index);
     }
 }
