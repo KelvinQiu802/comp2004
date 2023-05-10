@@ -68,14 +68,20 @@ sequenceDiagram
 ```mermaid
 classDiagram
 	Game <.. CardFactory
+	Game <.. PlayerController
 	CardFactory <.. ActionCardFactory
 	
 	class Game{
 		-DrawPile drawPile
 		-List~Player~ players
 		+main()$
+		+createPlayers()$
+		-createUniquePlayer()$
+		-haveSameName()$
 		+dealCards()$
 		+dealFiveCardsToAllPlayer()$
+		+gameLoop()$
+		+gameOver()$
 	}
 	
 	class CardFactory{
@@ -89,6 +95,12 @@ classDiagram
 	
 	class ActionCardFactory{
 		+create()$
+	}
+	
+	class PlayerController {
+		+playCards()$
+		-getAllActionsOfCard()$
+		-getCardActions()$
 	}
 ```
 
@@ -269,16 +281,20 @@ classDiagram
 
 ```mermaid
 classDiagram
-	PlayerCreationView <.. StringChecker
 	
-	class PlayerCreationView{
+	class PlayerInputView{
 		+getNumberOfPlayer()$
 		-getAnyBumberOfPlayer()$
 		+getPlayerName()$
+		+getCardIndex()$
+		+moveOrPlayOrPass()$
+		+getPlayerActionFromAvailActions()$
+		-getIntegerInputFromList()$
+		-getIntegerInput()$
 	}
 	
-	class StringChecker{
-		+isInteger()$
+	class CardDisplayView {
+		+printCard()$
 	}
 ```
 
