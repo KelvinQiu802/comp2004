@@ -1,9 +1,8 @@
 import org.junit.jupiter.api.Test;
-import view.PlayerCreationView;
+import view.PlayerInputView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +13,7 @@ public class PlayerCreationTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        int number = PlayerCreationView.getNumberOfPlayer();
+        int number = PlayerInputView.getNumberOfPlayer();
         assertEquals(5, number);
     }
 
@@ -24,7 +23,7 @@ public class PlayerCreationTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        int number = PlayerCreationView.getNumberOfPlayer();
+        int number = PlayerInputView.getNumberOfPlayer();
         assertEquals(10, number);
     }
 
@@ -34,7 +33,7 @@ public class PlayerCreationTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        String name = PlayerCreationView.getPlayerName();
+        String name = PlayerInputView.getPlayerName();
         assertEquals("Kelvin", name);
     }
 
@@ -44,7 +43,7 @@ public class PlayerCreationTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        String name = PlayerCreationView.getPlayerName();
+        String name = PlayerInputView.getPlayerName();
         assertEquals("Skye", name);
     }
 }
