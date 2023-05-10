@@ -1,7 +1,9 @@
 package controller;
 
+import model.AbstractCard;
 import model.DrawPile;
 import model.Player;
+import view.CardDisplayView;
 import view.PlayerCreationView;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class Game {
     public static void main(String[] args) {
         createPlayers();
         dealFiveCardsToAllPlayer();
+        gameLoop();
     }
 
     /***
@@ -71,6 +74,19 @@ public class Game {
     public static void dealFiveCardsToAllPlayer() {
         for (Player player : players) {
             dealCards(player, 5);
+        }
+    }
+
+    public static void gameLoop() {
+        while (true) {
+            for (Player player : players) {
+                List<AbstractCard> cards = player.getHandCards();
+                CardDisplayView.printCard(cards);
+                // 选择要出的牌
+                // 移动Property
+                // 结束回合后检查是否胜利
+            }
+            break;
         }
     }
 
