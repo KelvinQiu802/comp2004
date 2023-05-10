@@ -11,6 +11,7 @@ public class DrawPile {
     public DrawPile(List<AbstractCard> cardList) {
         usingCards = cardList;
         usedCards = new ArrayList<>();
+        shuffle();
     }
 
     /***
