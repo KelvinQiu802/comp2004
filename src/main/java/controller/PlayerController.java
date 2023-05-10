@@ -10,27 +10,34 @@ import java.util.List;
 import java.util.Map;
 
 public class PlayerController {
-    public static void playCards(Player player) {
+    public static void playCards(Player player, DrawPile drawPile) {
         Map<Integer, String> allChoices = getAllChoicesOfCard();
         player.resetNumberOfPlays();
         List<AbstractCard> cards = player.getHandCards();
         while (player.getNumberOfPlays() < 3) {
-            /**
-             * 1. 出牌次数归0, 选牌
-             * 2. 涉及三个操作： 放到bank，放到property，打出到center
-             *    1. 放到bank的只能是BankCard
-             *    2. 放到Property的只能是Property
-             * 3. 出牌次数加1
-             */
+            // select card
             int cardIndex = PlayerInputView.getCardIndex(cards.size());
             AbstractCard cardToPlay = cards.get(cardIndex);
 
+            // select action
             List<Integer> availChoices = getCardChoices(cardToPlay);
             int action;
             if (availChoices.size() == 1) {
                 action = availChoices.get(0);
             } else {
                 action = PlayerInputView.getPlayerChoiceFromAvailChoices(availChoices, allChoices);
+            }
+
+            switch (action) {
+                case 0:
+                    player.playIntoCenter(cardToPlay, drawPile);
+                    break;
+                case 1:
+                    player.putIntoBank((IBankCard) cardToPlay);
+                    break;
+                case 2:
+                    player.putIntoProperty((IPropertyCard) cardToPlay);
+                    break;
             }
         }
     }
@@ -58,9 +65,9 @@ public class PlayerController {
      */
     private static Map<Integer, String> getAllChoicesOfCard() {
         Map<Integer, String> choices = new HashMap<>();
-        choices.put(0, "Play into center");
-        choices.put(1, "Play into bank");
-        choices.put(2, "Play into properties");
+        choices.put(0, "Play into CENTER");
+        choices.put(1, "Play into BANK");
+        choices.put(2, "Play into PROPERTIES");
         return choices;
     }
 }

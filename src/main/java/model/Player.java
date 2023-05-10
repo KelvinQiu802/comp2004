@@ -27,8 +27,8 @@ public class Player {
     /***
      * Choose the card to play and drop it to the center.
      */
-    public void playAndDrop(AbstractCard card, DrawPile pile) {
-        // TODO
+    public void playIntoCenter(AbstractCard card, DrawPile pile) {
+        card.play();
         dropToCenter(card, pile);
         numberOfPlays++;
     }
@@ -38,7 +38,7 @@ public class Player {
      * @param card the card want to put
      */
     public void putIntoBank(IBankCard card) {
-        handCards.remove(card);
+        handCards.remove((AbstractCard) card);
         bank.add(card);
         numberOfPlays++;
     }
@@ -47,7 +47,7 @@ public class Player {
      * Put the card from hand into property.
      * @param card the card want to put
      */
-    public void putIntoProperty(PropertyCard card) {
+    public void putIntoProperty(IPropertyCard card) {
         // TODO
         numberOfPlays++;
     }

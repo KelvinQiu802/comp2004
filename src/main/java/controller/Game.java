@@ -94,7 +94,7 @@ public class Game {
                         System.out.println("PASS");
                         break;
                     } else if (choice == 1) {
-                        PlayerController.playCards(player);
+                        PlayerController.playCards(player, drawPile);
                     } else {
                         // 移动Property
                     }
