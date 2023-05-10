@@ -1,12 +1,10 @@
 package view;
 
+import utils.StringChecker;
+
 import java.util.Scanner;
 
 public class PlayerCreationView {
-    public static void main(String[] args) {
-        getNumberOfPlayer();
-    }
-
     /***
      * Get the number of players.
      * @return the number of players
