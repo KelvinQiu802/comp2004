@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PropertySet {
     private List<IPropertyCard> properties;
@@ -34,6 +35,10 @@ public class PropertySet {
      * @return true if is full set, rather false.
      */
     public boolean isFullSet() {
-        return false;
+        if (color == Colors.ANY) {
+            return false;
+        }
+        Map<Integer, Integer> info = PropertyInfo.getByColor(color);
+        return properties.size() >= info.size();
     }
 }

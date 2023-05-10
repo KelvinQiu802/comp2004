@@ -38,9 +38,6 @@ PropertyInfo {
                 return new HashMap<>(purple);
             case RAILROAD:
                 return new HashMap<>(railroad);
-            case ANY:
-                // TODO: ANY的话要返回什么？
-                return null;
             default:
                 return null;
         }
