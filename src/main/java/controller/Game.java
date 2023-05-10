@@ -85,29 +85,32 @@ public class Game {
     public static Player gameLoop() {
         while (true) {
             for (Player player : players) {
-                player.resetNumberOfPlays();
-                List<AbstractCard> handCards = player.getHandCards();
-                CardDisplayView.printCard(handCards);
-                while (true) {
-                    // 选择是要出牌还是移动还是pass
-                    int choice = PlayerInputView.moveOrPlayOrPass();
-                    if (choice == 0) {
-                        System.out.println("PASS");
-                        break;
-                    } else if (choice == 1) {
-                        if (player.getNumberOfPlays() < 3) {
-                            PlayerController.playCard(player, drawPile);
-                        } else {
-                            System.out.println("You're out of turns to play.");
-                        }
-                    } else {
-                        // 移动Property
-                    }
-                }
-                // 结束回合后检查是否胜利
+                playerTurn(player);
                 if (player.isWin()) {
                     return player;
                 }
+            }
+        }
+    }
+
+    public static void playerTurn(Player player) {
+        player.resetNumberOfPlays();
+        List<AbstractCard> handCards = player.getHandCards();
+        CardDisplayView.printCard(handCards);
+        while (true) {
+            // 选择是要出牌还是移动还是pass
+            int choice = PlayerInputView.moveOrPlayOrPass();
+            if (choice == 0) {
+                System.out.println("PASS");
+                break;
+            } else if (choice == 1) {
+                if (player.getNumberOfPlays() < 3) {
+                    PlayerController.playCard(player, drawPile);
+                } else {
+                    System.out.println("You're out of turns to play.");
+                }
+            } else {
+                // 移动Property
             }
         }
     }
