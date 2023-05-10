@@ -4,7 +4,7 @@ import model.AbstractCard;
 import model.DrawPile;
 import model.Player;
 import view.CardDisplayView;
-import view.PlayerCreationView;
+import view.PlayerInputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,15 @@ public class Game {
     public static void main(String[] args) {
         createPlayers();
         dealFiveCardsToAllPlayer();
-        gameLoop();
+        Player winner = gameLoop();
+        gameOver(winner);
     }
 
     /***
      * Create players list.
      */
     public static void createPlayers() {
-        int numberOfPlayer = PlayerCreationView.getNumberOfPlayer();
+        int numberOfPlayer = PlayerInputView.getNumberOfPlayer();
         for (int i = 0; i < numberOfPlayer; i++) {
             createUniquePlayer();
         }
@@ -34,7 +35,7 @@ public class Game {
      */
     private static void createUniquePlayer() {
         while (true) {
-            String name = PlayerCreationView.getPlayerName();
+            String name = PlayerInputView.getPlayerName();
             if (!haveSameName(name)) {
                 players.add(new Player(name));
                 break;
@@ -77,17 +78,44 @@ public class Game {
         }
     }
 
-    public static void gameLoop() {
+    /***
+     * Main game loop
+     * @return The winner player
+     */
+    public static Player gameLoop() {
         while (true) {
             for (Player player : players) {
                 List<AbstractCard> cards = player.getHandCards();
                 CardDisplayView.printCard(cards);
+                // while -------------------------------------
+                // 选择是要出牌还是移动
+                // 如果出牌，则需要判断还能不能出
                 // 选择要出的牌
+                /**
+                 * 1. 出牌次数归0
+                 * 2. 涉及三个操作： 放到bank，放到property，打出到center
+                 *    1. 放到bank的只能是BankCard
+                 *    2. 放到Property的只能是Property
+                 * 3. 出牌次数加1
+                 */
+                int cardIndex = PlayerInputView.getCardIndex(cards.size() - 1);
+                AbstractCard cardToPlay = cards.get(cardIndex);
                 // 移动Property
+                // end ---------------------------------------
                 // 结束回合后检查是否胜利
+                if (player.isWin()) {
+                    return player;
+                }
             }
-            break;
         }
+    }
+
+    /***
+     * To announce gamer is over
+     * @param winner The winner
+     */
+    public static void gameOver(Player winner) {
+        System.out.printf("GAME OVER! The WINNER IS %s", winner.getName().toUpperCase());
     }
 
     public static List<Player> getPlayers() {
