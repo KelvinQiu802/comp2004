@@ -10,35 +10,32 @@ import java.util.List;
 import java.util.Map;
 
 public class PlayerController {
-    public static void playCards(Player player, DrawPile drawPile) {
+    public static void playCard(Player player, DrawPile drawPile) {
         Map<Integer, String> allActions = getAllActionsOfCard();
-        player.resetNumberOfPlays();
         List<AbstractCard> cards = player.getHandCards();
-        while (player.getNumberOfPlays() < 3) {
-            // select card
-            int cardIndex = PlayerInputView.getCardIndex(cards.size());
-            AbstractCard cardToPlay = cards.get(cardIndex);
+        // select card
+        int cardIndex = PlayerInputView.getCardIndex(cards.size());
+        AbstractCard cardToPlay = cards.get(cardIndex);
 
-            // select action
-            List<Integer> availActions = getCardActions(cardToPlay);
-            int action;
-            if (availActions.size() == 1) {
-                action = availActions.get(0);
-            } else {
-                action = PlayerInputView.getPlayerActionFromAvailActions(availActions, allActions);
-            }
+        // select action
+        List<Integer> availActions = getCardActions(cardToPlay);
+        int action;
+        if (availActions.size() == 1) {
+            action = availActions.get(0);
+        } else {
+            action = PlayerInputView.getPlayerActionFromAvailActions(availActions, allActions);
+        }
 
-            switch (action) {
-                case 0:
-                    player.playIntoCenter(cardToPlay, drawPile);
-                    break;
-                case 1:
-                    player.putIntoBank((IBankCard) cardToPlay);
-                    break;
-                case 2:
-                    player.putIntoProperty((IPropertyCard) cardToPlay);
-                    break;
-            }
+        switch (action) {
+            case 0:
+                player.playIntoCenter(cardToPlay, drawPile);
+                break;
+            case 1:
+                player.putIntoBank((IBankCard) cardToPlay);
+                break;
+            case 2:
+                player.putIntoProperty((IPropertyCard) cardToPlay);
+                break;
         }
     }
 

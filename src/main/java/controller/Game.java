@@ -85,6 +85,7 @@ public class Game {
     public static Player gameLoop() {
         while (true) {
             for (Player player : players) {
+                player.resetNumberOfPlays();
                 List<AbstractCard> handCards = player.getHandCards();
                 CardDisplayView.printCard(handCards);
                 while (true) {
@@ -94,7 +95,11 @@ public class Game {
                         System.out.println("PASS");
                         break;
                     } else if (choice == 1) {
-                        PlayerController.playCards(player, drawPile);
+                        if (player.getNumberOfPlays() < 3) {
+                            PlayerController.playCard(player, drawPile);
+                        } else {
+                            System.out.println("You're out of turns to play.");
+                        }
                     } else {
                         // 移动Property
                     }
