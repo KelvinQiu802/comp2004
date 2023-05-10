@@ -1,8 +1,11 @@
 package view;
 
 import utils.IntegerChecker;
+import utils.Printer;
 import utils.StringChecker;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class PlayerInputView {
@@ -67,6 +70,41 @@ public class PlayerInputView {
     }
 
     /***
+     * Get player choice from available choices
+     * @param availChoices A list of integers
+     * @param allChoices A map of choices
+     * @return the integer user choose
+     */
+    public static int getPlayerChoiceFromAvailChoices(List<Integer> availChoices, Map<Integer, String> allChoices) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Please choose an action: \n");
+        for (Integer choice : availChoices) {
+            if (allChoices.containsKey(choice)) {
+                sb.append(String.format("%d. %s\n", choice, allChoices.get(choice)));
+            }
+        }
+        sb.append("Input your choice: ");
+        return getIntegerInputFromList(sb.toString(), availChoices);
+    }
+
+    /***
+     * A helper method to get user integer input from a choices list.
+     * @param prompt Prompt message
+     * @param choices A list of integer
+     * @return the integer user chose
+     */
+    private static int getIntegerInputFromList(String prompt, List<Integer> choices) {
+        Scanner scanner = new Scanner(System.in);
+        String result;
+        do {
+            System.out.print(prompt);
+            result = scanner.nextLine();
+        } while (!StringChecker.isInteger(result) || !choices.contains(Integer.parseInt(result)));
+        Printer.printDashLine();
+        return Integer.parseInt(result);
+    }
+
+    /***
      * A helper method to get user integer input
      * @param prompt Prompt message
      * @param min Lower bound
@@ -80,7 +118,7 @@ public class PlayerInputView {
             System.out.print(prompt);
             result = scanner.nextLine();
         } while (!StringChecker.isInteger(result) || !IntegerChecker.inRange(Integer.parseInt(result), min, max));
+        Printer.printDashLine();
         return Integer.parseInt(result);
     }
-
 }

@@ -91,4 +91,8 @@ public class Player {
     public void resetNumberOfPlays() {
         numberOfPlays = 0;
     }
+
+    public int getNumberOfPlays() {
+        return numberOfPlays;
+    }
 }

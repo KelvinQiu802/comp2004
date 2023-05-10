@@ -85,8 +85,8 @@ public class Game {
     public static Player gameLoop() {
         while (true) {
             for (Player player : players) {
-                List<AbstractCard> cards = player.getHandCards();
-                CardDisplayView.printCard(cards);
+                List<AbstractCard> handCards = player.getHandCards();
+                CardDisplayView.printCard(handCards);
                 while (true) {
                     // 选择是要出牌还是移动还是pass
                     int choice = PlayerInputView.moveOrPlayOrPass();
@@ -94,15 +94,7 @@ public class Game {
                         System.out.println("PASS");
                         break;
                     } else if (choice == 1) {
-                        /**
-                         * 1. 出牌次数归0
-                         * 2. 涉及三个操作： 放到bank，放到property，打出到center
-                         *    1. 放到bank的只能是BankCard
-                         *    2. 放到Property的只能是Property
-                         * 3. 出牌次数加1
-                         */
-                        int cardIndex = PlayerInputView.getCardIndex(cards.size());
-                        AbstractCard cardToPlay = cards.get(cardIndex);
+                        PlayerController.playCards(player);
                     } else {
                         // 移动Property
                     }
