@@ -12,11 +12,4 @@ public abstract class ActionCard extends AbstractCard implements IBankCard {
 
     @Override
     abstract public void play();
-
-    /***
-     * Drop the card to the center.
-     */
-    private void dropToCenter() {
-
-    }
 }
