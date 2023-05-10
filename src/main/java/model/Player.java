@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private List<AbstractCard> handCards;
     private Bank bank;
+    private PropertyDeck propertyDeck;
     private int numberOfPlays;
 
     public Player(String name) {
@@ -14,6 +15,7 @@ public class Player {
         handCards = new ArrayList<>();
         bank = new Bank();
         numberOfPlays = 0;
+        propertyDeck = new PropertyDeck();
     }
 
     /***
@@ -94,5 +96,9 @@ public class Player {
 
     public int getNumberOfPlays() {
         return numberOfPlays;
+    }
+
+    public PropertyDeck getPropertyDeck() {
+        return propertyDeck;
     }
 }

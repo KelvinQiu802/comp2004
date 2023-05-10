@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import model.actioncards.ActionCardsName;
 import view.PlayerInputView;
+import view.PropertyDisplayView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 public class PlayerController {
+    /***
+     * Player choose a card, select the action and play the card.
+     * @param player Player
+     * @param drawPile Draw Pile
+     */
     public static void playCard(Player player, DrawPile drawPile) {
         Map<Integer, String> allActions = getAllActionsOfCard();
         List<AbstractCard> cards = player.getHandCards();
@@ -37,6 +43,12 @@ public class PlayerController {
                 player.putIntoProperty((IPropertyCard) cardToPlay);
                 break;
         }
+    }
+
+    public static void moveProperty(Player player) {
+        PropertyDeck pd = player.getPropertyDeck();
+        PropertyDisplayView.printPropertyDeck(pd);
+        //TODO 给printer写测试，看看能不能用
     }
 
     private static List<Integer> getCardActions(AbstractCard card) {
