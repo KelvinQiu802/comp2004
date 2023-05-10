@@ -70,12 +70,12 @@ public class PlayerInputView {
     }
 
     /***
-     * Get player choice from available choices
+     * Get player action from available actions
      * @param availChoices A list of integers
-     * @param allChoices A map of choices
-     * @return the integer user choose
+     * @param allChoices A map of actions
+     * @return the integer user action
      */
-    public static int getPlayerChoiceFromAvailChoices(List<Integer> availChoices, Map<Integer, String> allChoices) {
+    public static int getPlayerActionFromAvailActions(List<Integer> availChoices, Map<Integer, String> allChoices) {
         StringBuilder sb = new StringBuilder();
         sb.append("Please choose an action: \n");
         for (Integer choice : availChoices) {

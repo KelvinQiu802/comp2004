@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class PlayerController {
     public static void playCards(Player player, DrawPile drawPile) {
-        Map<Integer, String> allChoices = getAllChoicesOfCard();
+        Map<Integer, String> allActions = getAllActionsOfCard();
         player.resetNumberOfPlays();
         List<AbstractCard> cards = player.getHandCards();
         while (player.getNumberOfPlays() < 3) {
@@ -20,12 +20,12 @@ public class PlayerController {
             AbstractCard cardToPlay = cards.get(cardIndex);
 
             // select action
-            List<Integer> availChoices = getCardChoices(cardToPlay);
+            List<Integer> availActions = getCardActions(cardToPlay);
             int action;
-            if (availChoices.size() == 1) {
-                action = availChoices.get(0);
+            if (availActions.size() == 1) {
+                action = availActions.get(0);
             } else {
-                action = PlayerInputView.getPlayerChoiceFromAvailChoices(availChoices, allChoices);
+                action = PlayerInputView.getPlayerActionFromAvailActions(availActions, allActions);
             }
 
             switch (action) {
@@ -42,32 +42,32 @@ public class PlayerController {
         }
     }
 
-    private static List<Integer> getCardChoices(AbstractCard card) {
-        List<Integer> choices = new ArrayList<>();
+    private static List<Integer> getCardActions(AbstractCard card) {
+        List<Integer> actions = new ArrayList<>();
         if (card instanceof ActionCard
                 && !card.getName().equals(ActionCardsName.HOTEL.toString())
                 && !card.getName().equals(ActionCardsName.HOUSE.toString())) {
             // All action cards except HOTEL and HOUSE can be played in to center.
-            choices.add(0);
+            actions.add(0);
         }
         if (card instanceof IBankCard) {
-            choices.add(1);
+            actions.add(1);
         }
         if (card instanceof IPropertyCard) {
-            choices.add(2);
+            actions.add(2);
         }
-        return choices;
+        return actions;
     }
 
     /***
      * Get all choices how a card can be played.
      * @return Choices Map
      */
-    private static Map<Integer, String> getAllChoicesOfCard() {
-        Map<Integer, String> choices = new HashMap<>();
-        choices.put(0, "Play into CENTER");
-        choices.put(1, "Play into BANK");
-        choices.put(2, "Play into PROPERTIES");
-        return choices;
+    private static Map<Integer, String> getAllActionsOfCard() {
+        Map<Integer, String> actions = new HashMap<>();
+        actions.put(0, "Play into CENTER");
+        actions.put(1, "Play into BANK");
+        actions.put(2, "Play into PROPERTIES");
+        return actions;
     }
 }
