@@ -41,4 +41,12 @@ public class PropertySet {
         Map<Integer, Integer> info = PropertyInfo.getByColor(color);
         return properties.size() >= info.size();
     }
+
+    public List<IPropertyCard> getProperties() {
+        return properties;
+    }
+
+    public Colors getColor() {
+        return color;
+    }
 }

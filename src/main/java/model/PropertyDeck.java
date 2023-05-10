@@ -10,5 +10,9 @@ public class PropertyDeck {
         propertySets = new ArrayList<>();
     }
 
-    // TODO: 修改PropertySet里面的内容应该通过PropertyDeck里面的方法，这里需要抽象出方法
+    public List<PropertySet> getPropertySets() {
+        return propertySets;
+    }
+
+// TODO: 修改PropertySet里面的内容应该通过PropertyDeck里面的方法，这里需要抽象出方法
 }
