@@ -52,12 +52,35 @@ public class PlayerInputView {
      * @return Card index.
      */
     public static int getCardIndex(int numOfCards) {
-        Scanner scanner = new Scanner(System.in);
-        String index;
-        do {
-            System.out.printf("Input Card Index (0-%d): ", numOfCards);
-            index = scanner.nextLine();
-        } while (!StringChecker.isInteger(index) || !IntegerChecker.inRange(Integer.parseInt(index), 0, numOfCards));
-        return Integer.parseInt(index);
+        String prompt = String.format("Input the Card Index (0-%d):", numOfCards);
+        return getIntegerInput(prompt, 0, numOfCards - 1);
     }
+
+    /***
+     * Ask user want to move properties or play a card.
+     * @return 1 for play, 2 for move, 0 for pass.
+     */
+    public static int moveOrPlayOrPass() {
+        String prompt = "Want to PLAY(1) properties or MOVE(2) a card or PASS(0)?\n" +
+                "1 for PLAY, 2 for MOVE, 0 for PASS: ";
+        return getIntegerInput(prompt, 0, 2);
+    }
+
+    /***
+     * A helper method to get user integer input
+     * @param prompt Prompt message
+     * @param min Lower bound
+     * @param max Upper bound
+     * @return the integer user input
+     */
+    private static int getIntegerInput(String prompt, int min, int max) {
+        Scanner scanner = new Scanner(System.in);
+        String result;
+        do {
+            System.out.print(prompt);
+            result = scanner.nextLine();
+        } while (!StringChecker.isInteger(result) || !IntegerChecker.inRange(Integer.parseInt(result), min, max));
+        return Integer.parseInt(result);
+    }
+
 }

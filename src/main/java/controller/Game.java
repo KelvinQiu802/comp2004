@@ -87,21 +87,26 @@ public class Game {
             for (Player player : players) {
                 List<AbstractCard> cards = player.getHandCards();
                 CardDisplayView.printCard(cards);
-                // while -------------------------------------
-                // 选择是要出牌还是移动
-                // 如果出牌，则需要判断还能不能出
-                // 选择要出的牌
-                /**
-                 * 1. 出牌次数归0
-                 * 2. 涉及三个操作： 放到bank，放到property，打出到center
-                 *    1. 放到bank的只能是BankCard
-                 *    2. 放到Property的只能是Property
-                 * 3. 出牌次数加1
-                 */
-                int cardIndex = PlayerInputView.getCardIndex(cards.size() - 1);
-                AbstractCard cardToPlay = cards.get(cardIndex);
-                // 移动Property
-                // end ---------------------------------------
+                while (true) {
+                    // 选择是要出牌还是移动还是pass
+                    int choice = PlayerInputView.moveOrPlayOrPass();
+                    if (choice == 0) {
+                        System.out.println("PASS");
+                        break;
+                    } else if (choice == 1) {
+                        /**
+                         * 1. 出牌次数归0
+                         * 2. 涉及三个操作： 放到bank，放到property，打出到center
+                         *    1. 放到bank的只能是BankCard
+                         *    2. 放到Property的只能是Property
+                         * 3. 出牌次数加1
+                         */
+                        int cardIndex = PlayerInputView.getCardIndex(cards.size());
+                        AbstractCard cardToPlay = cards.get(cardIndex);
+                    } else {
+                        // 移动Property
+                    }
+                }
                 // 结束回合后检查是否胜利
                 if (player.isWin()) {
                     return player;
