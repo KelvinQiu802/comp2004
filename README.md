@@ -63,34 +63,6 @@ sequenceDiagram
     deactivate ATM
 ```
 
-## Controller
-
-```mermaid
-classDiagram
-	Game <.. PlayerController
-	
-	class Game{
-		-DrawPile drawPile
-		-List~Player~ players
-		+main()$
-		+createPlayers()$
-		-createUniquePlayer()$
-		-haveSameName()$
-		+dealCards()$
-		+dealFiveCardsToAllPlayer()$
-		+gameLoop()$
-		+gameOver()$
-	}
-	
-	class PlayerController {
-		+playCards()$
-		-getAllActionsOfCard()$
-		-getCardActions()$
-	}
-```
-
-
-
 ## Class Diagram
 
 ```mermaid
@@ -260,6 +232,32 @@ classDiagram
 	class House
 	
 	class Hotel
+```
+
+## Controller
+
+```mermaid
+classDiagram
+	Game <.. PlayerController
+	
+	class Game{
+		-DrawPile drawPile
+		-List~Player~ players
+		+main()$
+		+createPlayers()$
+		-createUniquePlayer()$
+		-haveSameName()$
+		+dealCards()$
+		+dealFiveCardsToAllPlayer()$
+		+gameLoop()$
+		+gameOver()$
+	}
+	
+	class PlayerController {
+		+playCards()$
+		-getAllActionsOfCard()$
+		-getCardActions()$
+	}
 ```
 
 ## View
