@@ -281,6 +281,12 @@ classDiagram
 	class CardDisplayView {
 		+printCard()$
 	}
+	
+	class PropertyDisplayView {
+		+printPropertyDeck()$
+		+printPropertySet()$
+		-getPropertySetData()$
+	}
 ```
 
 ## Game Rules
