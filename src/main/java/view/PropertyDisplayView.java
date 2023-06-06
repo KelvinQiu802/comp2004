@@ -25,7 +25,7 @@ public class PropertyDisplayView {
             String[][] innerData = getPropertySetData(ps, counter);
             counter += ps.getProperties().size();
             String inner = FlipTable.of(innerHeader, innerData);
-            outerData[1][i] = inner;
+            outerData[0][i] = inner;
         }
         System.out.println(FlipTable.of(outerHeader, outerData));
     }
@@ -40,11 +40,10 @@ public class PropertyDisplayView {
 
     private static String[][] getPropertySetData(PropertySet ps, int counter) {
         List<IPropertyCard> properties = ps.getProperties();
-        String[] header = {"Index", "Name"};
         String[][] data = new String[properties.size()][2];
         for (int i = 0; i < properties.size(); i++) {
             AbstractCard prop = (AbstractCard) properties.get(i);
-            data[i] = new String[]{String.valueOf(counter++), prop.getName()};
+            data[i] = new String[]{String.valueOf(counter), prop.getName()};
         }
         return data;
     }

@@ -14,5 +14,9 @@ public class PropertyDeck {
         return propertySets;
     }
 
-// TODO: 修改PropertySet里面的内容应该通过PropertyDeck里面的方法，这里需要抽象出方法
+    public void insertIntoNewSet(IPropertyCard card) {
+        PropertySet set = new PropertySet(card.getCurrentColor());
+        set.add(card);
+        propertySets.add(set);
+    }
 }

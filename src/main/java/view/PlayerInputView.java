@@ -1,5 +1,6 @@
 package view;
 
+import model.PropertyDeck;
 import utils.IntegerChecker;
 import utils.Printer;
 import utils.StringChecker;
@@ -67,6 +68,11 @@ public class PlayerInputView {
         String prompt = "Want to PLAY(1) properties or MOVE(2) a card or PASS(0)?\n" +
                 "1 for PLAY, 2 for MOVE, 0 for PASS: ";
         return getIntegerInput(prompt, 0, 2);
+    }
+
+    public static int getTargetPropertySet(PropertyDeck pd) {
+        String prompt = "Select the property set to which you want to insert, or enter -1 to create a new set:";
+        return getIntegerInput(prompt, -1, pd.getPropertySets().size() - 1);
     }
 
     /***

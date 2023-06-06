@@ -18,6 +18,9 @@ public class PropertySet {
      * @param card card will be added
      */
     public void add(IPropertyCard card) {
+        if (color == Colors.ANY && card.getCurrentColor() != Colors.ANY) {
+            color = card.getCurrentColor();
+        }
         properties.add(card);
     }
 

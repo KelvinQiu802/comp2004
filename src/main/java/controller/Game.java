@@ -97,21 +97,23 @@ public class Game {
     public static void playerTurn(Player player) {
         player.resetNumberOfPlays();
         List<AbstractCard> handCards = player.getHandCards();
-        CardDisplayView.printCard(handCards);
         while (true) {
-            // 选择是要出牌还是移动还是pass
+            CardDisplayView.printCard(handCards);
+            // Play / Move / Pass
             int choice = PlayerInputView.moveOrPlayOrPass();
             if (choice == 0) {
+                // PASS
                 System.out.println("PASS");
                 break;
             } else if (choice == 1) {
+                // PLAY
                 if (player.getNumberOfPlays() < 3) {
                     PlayerController.playCard(player, drawPile);
                 } else {
                     System.out.println("You're out of turns to play.");
                 }
             } else {
-                // 移动Property
+                // Move Property
             }
         }
     }

@@ -1,5 +1,8 @@
 package model;
 
+import view.PlayerInputView;
+import view.PropertyDisplayView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +53,48 @@ public class Player {
      * @param card the card want to put
      */
     public void putIntoProperty(IPropertyCard card) {
-        // TODO
+        if (propertyDeck.getPropertySets().size() != 0) {
+            PropertyDisplayView.printPropertyDeck(propertyDeck);
+            // Add card to a property set
+            while (true) {
+                int target = PlayerInputView.getTargetPropertySet(propertyDeck);
+                if (target == -1) {
+                    // Insert to a new set
+                    propertyDeck.insertIntoNewSet(card);
+                    break;
+                } else {
+                    PropertySet targetSet = propertyDeck.getPropertySets().get(target);
+                    if (canAddToTargetPropertySet(card, targetSet)) {
+                        targetSet.add(card);
+                        break;
+                    }
+                    System.out.println("The colors do not match. Please choose another set.");
+                }
+            }
+        } else {
+            // Insert to a new set
+            propertyDeck.insertIntoNewSet(card);
+        }
+        PropertyDisplayView.printPropertyDeck(propertyDeck);
+        handCards.remove(card);
         numberOfPlays++;
+    }
+
+    /***
+     * A helper method to add a property card into an existing property set
+     * @param card card
+     * @param targetSet target set
+     * @return true iff can insert
+     */
+    private boolean canAddToTargetPropertySet(IPropertyCard card, PropertySet targetSet) {
+        // TODO: 判断是否可以加入 （颜色，房屋顺序等）
+        if (targetSet.getColor().equals(card.getCurrentColor())
+                || card.getCurrentColor() == Colors.ANY
+                || targetSet.getColor() == Colors.ANY) {
+            // can insert
+            return true;
+        }
+        return false;
     }
 
     /***
