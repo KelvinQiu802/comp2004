@@ -2,6 +2,7 @@ package view;
 
 import com.jakewharton.fliptables.FlipTable;
 import model.AbstractCard;
+import model.IPropertyCard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +23,16 @@ public class CardDisplayView {
      * @param cards Cards want to print
      */
     public static void printCard(List<AbstractCard> cards) {
-        String[] header = {"Index", "Name", "Value", "Type", "Description"};
-        String[][] data = new String[cards.size()][5];
+        String[] header = {"Index", "Name", "Value", "Type", "Description", "Color"};
+        String[][] data = new String[cards.size()][6];
         for (int i = 0; i < cards.size(); i++) {
             AbstractCard card = cards.get(i);
+            String color = "NULL";
+            if (card instanceof IPropertyCard) {
+                color = ((IPropertyCard) card).getCurrentColor().toString();
+            }
             data[i] = new String[]{String.valueOf(i), card.getName(), String.valueOf(card.getValue()),
-                    card.getType().toString(), card.getDescription()};
+                    card.getType().toString(), card.getDescription(), color};
         }
         System.out.println(FlipTable.of(header, data));
     }
