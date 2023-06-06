@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import model.actioncards.ActionCardsName;
+import utils.CardUtils;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
 
@@ -47,8 +48,15 @@ public class PlayerController {
 
     public static void moveProperty(Player player) {
         PropertyDeck pd = player.getPropertyDeck();
+        if (pd.getPropertySets().size() == 0) {
+            System.out.println("No card to move.");
+            return;
+        }
+        // Get the card
         PropertyDisplayView.printPropertyDeck(pd);
-        //TODO 给printer写测试，看看能不能用
+        int target = PlayerInputView.getTargetPropertyCard(pd);
+        IPropertyCard card = CardUtils.getPropertyCardByIndex(pd, target);
+        player.moveCardInProperty(card);
     }
 
     private static List<Integer> getCardActions(AbstractCard card) {

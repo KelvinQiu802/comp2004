@@ -68,7 +68,7 @@ public class Player {
                         targetSet.add(card);
                         break;
                     }
-                    System.out.println("The colors do not match. Please choose another set.");
+                    System.out.println("You cannot add this card into this property set.");
                 }
             }
         } else {
@@ -78,6 +78,33 @@ public class Player {
         PropertyDisplayView.printPropertyDeck(propertyDeck);
         handCards.remove(card);
         numberOfPlays++;
+    }
+
+    /***
+     * Moving card in the property deck
+     * @param card card
+     */
+    public void moveCardInProperty(IPropertyCard card) {
+        // Move to an existing set OR Create a new set
+        System.out.println("Would you like to move to an existing property set or create a new set?");
+        while (true) {
+            int targetIndex = PlayerInputView.getTargetPropertySet(propertyDeck);
+            if (targetIndex != -1) {
+                // Moving to an existing set
+                PropertySet ps = propertyDeck.getPropertySets().get(targetIndex);
+                if (canAddToTargetPropertySet(card, ps)) {
+                    propertyDeck.removeCard(card);
+                    ps.add(card);
+                    break;
+                }
+                System.out.println("You cannot add this card into this property set.");
+            } else {
+                // Moving to a new set
+                propertyDeck.removeCard(card);
+                propertyDeck.insertIntoNewSet(card);
+                break;
+            }
+        }
     }
 
     /***

@@ -1,10 +1,13 @@
 package view;
 
+import model.IPropertyCard;
 import model.PropertyDeck;
+import model.PropertySet;
 import utils.IntegerChecker;
 import utils.Printer;
 import utils.StringChecker;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -70,9 +73,52 @@ public class PlayerInputView {
         return getIntegerInput(prompt, 0, 2);
     }
 
+    /***
+     * Get the index of the property set which player wants to add card
+     * @param pd property deck
+     * @return the index of the target set
+     */
     public static int getTargetPropertySet(PropertyDeck pd) {
-        String prompt = "Select the property set to which you want to insert, or enter -1 to create a new set:";
+        String prompt = "Select the property set, or enter -1 to create a new set:";
         return getIntegerInput(prompt, -1, pd.getPropertySets().size() - 1);
+    }
+
+    /***
+     * Get the index of the property card which player choose
+     * @param pd property deck
+     * @return the index of the property card
+     */
+    public static int getTargetPropertyCard(PropertyDeck pd) {
+        String prompt = "Select the property card: ";
+        int num = getNumOfAllPropertyCards(pd);
+        return getIntegerInput(prompt, 0, num - 1);
+    }
+
+    /***
+     * Ask user moving to an existing set or create a new set;
+     * @return 0 if moving to an existing set; 1 if moving to an new set;
+     */
+    public static int moveToExistOrNew() {
+        String prompt = "Would you like to move to an existing property set (0) or create a new set (1): ";
+        List<Integer> choices = new ArrayList<>();
+        choices.add(0);
+        choices.add(1);
+        return getIntegerInputFromList(prompt, choices);
+    }
+
+    /***
+     * Get the number of all property cards
+     * @param pd property deck
+     * @return the number of all property cards
+     */
+    private static int getNumOfAllPropertyCards(PropertyDeck pd) {
+        int count = 0;
+        for (PropertySet ps : pd.getPropertySets()) {
+            for (IPropertyCard card : ps.getProperties()) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /***

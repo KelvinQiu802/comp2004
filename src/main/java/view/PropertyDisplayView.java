@@ -15,7 +15,7 @@ public class PropertyDisplayView {
         String[] outerHeader = new String[sets.size()];
         String[][] outerData = new String[1][sets.size()];
         for (int i = 0; i < sets.size(); i++) {
-            outerHeader[i] = sets.get(i).getColor().toString();
+            outerHeader[i] = i + ": " + sets.get(i).getColor().toString();
         }
 
         String[] innerHeader = {"Index", "Name"};
@@ -43,7 +43,7 @@ public class PropertyDisplayView {
         String[][] data = new String[properties.size()][2];
         for (int i = 0; i < properties.size(); i++) {
             AbstractCard prop = (AbstractCard) properties.get(i);
-            data[i] = new String[]{String.valueOf(counter), prop.getName()};
+            data[i] = new String[]{String.valueOf(counter++), prop.getName()};
         }
         return data;
     }

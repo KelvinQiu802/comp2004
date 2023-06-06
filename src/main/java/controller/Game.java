@@ -114,6 +114,7 @@ public class Game {
                 }
             } else {
                 // Move Property
+                PlayerController.moveProperty(player);
             }
         }
     }
