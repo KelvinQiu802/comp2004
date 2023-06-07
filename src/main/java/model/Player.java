@@ -174,9 +174,9 @@ public class Player {
         return propertyDeck;
     }
 
-    public void payTo(Player target, int price){
-        int count=0;
-        while(count<price){
+    public void payTo(Player target, int price) {
+        int count = 0;
+        while (count < price) {
             // TODO: 没牌的时候直接过
             // Print bank and properties
             System.out.println("==Bank==");
@@ -184,32 +184,31 @@ public class Player {
             System.out.println("==Properties==");
             PropertyDisplayView.printPropertyDeck(propertyDeck);
             // Choose bank or properties
-            int source=PlayerInputView.getBankOrProperty();
-            if(source==0){
+            int source = PlayerInputView.getBankOrProperty();
+            if (source == 0) {
                 //From bank
-                if(bank.getBankCards().size()==0){
+                if (bank.getBankCards().size() == 0) {
                     System.out.println("You do not have any card in the bank");
                     continue;
                 }
                 // Choose which card
-                int cardIndex=PlayerInputView.getCardIndex(bank.getBankCards().size());
-                AbstractCard card=(AbstractCard) bank.getBankCards().get(cardIndex);
-                count+=card.getValue();
+                int cardIndex = PlayerInputView.getCardIndex(bank.getBankCards().size());
+                AbstractCard card = (AbstractCard) bank.getBankCards().get(cardIndex);
+                count += card.getValue();
                 // Give this card to target
                 bank.remove((IBankCard) card);
                 target.bank.add((IBankCard) card);
-            }else{
+            } else {
                 // From properties
-                if(propertyDeck.getPropertySets().size()==0){
+                if (propertyDeck.getPropertySets().size() == 0) {
                     System.out.println("You do not have any card in the properties");
                     continue;
                 }
-                int cardIndex=PlayerInputView.getTargetPropertyCard(propertyDeck);
-                IPropertyCard card=CardUtils.getPropertyCardByIndex(propertyDeck,cardIndex);
-                count+=((AbstractCard)card).getValue();
+                int cardIndex = PlayerInputView.getTargetPropertyCard(propertyDeck);
+                IPropertyCard card = CardUtils.getPropertyCardByIndex(propertyDeck, cardIndex);
+                count += ((AbstractCard) card).getValue();
                 propertyDeck.removeCard(card);
                 //TODO: add to the target propertyDeck
-
             }
         }
 

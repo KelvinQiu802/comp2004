@@ -59,7 +59,7 @@ public class PlayerInputView {
      * @return Card index.
      */
     public static int getCardIndex(int numOfCards) {
-        String prompt = String.format("Input the Card Index (0-%d):", numOfCards-1);
+        String prompt = String.format("Input the Card Index (0-%d):", numOfCards - 1);
         return getIntegerInput(prompt, 0, numOfCards - 1);
     }
 
@@ -67,10 +67,11 @@ public class PlayerInputView {
      * Ask users select bank or  properties
      * @return 0 for  bank, 1 for properties
      */
-    public static Integer getBankOrProperty(){
-        String prompt="Select card from Bank(0) or Properties(1): ";
-        return getIntegerInput(prompt,0,1);
+    public static Integer getBankOrProperty() {
+        String prompt = "Select card from Bank(0) or Properties(1): ";
+        return getIntegerInput(prompt, 0, 1);
     }
+
     /***
      * Ask user want to move properties or play a card.
      * @return 1 for play, 2 for move, 0 for pass.
