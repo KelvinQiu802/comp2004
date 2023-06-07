@@ -1,7 +1,10 @@
 package model.actioncards;
 
+import controller.Game;
 import model.ActionCard;
 import model.Player;
+
+import java.util.List;
 
 public class MyBirthday extends ActionCard {
     public MyBirthday() {
@@ -10,6 +13,10 @@ public class MyBirthday extends ActionCard {
 
     @Override
     public void play(Player currentPlayer) {
-
+        List<Player> players=Game.getPlayers();
+        for(Player p:players){
+            if(p==currentPlayer) continue;
+            p.payTo(currentPlayer,2);
+        }
     }
 }
