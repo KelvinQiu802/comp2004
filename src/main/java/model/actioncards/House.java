@@ -1,8 +1,8 @@
 package model.actioncards;
 
-import model.ActionCard;
-import model.Colors;
-import model.IPropertyCard;
+import model.*;
+
+import java.util.List;
 
 public class House extends ActionCard implements IPropertyCard {
     public House() {
@@ -10,7 +10,7 @@ public class House extends ActionCard implements IPropertyCard {
     }
 
     @Override
-    public void play() {
+    public void play(Player currentPlayer, List<Player> players, DrawPile pile) {
 
     }
 

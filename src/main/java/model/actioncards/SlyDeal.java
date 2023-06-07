@@ -1,6 +1,10 @@
 package model.actioncards;
 
 import model.ActionCard;
+import model.DrawPile;
+import model.Player;
+
+import java.util.List;
 
 public class SlyDeal extends ActionCard {
     public SlyDeal() {
@@ -9,7 +13,7 @@ public class SlyDeal extends ActionCard {
     }
 
     @Override
-    public void play() {
+    public void play(Player currentPlayer, List<Player> players, DrawPile pile) {
 
     }
 }

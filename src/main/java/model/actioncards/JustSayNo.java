@@ -1,6 +1,10 @@
 package model.actioncards;
 
 import model.ActionCard;
+import model.DrawPile;
+import model.Player;
+
+import java.util.List;
 
 public class JustSayNo extends ActionCard {
     public JustSayNo() {
@@ -8,7 +12,7 @@ public class JustSayNo extends ActionCard {
     }
 
     @Override
-    public void play() {
+    public void play(Player currentPlayer, List<Player> players, DrawPile pile) {
 
     }
 }
