@@ -1,5 +1,5 @@
 import org.junit.jupiter.api.Test;
-import view.StringChecker;
+import utils.StringChecker;
 
 import static org.junit.jupiter.api.Assertions.*;
 

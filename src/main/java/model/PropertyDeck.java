@@ -10,5 +10,33 @@ public class PropertyDeck {
         propertySets = new ArrayList<>();
     }
 
-    // TODO: 修改PropertySet里面的内容应该通过PropertyDeck里面的方法，这里需要抽象出方法
+    public List<PropertySet> getPropertySets() {
+        return propertySets;
+    }
+
+    public void insertIntoNewSet(IPropertyCard card) {
+        PropertySet set = new PropertySet(card.getCurrentColor());
+        set.add(card);
+        propertySets.add(set);
+    }
+
+    /**
+     * Remove a property card in the deck
+     *
+     * @param card card
+     */
+    public void removeCard(IPropertyCard card) {
+        for (PropertySet ps : propertySets) {
+            for (IPropertyCard property : ps.getProperties()) {
+                if (property == card) {
+                    ps.getProperties().remove(property);
+                    // If empty -> remove
+                    if (ps.getProperties().size() == 0) {
+                        propertySets.remove(ps);
+                    }
+                    return;
+                }
+            }
+        }
+    }
 }

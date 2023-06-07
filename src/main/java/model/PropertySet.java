@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PropertySet {
     private List<IPropertyCard> properties;
@@ -17,6 +18,9 @@ public class PropertySet {
      * @param card card will be added
      */
     public void add(IPropertyCard card) {
+        if (color == Colors.ANY && card.getCurrentColor() != Colors.ANY) {
+            color = card.getCurrentColor();
+        }
         properties.add(card);
     }
 
@@ -34,6 +38,18 @@ public class PropertySet {
      * @return true if is full set, rather false.
      */
     public boolean isFullSet() {
-        return false;
+        if (color == Colors.ANY) {
+            return false;
+        }
+        Map<Integer, Integer> info = PropertyInfo.getByColor(color);
+        return properties.size() >= info.size();
+    }
+
+    public List<IPropertyCard> getProperties() {
+        return properties;
+    }
+
+    public Colors getColor() {
+        return color;
     }
 }

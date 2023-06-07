@@ -1,10 +1,10 @@
-import controller.CardFactory;
 import model.DrawPile;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.Printer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTest {
     private Player p1;
@@ -13,7 +13,7 @@ public class PlayerTest {
 
     @BeforeEach
     public void init() {
-        pile = new DrawPile(CardFactory.createCards());
+        pile = new DrawPile(Printer.CardFactory.createCards());
         p1 = new Player("Kelvin");
         p2 = new Player("Jack");
     }

@@ -17,4 +17,20 @@ public abstract class AbstractCard {
      * An abstract method called when this card is played.
      */
     abstract public void play();
+
+    public String getName() {
+        return name;
+    }
+
+    public CardTypes getType() {
+        return type;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

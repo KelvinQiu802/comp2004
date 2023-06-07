@@ -1,26 +1,31 @@
 package controller;
 
+import model.AbstractCard;
 import model.DrawPile;
 import model.Player;
-import view.PlayerCreationView;
+import utils.Printer;
+import view.CardDisplayView;
+import view.PlayerInputView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
     private static List<Player> players = new ArrayList<>();
-    private static DrawPile drawPile = new DrawPile(CardFactory.createCards());
+    private static DrawPile drawPile = new DrawPile(Printer.CardFactory.createCards());
 
     public static void main(String[] args) {
         createPlayers();
         dealFiveCardsToAllPlayer();
+        Player winner = gameLoop();
+        gameOver(winner);
     }
 
     /***
      * Create players list.
      */
     public static void createPlayers() {
-        int numberOfPlayer = PlayerCreationView.getNumberOfPlayer();
+        int numberOfPlayer = PlayerInputView.getNumberOfPlayer();
         for (int i = 0; i < numberOfPlayer; i++) {
             createUniquePlayer();
         }
@@ -31,7 +36,7 @@ public class Game {
      */
     private static void createUniquePlayer() {
         while (true) {
-            String name = PlayerCreationView.getPlayerName();
+            String name = PlayerInputView.getPlayerName();
             if (!haveSameName(name)) {
                 players.add(new Player(name));
                 break;
@@ -72,6 +77,54 @@ public class Game {
         for (Player player : players) {
             dealCards(player, 5);
         }
+    }
+
+    /***
+     * Main game loop
+     * @return The winner player
+     */
+    public static Player gameLoop() {
+        while (true) {
+            for (Player player : players) {
+                playerTurn(player);
+                if (player.isWin()) {
+                    return player;
+                }
+            }
+        }
+    }
+
+    public static void playerTurn(Player player) {
+        player.resetNumberOfPlays();
+        List<AbstractCard> handCards = player.getHandCards();
+        while (true) {
+            CardDisplayView.printCard(handCards);
+            // Play / Move / Pass
+            int choice = PlayerInputView.moveOrPlayOrPass();
+            if (choice == 0) {
+                // PASS
+                System.out.println("PASS");
+                break;
+            } else if (choice == 1) {
+                // PLAY
+                if (player.getNumberOfPlays() < 3) {
+                    PlayerController.playCard(player, drawPile);
+                } else {
+                    System.out.println("You're out of turns to play.");
+                }
+            } else {
+                // Move Property
+                PlayerController.moveProperty(player);
+            }
+        }
+    }
+
+    /***
+     * To announce gamer is over
+     * @param winner The winner
+     */
+    public static void gameOver(Player winner) {
+        System.out.printf("GAME OVER! The WINNER IS %s", winner.getName().toUpperCase());
     }
 
     public static List<Player> getPlayers() {

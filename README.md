@@ -63,37 +63,6 @@ sequenceDiagram
     deactivate ATM
 ```
 
-## Controller
-
-```mermaid
-classDiagram
-	Game <.. CardFactory
-	CardFactory <.. ActionCardFactory
-	
-	class Game{
-		-DrawPile drawPile
-		-List~Player~ players
-		+main()$
-		+dealCards()$
-		+dealFiveCardsToAllPlayer()$
-	}
-	
-	class CardFactory{
-		+createCards()$
-		-createMoenyCards()$
-		-getAllMoneyCards()$
-		-createActionCards()$
-		-getAllActionCards()$
-		-getAllPropertyCards()$
-	}
-	
-	class ActionCardFactory{
-		+create()$
-	}
-```
-
-
-
 ## Class Diagram
 
 ```mermaid
@@ -265,20 +234,56 @@ classDiagram
 	class Hotel
 ```
 
+## Controller
+
+```mermaid
+classDiagram
+	Game <.. PlayerController
+	
+	class Game{
+		-DrawPile drawPile
+		-List~Player~ players
+		+main()$
+		+createPlayers()$
+		-createUniquePlayer()$
+		-haveSameName()$
+		+dealCards()$
+		+dealFiveCardsToAllPlayer()$
+		+gameLoop()$
+		+gameOver()$
+	}
+	
+	class PlayerController {
+		+playCards()$
+		-getAllActionsOfCard()$
+		-getCardActions()$
+	}
+```
+
 ## View
 
 ```mermaid
 classDiagram
-	PlayerCreationView <.. StringChecker
 	
-	class PlayerCreationView{
+	class PlayerInputView{
 		+getNumberOfPlayer()$
 		-getAnyBumberOfPlayer()$
 		+getPlayerName()$
+		+getCardIndex()$
+		+moveOrPlayOrPass()$
+		+getPlayerActionFromAvailActions()$
+		-getIntegerInputFromList()$
+		-getIntegerInput()$
 	}
 	
-	class StringChecker{
-		+isInteger()$
+	class CardDisplayView {
+		+printCard()$
+	}
+	
+	class PropertyDisplayView {
+		+printPropertyDeck()$
+		+printPropertySet()$
+		-getPropertySetData()$
 	}
 ```
 

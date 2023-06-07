@@ -1,6 +1,7 @@
 package model.actioncards;
 
 import model.ActionCard;
+import model.Colors;
 import model.IPropertyCard;
 
 public class Hotel extends ActionCard implements IPropertyCard {
@@ -11,5 +12,9 @@ public class Hotel extends ActionCard implements IPropertyCard {
     @Override
     public void play() {
 
+    }
+
+    public Colors getCurrentColor() {
+        return Colors.ANY;
     }
 }
