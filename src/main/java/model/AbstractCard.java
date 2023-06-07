@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public abstract class AbstractCard {
     private String name;
     private CardTypes type;
@@ -18,7 +16,7 @@ public abstract class AbstractCard {
     /***
      * An abstract method called when this card is played.
      */
-    abstract public void play(Player currentPlayer, List<Player> players, DrawPile pile);
+    abstract public void play(Player currentPlayer);
 
     public String getName() {
         return name;

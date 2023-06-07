@@ -1,10 +1,7 @@
 package model.actioncards;
 
 import model.ActionCard;
-import model.DrawPile;
 import model.Player;
-
-import java.util.List;
 
 public class DebtCollector extends ActionCard {
     public DebtCollector() {
@@ -12,7 +9,7 @@ public class DebtCollector extends ActionCard {
     }
 
     @Override
-    public void play(Player currentPlayer, List<Player> players, DrawPile pile) {
+    public void play(Player currentPlayer) {
 
     }
 }

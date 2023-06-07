@@ -2,8 +2,6 @@ package model;
 
 import model.actioncards.ActionCardsName;
 
-import java.util.List;
-
 public abstract class ActionCard extends AbstractCard implements IBankCard {
     private ActionCardsName actionName;
 
@@ -13,5 +11,5 @@ public abstract class ActionCard extends AbstractCard implements IBankCard {
     }
 
     @Override
-    abstract public void play(Player currentPlayer, List<Player> players, DrawPile pile);
+    abstract public void play(Player currentPlayer);
 }

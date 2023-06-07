@@ -1,8 +1,9 @@
 package model.actioncards;
 
-import model.*;
-
-import java.util.List;
+import model.ActionCard;
+import model.Colors;
+import model.IPropertyCard;
+import model.Player;
 
 public class Hotel extends ActionCard implements IPropertyCard {
     public Hotel() {
@@ -10,7 +11,7 @@ public class Hotel extends ActionCard implements IPropertyCard {
     }
 
     @Override
-    public void play(Player currentPlayer, List<Player> players, DrawPile pile) {
+    public void play(Player currentPlayer) {
 
     }
 
