@@ -1,5 +1,6 @@
 package model;
 
+import controller.Game;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
 
@@ -33,7 +34,7 @@ public class Player {
      * Choose the card to play and drop it to the center.
      */
     public void playIntoCenter(AbstractCard card, DrawPile pile) {
-        card.play(, , );
+        card.play(this, Game.getPlayers() , pile);
         dropToCenter(card, pile);
         numberOfPlays++;
     }
