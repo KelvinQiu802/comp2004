@@ -177,7 +177,11 @@ public class Player {
     public void payTo(Player target, int price) {
         int count = 0;
         while (count < price) {
-            // TODO: 没牌的时候直接过
+            // No cards in the bank and the property, pass
+            if (bank.getBankCards().size() == 0 && propertyDeck.getPropertySets().size() == 0) {
+                System.out.println("There are no cards in the bank and the property deck -> PASS");
+                return;
+            }
             // Print bank and properties
             System.out.println("==Bank==");
             CardDisplayView.printCard((AbstractCard) bank.getBankCards());
@@ -204,13 +208,14 @@ public class Player {
                     System.out.println("You do not have any card in the properties");
                     continue;
                 }
+                // Choose which card
                 int cardIndex = PlayerInputView.getTargetPropertyCard(propertyDeck);
                 IPropertyCard card = CardUtils.getPropertyCardByIndex(propertyDeck, cardIndex);
                 count += ((AbstractCard) card).getValue();
+                // Give this card to target
                 propertyDeck.removeCard(card);
-                //TODO: add to the target propertyDeck
+                putIntoProperty(card);
             }
         }
-
     }
 }
