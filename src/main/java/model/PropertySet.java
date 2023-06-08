@@ -52,4 +52,9 @@ public class PropertySet {
     public Colors getColor() {
         return color;
     }
+
+    public int getRent(){
+        Map<Integer, Integer> info = PropertyInfo.getByColor(color);
+        return info.get(properties.size());
+    }
 }

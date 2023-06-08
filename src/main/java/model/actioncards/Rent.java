@@ -1,15 +1,13 @@
 package model.actioncards;
 
 import controller.Game;
-import model.ActionCard;
-import model.Colors;
-import model.Player;
+import model.*;
 
 import java.util.List;
 
 public class Rent extends ActionCard {
-    private Colors first;
-    private Colors second;
+    private final Colors first;
+    private final Colors second;
 
     public Rent(Colors first, Colors second) {
         super(ActionCardsName.RENT, 1, "All players pay you rent for properties you own in one of " +
@@ -20,11 +18,24 @@ public class Rent extends ActionCard {
 
     @Override
     public void play(Player currentPlayer) {
-        // 1. 选择某个颜色进行Rent
+        // choose one of the color to rent
         List<Colors> colorsList = List.of(first, second);
         int colorIndex = currentPlayer.selectColor(colorsList);
+        Colors color = colorsList.get(colorIndex);
 
-        // 2. 计算每人收多少钱
-        // 3. 收钱
+        // calculate the rent for the corresponding color property set
+        int total = 0;
+        List<PropertySet> propertySets = currentPlayer.getPropertyDeck().getPropertySets();
+        for (PropertySet set : propertySets) {
+            if (set.getColor() == color)
+                total = total + set.getRent();
+        }
+
+        // rent
+        List<Player> players = Game.getPlayers();
+        for (Player p : players) {
+            if (p == currentPlayer) continue;
+            p.payTo(currentPlayer, total);
+        }
     }
 }
