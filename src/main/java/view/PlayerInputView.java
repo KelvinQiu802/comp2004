@@ -1,5 +1,6 @@
 package view;
 
+import model.Colors;
 import model.IPropertyCard;
 import model.PropertyDeck;
 import model.PropertySet;
@@ -24,7 +25,7 @@ public class PlayerInputView {
             if (number > 1) {
                 break;
             }
-            System.out.println("The number of players MUST greater then 2. PLEASE TRY AGAIN!");
+            System.out.println("The number of players MUST greater than 2. PLEASE TRY AGAIN!");
         }
         return number;
     }
@@ -73,12 +74,22 @@ public class PlayerInputView {
     }
 
     /***
+     * Get the index of color that player want to choose.
+     * @param numOfColors The number of colors player can select.
+     * @return Color index
+     */
+    public static Integer getColorIndex(int numOfColors) {
+        String prompt = String.format("Input the color index (0-%d)", numOfColors - 1);
+        return getIntegerInput(prompt, 0, numOfColors - 1);
+    }
+
+    /***
      * Ask user want to move properties or play a card.
      * @return 1 for play, 2 for move, 0 for pass.
      */
     public static int moveOrPlayOrPass() {
         String prompt = "Want to PLAY(1) properties or MOVE(2) a card or PASS(0)?\n" +
-                "1 for PLAY, 2 for MOVE, 0 for PASS: ";
+            "1 for PLAY, 2 for MOVE, 0 for PASS: ";
         return getIntegerInput(prompt, 0, 2);
     }
 

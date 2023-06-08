@@ -218,4 +218,12 @@ public class Player {
             }
         }
     }
+
+    public int selectColor(List<Colors> AvailableColor){
+        // Print colors
+        CardDisplayView.printColor(AvailableColor);
+
+        // Choose the color
+        return PlayerInputView.getColorIndex(AvailableColor.size());
+    }
 }
