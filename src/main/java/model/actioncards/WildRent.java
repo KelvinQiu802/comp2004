@@ -22,6 +22,7 @@ public class WildRent extends ActionCard {
 
         // calculate the rent for the corresponding color property set
         int total = currentPlayer.calculateRent(color);
+        // TODO: DoubleRent
 
         // confirm the player who need to pay
         Player p = currentPlayer.selectPlayer();

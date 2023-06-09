@@ -24,6 +24,7 @@ public class Rent extends ActionCard {
 
         // calculate the rent for the corresponding color property set
         int total = currentPlayer.calculateRent(color);
+        // TODO: DoubleRent
 
         // rent
         List<Player> players = Game.getPlayers();

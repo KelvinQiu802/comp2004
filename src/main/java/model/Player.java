@@ -36,6 +36,7 @@ public class Player {
      * Choose the card to play and drop it to the center.
      */
     public void playIntoCenter(AbstractCard card, DrawPile pile) {
+        // TODO: identify PassGo
         card.play(this);
         dropToCenter(card, pile);
         numberOfPlays++;
