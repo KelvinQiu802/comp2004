@@ -83,6 +83,11 @@ public class PlayerInputView {
         return getIntegerInput(prompt, 0, numOfColors - 1);
     }
 
+    public static Integer getPlayerIndex(int numOfPlayers) {
+        String prompt = String.format("Input the player index (0-%d)", numOfPlayers - 1);
+        return getIntegerInput(prompt, 0, numOfPlayers - 1);
+    }
+
     /***
      * Ask user want to move properties or play a card.
      * @return 1 for play, 2 for move, 0 for pass.

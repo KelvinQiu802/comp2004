@@ -20,16 +20,10 @@ public class Rent extends ActionCard {
     public void play(Player currentPlayer) {
         // choose one of the color to rent
         List<Colors> colorsList = List.of(first, second);
-        int colorIndex = currentPlayer.selectColor(colorsList);
-        Colors color = colorsList.get(colorIndex);
+        Colors color = currentPlayer.selectColor(colorsList);
 
         // calculate the rent for the corresponding color property set
-        int total = 0;
-        List<PropertySet> propertySets = currentPlayer.getPropertyDeck().getPropertySets();
-        for (PropertySet set : propertySets) {
-            if (set.getColor() == color)
-                total = total + set.getRent();
-        }
+        int total = currentPlayer.calculateRent(color);
 
         // rent
         List<Player> players = Game.getPlayers();

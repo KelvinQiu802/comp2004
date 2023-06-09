@@ -1,5 +1,6 @@
 package model;
 
+import controller.Game;
 import utils.CardUtils;
 import view.CardDisplayView;
 import view.PlayerInputView;
@@ -219,11 +220,27 @@ public class Player {
         }
     }
 
-    public int selectColor(List<Colors> AvailableColor){
+    public Colors selectColor(List<Colors> AvailableColor){
         // Print colors
         CardDisplayView.printColor(AvailableColor);
 
         // Choose the color
-        return PlayerInputView.getColorIndex(AvailableColor.size());
+        return AvailableColor.get(PlayerInputView.getColorIndex(AvailableColor.size()));
+    }
+
+    public int calculateRent(Colors color){
+        int count = 0;
+        List<PropertySet> propertySets = this.getPropertyDeck().getPropertySets();
+        for (PropertySet set : propertySets) {
+            if (set.getColor() == color)
+                count = count + set.getRent();
+        }
+        return count;
+    }
+
+    public Player selectPlayer(){
+        List<Player> players = Game.getPlayers();
+        CardDisplayView.printPlayer(players);
+        return players.get(PlayerInputView.getPlayerIndex(players.size()));
     }
 }
