@@ -158,6 +158,7 @@ public class Player {
             // can insert
             return true;
         }
+        System.out.println("Cannot add this card in to this property set.");
         return false;
     }
 
