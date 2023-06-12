@@ -1,7 +1,7 @@
 package model;
 
 import controller.Game;
-import model.actioncards.ActionCardsName;
+import model.actioncards.*;
 import utils.CardUtils;
 import view.CardDisplayView;
 import view.PlayerInputView;
@@ -41,13 +41,12 @@ public class Player {
     public void playIntoCenter(AbstractCard card, DrawPile pile) {
         // EXCEPTION
         // can not play double the rent before the rent card
-        if (card.getName().equals(ActionCardsName.DOUBLE_THE_RENT.toString())) {
+        if (card instanceof DoubleTheRent) {
             System.out.println("You cannot play Double The Rent before playing the Rent card!");
             return;
         }
         // if the card is Rent and player have Double The Rent, ask whether play it.
-        if ((card.getName().equals(ActionCardsName.RENT.toString())
-                || card.getName().equals(ActionCardsName.WILD_RENT.toString()))
+        if (card instanceof Rent
                 && hasCard(ActionCardsName.DOUBLE_THE_RENT.toString())
         ) {
             System.out.println("Do you want to use Double The Rent?");
@@ -153,13 +152,69 @@ public class Player {
      */
     private boolean canAddToTargetPropertySet(IPropertyCard card, PropertySet targetSet) {
         // TODO: 判断是否可以加入 （颜色，房屋顺序等）
-        if (targetSet.getColor().equals(card.getCurrentColor())
-                || card.getCurrentColor() == Colors.ANY
-                || targetSet.getColor() == Colors.ANY) {
+        if (checkColor(card, targetSet)
+                && checkHouse(card, targetSet)
+                && checkHotel(card, targetSet)) {
             // can insert
             return true;
         }
         return false;
+    }
+
+    /***
+     * A helper to method to check the color integrity of a property set
+     * @param card card
+     * @param targetSet set
+     * @return true iff can add, else false
+     */
+    private boolean checkColor(IPropertyCard card, PropertySet targetSet) {
+        // TODO: 暂时没有加入手动切换双色牌颜色的功能 （不是在这里添加，就在这里随便记一下）
+        if (card.getCurrentColor() == Colors.ANY || targetSet.getColor() == Colors.ANY) {
+            return true;
+        }
+        if (card instanceof DoubleColorProperty) {
+            // Two Colors Wild Card
+            DoubleColorProperty prop = (DoubleColorProperty) card;
+            if (prop.getFirstColor().equals(targetSet.getColor())
+                    || prop.getSecondColor().equals(targetSet.getColor())) {
+                prop.setCurrentColor(targetSet.getColor());
+                return true;
+            }
+        } else {
+            // One color property
+            return targetSet.getColor().equals(card.getCurrentColor());
+        }
+        return false;
+    }
+
+    /***
+     * A helper method to check the house card rule
+     * @param card card
+     * @param targetSet set
+     * @return true iff can build a house on this set
+     */
+    private boolean checkHouse(IPropertyCard card, PropertySet targetSet) {
+        if (!(card instanceof House)) {
+            return true;
+        }
+        if (targetSet.getProperties().get(targetSet.getProperties().size() - 1) instanceof House) {
+            // already have a house
+            return false;
+        }
+        return targetSet.isFullSet();
+    }
+
+    /***
+     * A helper method to check the hotel card rule
+     * @param card card
+     * @param targetSet set
+     * @return true iff can build a hotel on this set
+     */
+    private boolean checkHotel(IPropertyCard card, PropertySet targetSet) {
+        if (!(card instanceof Hotel)) {
+            return true;
+        }
+        return targetSet.getProperties().get(targetSet.getProperties().size() - 1) instanceof House;
     }
 
     /***
