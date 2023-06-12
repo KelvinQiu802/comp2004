@@ -119,6 +119,15 @@ public class PlayerInputView {
     }
 
     /***
+     * Get yes or no
+     * @return true iff yes, else no
+     */
+    public static boolean yesOrNo() {
+        int num = getIntegerInput("Yes(1), No(0): ", 0, 1);
+        return num == 1;
+    }
+
+    /***
      * Ask user moving to an existing set or create a new set;
      * @return 0 if moving to an existing set; 1 if moving to an new set;
      */

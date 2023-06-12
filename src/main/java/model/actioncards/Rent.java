@@ -1,7 +1,9 @@
 package model.actioncards;
 
 import controller.Game;
-import model.*;
+import model.ActionCard;
+import model.Colors;
+import model.Player;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Rent extends ActionCard {
 
     public Rent(Colors first, Colors second) {
         super(ActionCardsName.RENT, 1, "All players pay you rent for properties you own in one of " +
-            "these colors.");
+                "these colors.");
         this.first = first;
         this.second = second;
     }
@@ -24,7 +26,6 @@ public class Rent extends ActionCard {
 
         // calculate the rent for the corresponding color property set
         int total = currentPlayer.calculateRent(color);
-        // TODO: DoubleRent
 
         // rent
         List<Player> players = Game.getPlayers();

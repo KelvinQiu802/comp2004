@@ -1,6 +1,7 @@
 package model;
 
 import controller.Game;
+import model.actioncards.ActionCardsName;
 import utils.CardUtils;
 import view.CardDisplayView;
 import view.PlayerInputView;
@@ -15,6 +16,7 @@ public class Player {
     private Bank bank;
     private PropertyDeck propertyDeck;
     private int numberOfPlays;
+    private boolean doubleTheRent;
 
     public Player(String name) {
         this.name = name;
@@ -22,6 +24,7 @@ public class Player {
         bank = new Bank();
         numberOfPlays = 0;
         propertyDeck = new PropertyDeck();
+        doubleTheRent = false;
     }
 
     /***
@@ -36,10 +39,41 @@ public class Player {
      * Choose the card to play and drop it to the center.
      */
     public void playIntoCenter(AbstractCard card, DrawPile pile) {
-        // TODO: identify PassGo
+        // EXCEPTION
+        // can not play double the rent before the rent card
+        if (card.getName().equals(ActionCardsName.DOUBLE_THE_RENT.toString())) {
+            System.out.println("You cannot play Double The Rent before playing the Rent card!");
+            return;
+        }
+        // if the card is Rent and player have Double The Rent, ask whether play it.
+        if ((card.getName().equals(ActionCardsName.RENT.toString())
+                || card.getName().equals(ActionCardsName.WILD_RENT.toString()))
+                && hasCard(ActionCardsName.DOUBLE_THE_RENT.toString())
+        ) {
+            System.out.println("Do you want to use Double The Rent?");
+            if (PlayerInputView.yesOrNo()) {
+                System.out.println("Rent is doubled!");
+                doubleTheRent = true;
+            }
+        }
+
         card.play(this);
         dropToCenter(card, pile);
         numberOfPlays++;
+    }
+
+    /***
+     * Search player card by card name
+     * @param cardName card name
+     * @return true iff has the card, else false
+     */
+    private boolean hasCard(String cardName) {
+        for (AbstractCard card : handCards) {
+            if (card.getName().equals(cardName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /***
@@ -235,6 +269,9 @@ public class Player {
         for (PropertySet set : propertySets) {
             if (set.getColor() == color)
                 count = count + set.getRent();
+        }
+        if (doubleTheRent) {
+            return count * 2;
         }
         return count;
     }
