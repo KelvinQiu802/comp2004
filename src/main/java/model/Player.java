@@ -133,7 +133,7 @@ public class Player {
      * @param card the card want to drop
      * @param pile the draw pile
      */
-    private void dropToCenter(AbstractCard card, DrawPile pile) {
+    public void dropToCenter(AbstractCard card, DrawPile pile) {
         handCards.remove(card);
         pile.add(card);
     }
@@ -221,7 +221,7 @@ public class Player {
         }
     }
 
-    public Colors selectColor(List<Colors> AvailableColor){
+    public Colors selectColor(List<Colors> AvailableColor) {
         // Print colors
         CardDisplayView.printColor(AvailableColor);
 
@@ -229,7 +229,7 @@ public class Player {
         return AvailableColor.get(PlayerInputView.getColorIndex(AvailableColor.size()));
     }
 
-    public int calculateRent(Colors color){
+    public int calculateRent(Colors color) {
         int count = 0;
         List<PropertySet> propertySets = this.getPropertyDeck().getPropertySets();
         for (PropertySet set : propertySets) {
@@ -239,7 +239,7 @@ public class Player {
         return count;
     }
 
-    public Player selectPlayer(){
+    public Player selectPlayer() {
         List<Player> players = Game.getPlayers();
         CardDisplayView.printPlayer(players);
         return players.get(PlayerInputView.getPlayerIndex(players.size()));

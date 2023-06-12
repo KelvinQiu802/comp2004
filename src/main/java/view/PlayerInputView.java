@@ -1,6 +1,5 @@
 package view;
 
-import model.Colors;
 import model.IPropertyCard;
 import model.PropertyDeck;
 import model.PropertySet;
@@ -94,7 +93,7 @@ public class PlayerInputView {
      */
     public static int moveOrPlayOrPass() {
         String prompt = "Want to PLAY(1) properties or MOVE(2) a card or PASS(0)?\n" +
-            "1 for PLAY, 2 for MOVE, 0 for PASS: ";
+                "1 for PLAY, 2 for MOVE, 0 for PASS: ";
         return getIntegerInput(prompt, 0, 2);
     }
 

@@ -102,6 +102,8 @@ public class Game {
             // Play / Move / Pass
             int choice = PlayerInputView.moveOrPlayOrPass();
             if (choice == 0) {
+                // Drop cards if more than seven
+                dropCardsIfMore(player);
                 // PASS
                 System.out.println("PASS");
                 break;
@@ -116,6 +118,23 @@ public class Game {
                 // Move Property
                 PlayerController.moveProperty(player);
             }
+        }
+    }
+
+    /***
+     * Drop cards if more than seven
+     * @param player current player
+     */
+    private static void dropCardsIfMore(Player player) {
+        while (player.getHandCards().size() > 7) {
+            int numOfCards = player.getHandCards().size();
+            // Print all cards
+            CardDisplayView.printCard(player.getHandCards());
+            System.out.printf("You have %d cards, please drop %d cards.\n", numOfCards, numOfCards - 7);
+            // Ask to drop which card
+            int cardIndex = PlayerInputView.getCardIndex(player.getHandCards().size());
+            // Drop the card to the center
+            player.dropToCenter(player.getHandCards().get(cardIndex), drawPile);
         }
     }
 
