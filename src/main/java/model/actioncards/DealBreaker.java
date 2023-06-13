@@ -29,7 +29,7 @@ public class DealBreaker extends ActionCard {
             Player target = others.get(playerIndex);
             // 2 Print the property deck
             PropertyDisplayView.printPropertyDeck(target.getPropertyDeck());
-            // 3. Chose a full set
+            // 3. Choose a full set
             int setIndex = PlayerInputView.getTargetPropertySet(target.getPropertyDeck());
             PropertySet set = target.getPropertyDeck().getPropertySets().get(setIndex);
             if (set.isFullSet()) {
