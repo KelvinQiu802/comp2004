@@ -23,6 +23,7 @@ public class DealBreaker extends ActionCard {
 
             // 3.change the position of property set
             currentPlayer.getPropertyDeck().insertSet(ps);
+            break;
         }
     }
 }
