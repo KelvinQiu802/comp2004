@@ -1,6 +1,5 @@
 package model;
 
-import controller.Game;
 import model.actioncards.*;
 import utils.CardUtils;
 import view.CardDisplayView;
@@ -144,24 +143,6 @@ public class Player {
         }
     }
 
-    public PropertySet removeProperty(boolean isFull) {
-        while (true) {
-            int targetIndex = PlayerInputView.getTargetPropertySet(propertyDeck);
-            if (targetIndex != -1) {
-                // Go back to choose the player
-                PropertySet ps = propertyDeck.getPropertySets().get(targetIndex);
-                if(ps.isFullSet()==isFull){
-                    propertyDeck.removeSet(ps);
-                    return ps;
-                }
-                System.out.println("You cannot add this card into this property set.");
-            } else {
-                // Go back to choose the player
-                return null;
-            }
-        }
-    }
-
     /***
      * A helper method to add a property card into an existing property set
      * @param card card
@@ -169,7 +150,6 @@ public class Player {
      * @return true iff can insert
      */
     private boolean canAddToTargetPropertySet(IPropertyCard card, PropertySet targetSet) {
-        // TODO: 判断是否可以加入 （颜色，房屋顺序等）
         if (checkColor(card, targetSet)
                 && checkHouse(card, targetSet)
                 && checkHotel(card, targetSet)) {
@@ -348,11 +328,5 @@ public class Player {
             return count * 2;
         }
         return count;
-    }
-
-    public Player selectPlayer() {
-        List<Player> players = Game.getPlayers();
-        CardDisplayView.printPlayer(players);
-        return players.get(PlayerInputView.getPlayerIndex(players.size()));
     }
 }

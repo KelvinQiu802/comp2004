@@ -1,9 +1,12 @@
 package model.actioncards;
 
+import controller.Game;
 import model.ActionCard;
 import model.Colors;
 import model.Player;
+import view.PlayerInputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WildRent extends ActionCard {
@@ -23,9 +26,12 @@ public class WildRent extends ActionCard {
         int total = currentPlayer.calculateRent(color);
 
         // confirm the player who need to pay
-        Player p = currentPlayer.selectPlayer();
+        List<Player> others = new ArrayList<>(Game.getPlayers());
+        others.remove(currentPlayer);
+        int playerIndex = PlayerInputView.getPlayerIndex(others.size());
+        Player target = others.get(playerIndex);
 
         // rent
-        p.payTo(currentPlayer, total);
+        target.payTo(currentPlayer, total);
     }
 }

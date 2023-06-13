@@ -4,7 +4,6 @@ import com.jakewharton.fliptables.FlipTable;
 import model.AbstractCard;
 import model.Colors;
 import model.IPropertyCard;
-import model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class CardDisplayView {
                 color = ((IPropertyCard) card).getCurrentColor().toString();
             }
             data[i] = new String[]{String.valueOf(i), card.getName(), String.valueOf(card.getValue()),
-                card.getType().toString(), card.getDescription(), color};
+                    card.getType().toString(), card.getDescription(), color};
         }
         System.out.println(FlipTable.of(header, data));
     }
@@ -48,12 +47,4 @@ public class CardDisplayView {
         System.out.println(FlipTable.of(header, data));
     }
 
-    public static void printPlayer(List<Player> players) {
-        String[] header = {"Index", "Player"};
-        String[][] data = new String[players.size()][2];
-        for (int i = 0; i < players.size(); i++) {
-            data[i] = new String[]{String.valueOf(i), String.valueOf(players.get(i).getName())};
-        }
-        System.out.println(FlipTable.of(header, data));
-    }
 }
