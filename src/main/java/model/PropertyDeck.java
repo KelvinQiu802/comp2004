@@ -39,4 +39,20 @@ public class PropertyDeck {
             }
         }
     }
+
+    /**
+     * InsertSet a property set in the deck
+     * @param set PropertySet
+     */
+    public void insertSet(PropertySet set) {
+        propertySets.add(set);
+    }
+
+    /**
+     * Remove a property set in the deck
+     * @param set PropertySet
+     */
+    public void removeSet(PropertySet set) {
+        propertySets.remove(set);
+    }
 }

@@ -144,6 +144,24 @@ public class Player {
         }
     }
 
+    public PropertySet removeProperty(boolean isFull) {
+        while (true) {
+            int targetIndex = PlayerInputView.getTargetPropertySet(propertyDeck);
+            if (targetIndex != -1) {
+                // Go back to choose the player
+                PropertySet ps = propertyDeck.getPropertySets().get(targetIndex);
+                if(ps.isFullSet()==isFull){
+                    propertyDeck.removeSet(ps);
+                    return ps;
+                }
+                System.out.println("You cannot add this card into this property set.");
+            } else {
+                // Go back to choose the player
+                return null;
+            }
+        }
+    }
+
     /***
      * A helper method to add a property card into an existing property set
      * @param card card

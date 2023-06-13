@@ -108,6 +108,16 @@ public class PlayerInputView {
     }
 
     /***
+     * Get the index of the property set which player wants to add card
+     * @param pd property deck
+     * @return the index of the target set
+     */
+    public static int getFetchPropertySet(PropertyDeck pd) {
+        String prompt = "Select the property set, or enter -1 to go back:";
+        return getIntegerInput(prompt, -1, pd.getPropertySets().size() - 1);
+    }
+
+    /***
      * Get the index of the property card which player choose
      * @param pd property deck
      * @return the index of the property card
