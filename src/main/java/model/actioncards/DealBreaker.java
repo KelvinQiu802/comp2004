@@ -20,7 +20,7 @@ public class DealBreaker extends ActionCard {
     @Override
     public void play(Player currentPlayer, List<Player> players) {
         // 0. Print all players without current player
-        List<Player> others = new ArrayList<>(Game.getPlayers());
+        List<Player> others = players;
         others.remove(currentPlayer);
         while (true) {
             PlayerDisplayView.printPlayer(others);

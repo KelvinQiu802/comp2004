@@ -83,7 +83,7 @@ public class PlayerInputView {
     }
 
     public static Integer getPlayerIndex(int numOfPlayers) {
-        String prompt = String.format("Input the player index (0-%d)", numOfPlayers - 1);
+        String prompt = String.format("Input the player index (0-%d):", numOfPlayers - 1);
         return getIntegerInput(prompt, 0, numOfPlayers - 1);
     }
 
@@ -224,6 +224,7 @@ public class PlayerInputView {
             System.out.print(prompt);
             result = scanner.nextLine();
         } while (!StringChecker.isInteger(result) || !IntegerChecker.inRange(Integer.parseInt(result), min, max));
+        System.out.println("\n");
         Printer.printDashLine();
         return Integer.parseInt(result);
     }
