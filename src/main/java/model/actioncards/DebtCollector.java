@@ -3,6 +3,7 @@ package model.actioncards;
 import controller.Game;
 import model.ActionCard;
 import model.Player;
+import view.PlayerDisplayView;
 import view.PlayerInputView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class DebtCollector extends ActionCard {
         // Print all players without current player
         List<Player> others = new ArrayList<>(Game.getPlayers());
         others.remove(currentPlayer);
+        PlayerDisplayView.printPlayer(others);
 
         // Choose a player
         int playerIndex = PlayerInputView.getPlayerIndex(others.size());
