@@ -19,7 +19,7 @@ public class Rent extends ActionCard {
     }
 
     @Override
-    public void play(Player currentPlayer) {
+    public void play(Player currentPlayer, List<Player> players) {
         // choose one of the color to rent
         List<Colors> colorsList = List.of(first, second);
         Colors color = currentPlayer.selectColor(colorsList);
@@ -28,7 +28,7 @@ public class Rent extends ActionCard {
         int total = currentPlayer.calculateRent(color);
 
         // rent
-        List<Player> players = Game.getPlayers();
+        players = Game.getPlayers();
         for (Player p : players) {
             if (p == currentPlayer) continue;
             p.payTo(currentPlayer, total);

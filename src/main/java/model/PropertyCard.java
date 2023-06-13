@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class PropertyCard extends AbstractCard implements IPropertyCard {
     private Colors currentColor;
 
@@ -9,7 +11,7 @@ public class PropertyCard extends AbstractCard implements IPropertyCard {
     }
 
     @Override
-    public void play(Player currentPlayer) {
+    public void play(Player currentPlayer, List<Player> players) {
 
     }
 

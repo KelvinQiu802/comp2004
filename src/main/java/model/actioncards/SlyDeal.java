@@ -17,7 +17,7 @@ public class SlyDeal extends ActionCard {
     }
 
     @Override
-    public void play(Player currentPlayer) {
+    public void play(Player currentPlayer, List<Player> players) {
         // 0. Print all players without current player
         List<Player> others = new ArrayList<>(Game.getPlayers());
         others.remove(currentPlayer);

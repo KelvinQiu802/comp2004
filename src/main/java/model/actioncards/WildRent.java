@@ -16,7 +16,7 @@ public class WildRent extends ActionCard {
     }
 
     @Override
-    public void play(Player currentPlayer) {
+    public void play(Player currentPlayer, List<Player> players) {
         // choose one of the color to rent
         List<Colors> colorsList = List.of(Colors.GREEN, Colors.DARK_BLUE, Colors.LIGHT_BLUE, Colors.RED, Colors.UTILITY,
                 Colors.YELLOW, Colors.ORANGE, Colors.BROWN, Colors.PURPLE, Colors.RAILROAD);

@@ -5,6 +5,8 @@ import model.ActionCard;
 import model.DrawPile;
 import model.Player;
 
+import java.util.List;
+
 public class PassGo extends ActionCard {
 
     public PassGo() {
@@ -12,7 +14,7 @@ public class PassGo extends ActionCard {
     }
 
     @Override
-    public void play(Player currentPlayer) {
+    public void play(Player currentPlayer, List<Player> players) {
         DrawPile pile = Game.getDrawPile();
         currentPlayer.draw(pile);
         currentPlayer.draw(pile);

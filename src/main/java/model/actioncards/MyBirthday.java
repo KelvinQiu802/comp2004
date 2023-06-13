@@ -12,8 +12,8 @@ public class MyBirthday extends ActionCard {
     }
 
     @Override
-    public void play(Player currentPlayer) {
-        List<Player> players = Game.getPlayers();
+    public void play(Player currentPlayer, List<Player> players) {
+        players = Game.getPlayers();
         for (Player p : players) {
             if (p == currentPlayer) continue;
             p.payTo(currentPlayer, 2);

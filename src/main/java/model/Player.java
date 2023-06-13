@@ -1,5 +1,6 @@
 package model;
 
+import controller.Game;
 import model.actioncards.*;
 import utils.CardUtils;
 import view.CardDisplayView;
@@ -55,7 +56,7 @@ public class Player {
             }
         }
 
-        card.play(this);
+        card.play(this, Game.getPlayers());
         dropToCenter(card, pile);
         numberOfPlays++;
     }
