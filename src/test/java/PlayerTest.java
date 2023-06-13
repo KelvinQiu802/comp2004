@@ -31,7 +31,7 @@ public class PlayerTest {
     @Test
     public void drop() {
         p1.draw(pile);
-        p1.playAndDrop(p1.getHandCards().get(0), pile);
+        p1.dropToCenter(p1.getHandCards().get(0), pile);
         assertEquals(0, p1.getHandCards().size());
         assertEquals(1, pile.getUsedCards().size());
     }

@@ -129,6 +129,17 @@ public class PlayerInputView {
     }
 
     /***
+     * Get the index of the property card which player choose
+     * @param ps property deck
+     * @return the index of the property card
+     */
+    public static int getTargetPropertyCardInPropertySet(PropertySet ps) {
+        String prompt = "Select the property card: ";
+        int num = ps.getSize();
+        return getIntegerInput(prompt, 0, num - 1);
+    }
+
+    /***
      * Get yes or no
      * @return true iff yes, else no
      */

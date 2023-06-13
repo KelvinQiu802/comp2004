@@ -57,6 +57,10 @@ public class PropertySet {
         return color;
     }
 
+    public int getSize(){
+        return properties.size();
+    }
+
     /***
      * Calculate the rent of a property set
      * @return price
