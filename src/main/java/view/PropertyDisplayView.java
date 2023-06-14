@@ -24,7 +24,7 @@ public class PropertyDisplayView {
             outerHeader[i] = i + ": " + sets.get(i).getColor().toString();
         }
 
-        String[] innerHeader = {"Index", "Name"};
+        String[] innerHeader = {"Index", "Name ", "Value"};
         int counter = 0;
         for (int i = 0; i < sets.size(); i++) {
             PropertySet ps = sets.get(i);
@@ -46,10 +46,10 @@ public class PropertyDisplayView {
 
     private static String[][] getPropertySetData(PropertySet ps, int counter) {
         List<IPropertyCard> properties = ps.getProperties();
-        String[][] data = new String[properties.size()][2];
+        String[][] data = new String[properties.size()][3];
         for (int i = 0; i < properties.size(); i++) {
             AbstractCard prop = (AbstractCard) properties.get(i);
-            data[i] = new String[]{String.valueOf(counter++), prop.getName()};
+            data[i] = new String[]{String.valueOf(counter++), prop.getName(), String.valueOf(prop.getValue())};
         }
         return data;
     }
