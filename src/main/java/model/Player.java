@@ -47,7 +47,7 @@ public class Player {
         }
         // if the card is Rent and player have Double The Rent, ask whether play it.
         if (card instanceof Rent
-                && hasCard(ActionCardsName.DOUBLE_THE_RENT.toString())
+            && hasCard(ActionCardsName.DOUBLE_THE_RENT.toString())
         ) {
             System.out.println("Do you want to use Double The Rent?");
             if (PlayerInputView.yesOrNo()) {
@@ -81,7 +81,7 @@ public class Player {
      */
     public void putIntoBank(IBankCard card) {
         handCards.remove((AbstractCard) card);
-        bank.add(card);
+        bank.add((AbstractCard) card);
         numberOfPlays++;
     }
 
@@ -152,8 +152,8 @@ public class Player {
      */
     private boolean canAddToTargetPropertySet(IPropertyCard card, PropertySet targetSet) {
         if (checkColor(card, targetSet)
-                && checkHouse(card, targetSet)
-                && checkHotel(card, targetSet)) {
+            && checkHouse(card, targetSet)
+            && checkHotel(card, targetSet)) {
             // can insert
             return true;
         }
@@ -176,7 +176,7 @@ public class Player {
             // Two Colors Wild Card
             DoubleColorProperty prop = (DoubleColorProperty) card;
             if (prop.getFirstColor().equals(targetSet.getColor())
-                    || prop.getSecondColor().equals(targetSet.getColor())) {
+                || prop.getSecondColor().equals(targetSet.getColor())) {
                 prop.setCurrentColor(targetSet.getColor());
                 return true;
             }
@@ -274,8 +274,8 @@ public class Player {
                 return;
             }
             // Print bank and properties
-            System.out.println("==Bank==");
-            CardDisplayView.printCard((AbstractCard) bank.getBankCards());
+            System.out.printf("==%s's Bank==\n", name);
+            CardDisplayView.printCard(bank.getBankCards());
             System.out.println("==Properties==");
             PropertyDisplayView.printPropertyDeck(propertyDeck);
             // Choose bank or properties
@@ -292,7 +292,7 @@ public class Player {
                 count += card.getValue();
                 // Give this card to target
                 bank.remove((IBankCard) card);
-                target.bank.add((IBankCard) card);
+                target.bank.add(card);
             } else {
                 // From properties
                 if (propertyDeck.getPropertySets().size() == 0) {

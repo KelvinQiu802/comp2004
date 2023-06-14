@@ -16,17 +16,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DealBreakerTest {
     private DealBreaker dealBreaker = new DealBreaker();
+    Player p1;
+    Player p2;
+    List<Player> list = new ArrayList<Player>();
+
+    @BeforeEach
+    public void init() {
+        p1 = new Player("A");
+        p2 = new Player("B");
+        list.add(p1);
+        list.add(p2);
+    }
 
     @Test
     public void testPlay() {
-        Game game = new Game();
-
         DrawPile pile = new DrawPile(Printer.CardFactory.createCards());
-        Player p1 = new Player("A");
-        Player p2 = new Player("B");
-        List<Player> list = new ArrayList<Player>();
-        list.add(p1);
-        list.add(p2);
         PropertySet set1 = new PropertySet(Colors.GREEN);
         PropertyCard c1 = new SingleColorProperty("1", 1, Colors.GREEN);
         PropertyCard c2 = new SingleColorProperty("2", 2, Colors.GREEN);

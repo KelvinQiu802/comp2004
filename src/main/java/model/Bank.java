@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-    private List<IBankCard> bankCards;
+    private List<AbstractCard> bankCards;
 
     public Bank() {
         bankCards = new ArrayList<>();
@@ -14,7 +14,7 @@ public class Bank {
      * Add card to bank.
      * @param card The card want to add.
      */
-    public void add(IBankCard card) {
+    public void add(AbstractCard card) {
         bankCards.add(card);
     }
 
@@ -32,7 +32,7 @@ public class Bank {
      * Getter of bank cards list.
      * @return bank cards list
      */
-    public List<IBankCard> getBankCards() {
+    public List<AbstractCard> getBankCards() {
         return new ArrayList<>(bankCards);
     }
 }

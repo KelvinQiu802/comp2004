@@ -28,8 +28,9 @@ public class Rent extends ActionCard {
         int total = currentPlayer.calculateRent(color);
 
         // rent
-        players = Game.getPlayers();
-        for (Player p : players) {
+        List<Player> others = players;
+        others.remove(currentPlayer);
+        for (Player p : others) {
             if (p == currentPlayer) continue;
             p.payTo(currentPlayer, total);
         }
