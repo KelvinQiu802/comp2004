@@ -22,11 +22,11 @@ public class ControllerTest {
     }
 
     @Test
-    public void dealFiveCardsToAll() {
+    public void dealThreeCardsToAll() {
         List<Player> players = Game.getPlayers();
-        Game.dealFiveCardsToAllPlayer();
+        Game.dealThreeCardsToAllPlayer();
         for (Player p : players) {
-            assertEquals(5, p.getHandCards().size());
+            assertEquals(3, p.getHandCards().size());
         }
     }
 }

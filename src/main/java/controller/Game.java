@@ -18,7 +18,7 @@ public class Game {
 
     public static void main(String[] args) {
         createPlayers();
-        dealFiveCardsToAllPlayer();
+        dealThreeCardsToAllPlayer();
         Player winner = gameLoop();
         gameOver(winner);
     }
@@ -75,9 +75,9 @@ public class Game {
     /***
      * Deal five cards to every player at the begining of the game.
      */
-    public static void dealFiveCardsToAllPlayer() {
+    public static void dealThreeCardsToAllPlayer() {
         for (Player player : players) {
-            dealCards(player, 5);
+            dealCards(player, 3);
         }
     }
 
