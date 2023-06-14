@@ -9,10 +9,12 @@ import view.PlayerInputView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
     private static List<Player> players = new ArrayList<>();
     private static DrawPile drawPile = new DrawPile(Printer.CardFactory.createCards());
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         createPlayers();
@@ -153,5 +155,9 @@ public class Game {
 
     public static DrawPile getDrawPile() {
         return drawPile;
+    }
+
+    public static Scanner getScanner() {
+        return scanner;
     }
 }

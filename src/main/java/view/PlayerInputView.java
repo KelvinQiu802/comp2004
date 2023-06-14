@@ -1,5 +1,6 @@
 package view;
 
+import controller.Game;
 import model.IPropertyCard;
 import model.PropertyDeck;
 import model.PropertySet;
@@ -30,7 +31,8 @@ public class PlayerInputView {
     }
 
     private static int getAnyNumberOfPlayer() {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String numberOfPlayer = "";
         do {
             System.out.print("The Number of Players: ");
@@ -44,7 +46,8 @@ public class PlayerInputView {
      * @return player name
      */
     public static String getPlayerName() {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String playerName;
         do {
             System.out.print("Input Player Name: ");
@@ -200,7 +203,8 @@ public class PlayerInputView {
      * @return the integer user chose
      */
     private static int getIntegerInputFromList(String prompt, List<Integer> choices) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String result;
         do {
             System.out.print(prompt);
@@ -218,7 +222,8 @@ public class PlayerInputView {
      * @return the integer user input
      */
     private static int getIntegerInput(String prompt, int min, int max) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String result;
         do {
             System.out.print(prompt);

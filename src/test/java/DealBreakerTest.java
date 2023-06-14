@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 import utils.Printer;
 import view.PropertyDisplayView;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class DealBreakerTest {
     private DealBreaker dealBreaker = new DealBreaker();
@@ -35,9 +37,11 @@ public class DealBreakerTest {
         set1.add(c2);
         set1.add(c3);
         p1.getPropertyDeck().insertSet(set1);
-        // String input = "0\n";
-        // InputStream in = new ByteArrayInputStream(input.getBytes());
-        // System.setIn(in);
+
+        String input = "0\n0\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
         dealBreaker.play(p2, list);
         assertSame(p2.getPropertyDeck().getPropertySets().get(0), set1);
         PropertyDisplayView.printPropertyDeck(p2.getPropertyDeck());
