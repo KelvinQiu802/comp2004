@@ -305,7 +305,7 @@ public class Player {
                 count += ((AbstractCard) card).getValue();
                 // Give this card to target
                 propertyDeck.removeCard(card);
-                putIntoProperty(card);
+                target.putIntoProperty(card);
             }
         }
     }
