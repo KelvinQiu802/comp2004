@@ -7,6 +7,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests controller.
+ * - Create player
+ * - Deal five cards to every player
+ */
 
 public class ControllerTest {
     @BeforeEach

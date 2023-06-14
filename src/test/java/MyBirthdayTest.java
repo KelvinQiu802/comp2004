@@ -3,9 +3,15 @@ import model.actioncards.MyBirthday;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Tests the success of MyBirthday.
+ * - Every player pay 2M
+ */
 public class MyBirthdayTest {
     private MyBirthday myBirthday = new MyBirthday();
     private Player p1;
@@ -29,16 +35,23 @@ public class MyBirthdayTest {
         p1.putIntoBank(new MoneyCard(4));
         p1.putIntoBank(new MoneyCard(1));
 
+        PropertySet set = new PropertySet(Colors.GREEN);
         PropertyCard c1 = new SingleColorProperty("1", 1, Colors.GREEN);
         PropertyCard c2 = new SingleColorProperty("2", 2, Colors.GREEN);
         PropertyCard c3 = new SingleColorProperty("3", 3, Colors.GREEN);
-        p2.putIntoProperty(c1);
-        p2.putIntoProperty(c2);
-        p2.putIntoProperty(c3);
+
+        set.add(c1);
+        set.add(c2);
+        set.add(c3);
+
+        p2.getPropertyDeck().insertSet(set);
     }
 
     @Test
-    public void testPlay(){
-        myBirthday.play(p4,list);
+    public void testPlay() {
+        String input = "0\n1\n1\n1\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        myBirthday.play(p4, list);
     }
 }

@@ -6,6 +6,11 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests PlayerCreation.
+ * - Get the numbers and names of players
+ * - Check the type of input
+ */
 public class PlayerCreationTest {
     @Test
     public void inputNumber() {

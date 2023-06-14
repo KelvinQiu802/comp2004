@@ -3,11 +3,18 @@ import model.actioncards.WildRent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the success of WildRent.
+ * - Choose the color to rent
+ * - All players pay rent
+ */
 public class WildRentTest {
     private WildRent wildRent = new WildRent();
     private Player p1;
@@ -33,24 +40,29 @@ public class WildRentTest {
         p1.putIntoBank(m3);
         p1.putIntoBank(m4);
 
-        // Give  green properties to p2
+        // Give green properties to p2
+        PropertySet set = new PropertySet(Colors.GREEN);
         PropertyCard c1 = new SingleColorProperty("1", 1, Colors.GREEN);
         PropertyCard c2 = new SingleColorProperty("2", 2, Colors.GREEN);
         PropertyCard c3 = new SingleColorProperty("3", 3, Colors.GREEN);
-        p2.putIntoProperty(c1);
-        p2.putIntoProperty(c2);
-        p2.putIntoProperty(c3);
+        set.add(c1);
+        set.add(c2);
+        set.add(c3);
+        p2.getPropertyDeck().insertSet(set);
     }
 
     @Test
     public void testPlay() {
+        String input = "0\n0\n0\n0\n0\n0\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         wildRent.play(p2, list);
         // After p1 give $2 and $7 to p2, judge if p2 has $2 and $7
-        assertTrue(p2.getBank().getBankCards().get(0).getValue() == 2);
-        assertTrue(p2.getBank().getBankCards().get(1).getValue() == 7);
+        assertSame(p2.getBank().getBankCards().get(0).getValue(), 2);
+        assertSame(p2.getBank().getBankCards().get(1).getValue(), 7);
 
         // After p1 give $2 and $7 to p2, judge if p1 only has $3 and $4
-        assertTrue(p1.getBank().getBankCards().get(0).getValue() == 3);
-        assertTrue(p1.getBank().getBankCards().get(1).getValue() == 4);
+        assertSame(p1.getBank().getBankCards().get(0).getValue(), 3);
+        assertSame(p1.getBank().getBankCards().get(1).getValue(), 4);
     }
 }

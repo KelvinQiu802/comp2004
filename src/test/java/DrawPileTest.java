@@ -12,6 +12,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests DrawPile.
+ * - Create a new DrawPile
+ * - Add card
+ * - Take card
+ */
+
 public class DrawPileTest {
     private DrawPile pile;
     private MoneyCard m1;

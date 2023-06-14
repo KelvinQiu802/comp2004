@@ -6,6 +6,12 @@ import utils.Printer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests Player.
+ * - Draw a card from draw pile
+ * - Drop a card to the center
+ */
+
 public class PlayerTest {
     private Player p1;
     private Player p2;
