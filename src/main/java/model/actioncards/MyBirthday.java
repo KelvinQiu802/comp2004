@@ -1,6 +1,5 @@
 package model.actioncards;
 
-import controller.Game;
 import model.ActionCard;
 import model.Player;
 

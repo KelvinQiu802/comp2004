@@ -1,6 +1,5 @@
 package model.actioncards;
 
-import controller.Game;
 import model.ActionCard;
 import model.Player;
 import model.PropertySet;
@@ -8,7 +7,6 @@ import view.PlayerDisplayView;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DealBreaker extends ActionCard {

@@ -1,12 +1,10 @@
 package model.actioncards;
 
-import controller.Game;
 import model.ActionCard;
 import model.Player;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DebtCollector extends ActionCard {

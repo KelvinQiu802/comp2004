@@ -1,6 +1,5 @@
 package model.actioncards;
 
-import controller.Game;
 import model.*;
 import utils.CardUtils;
 import view.PlayerDisplayView;

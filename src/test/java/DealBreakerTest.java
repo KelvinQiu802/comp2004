@@ -1,4 +1,3 @@
-import controller.Game;
 import model.*;
 import model.actioncards.DealBreaker;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import utils.Printer;
 import view.PropertyDisplayView;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
 
