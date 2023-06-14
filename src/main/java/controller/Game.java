@@ -98,6 +98,7 @@ public class Game {
         player.resetNumberOfPlays();
         List<AbstractCard> handCards = player.getHandCards();
         while (true) {
+            System.out.println(player.getName());
             CardDisplayView.printCard(handCards);
             // Play / Move / Pass
             int choice = PlayerInputView.moveOrPlayOrPass();
