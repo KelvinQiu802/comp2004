@@ -12,6 +12,12 @@ import java.util.List;
 public class PropertyDisplayView {
     public static void printPropertyDeck(PropertyDeck pd) {
         List<PropertySet> sets = pd.getPropertySets();
+        if (sets.size() == 0) {
+            System.out.println("╔═══════╤═══════╤═══════╤═══════╤═════════════╤═══════╗\n" +
+                    "\tThere are no property in the property deck!\n" +
+                    "╚═══════╧═══════╧═══════╧═══════╧═════════════╧═══════╝");
+            return;
+        }
         String[] outerHeader = new String[sets.size()];
         String[][] outerData = new String[1][sets.size()];
         for (int i = 0; i < sets.size(); i++) {
