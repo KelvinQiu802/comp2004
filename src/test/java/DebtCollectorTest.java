@@ -3,8 +3,12 @@ import model.actioncards.DebtCollector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class DebtCollectorTest {
     private DebtCollector debtCollector = new DebtCollector();
@@ -29,6 +33,14 @@ public class DebtCollectorTest {
 
     @Test
     public void testPlay() {
+        String input = "0\n0\n0\n0\n1\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
         debtCollector.play(p3, list);
+        int value = 0;
+        for (int i = 0; i < p3.getBank().getBankCards().size(); i++) {
+            value = value + p3.getBank().getBankCards().get(i).getValue();
+        }
+        assertSame(value, 5);
     }
 }
