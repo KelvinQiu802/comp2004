@@ -40,6 +40,5 @@ public class MyBirthdayTest {
     @Test
     public void testPlay(){
         myBirthday.play(p4,list);
-        // myBirthday.play(p3,list);
     }
 }
