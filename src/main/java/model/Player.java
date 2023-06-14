@@ -331,4 +331,8 @@ public class Player {
         }
         return count;
     }
+
+    public Bank getBank() {
+        return bank;
+    }
 }
