@@ -1,21 +1,19 @@
-import controller.Game;
 import model.*;
-import model.actioncards.DealBreaker;
-import model.actioncards.ForcedDeal;
 import model.actioncards.SlyDeal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utils.Printer;
 import view.PropertyDisplayView;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the success of SlyDeal.
+ * - Steal a property from the player
+ * - Cannot be a full set
+ */
 public class SlyDealTest {
     private SlyDeal slyDeal = new SlyDeal();
     Player p1;
