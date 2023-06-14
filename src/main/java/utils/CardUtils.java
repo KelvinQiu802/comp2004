@@ -1,5 +1,6 @@
 package utils;
 
+import model.Colors;
 import model.IPropertyCard;
 import model.PropertyDeck;
 import model.PropertySet;
@@ -27,5 +28,13 @@ public class CardUtils {
             count++;
         }
         return null;
+    }
+
+    public static boolean IsSameColorUnfilledSet(PropertyDeck pd, Colors color) {
+        for (PropertySet set : pd.getPropertySets()) {
+            if (set.getColor() == color && !set.isFullSet())
+                return true;
+        }
+        return false;
     }
 }

@@ -90,7 +90,8 @@ public class Player {
      * @param card the card want to put
      */
     public void putIntoProperty(IPropertyCard card) {
-        if (propertyDeck.getPropertySets().size() != 0) {
+        // Check if there is a Set of the same color that is not full; if not, create a new Set
+        if (propertyDeck.getPropertySets().size() != 0 && CardUtils.IsSameColorUnfilledSet(propertyDeck,card.getCurrentColor())) {
             PropertyDisplayView.printPropertyDeck(propertyDeck);
             // Add card to a property set
             while (true) {
