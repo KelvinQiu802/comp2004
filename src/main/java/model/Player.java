@@ -53,11 +53,13 @@ public class Player {
             if (PlayerInputView.yesOrNo()) {
                 System.out.println("Rent is doubled!");
                 doubleTheRent = true;
+                numberOfPlays++;
             }
         }
 
         card.play(this, Game.getPlayers());
         dropToCenter(card, pile);
+        doubleTheRent = false;
         numberOfPlays++;
     }
 
@@ -91,7 +93,7 @@ public class Player {
      */
     public void putIntoProperty(IPropertyCard card) {
         // Check if there is a Set of the same color that is not full; if not, create a new Set
-        if (propertyDeck.getPropertySets().size() != 0 && CardUtils.IsSameColorUnfilledSet(propertyDeck,card.getCurrentColor())) {
+        if (propertyDeck.getPropertySets().size() != 0 && CardUtils.IsSameColorUnfilledSet(propertyDeck, card.getCurrentColor())) {
             PropertyDisplayView.printPropertyDeck(propertyDeck);
             // Add card to a property set
             while (true) {
@@ -280,6 +282,7 @@ public class Player {
             System.out.println("==Properties==");
             PropertyDisplayView.printPropertyDeck(propertyDeck);
             // Choose bank or properties
+            System.out.printf("Still need to pay %dM", price - count);
             int source = PlayerInputView.getBankOrProperty();
             if (source == 0) {
                 //From bank
