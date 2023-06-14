@@ -1,12 +1,11 @@
 package model.actioncards;
 
-import controller.Game;
 import model.*;
+import utils.CardUtils;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ForcedDeal extends ActionCard {
@@ -25,20 +24,19 @@ public class ForcedDeal extends ActionCard {
             // Choose a player
             int playerIndex = PlayerInputView.getPlayerIndex(others.size());
             Player target = others.get(playerIndex);
-
             // Print the property deck
             PropertyDisplayView.printPropertyDeck(target.getPropertyDeck());
-
             // Choose a property set of target player which cannot be part of a full set
             int setIndexTarget = PlayerInputView.getTargetPropertySet(target.getPropertyDeck());
             PropertySet setTarget = target.getPropertyDeck().getPropertySets().get(setIndexTarget);
             if (!setTarget.isFullSet()) {
                 // Choose a property card in this property set
-                int propertyIndexTarget = PlayerInputView.getTargetPropertyCardInPropertySet(setTarget);
-                IPropertyCard propertyTarget = setTarget.getProperties().get(propertyIndexTarget);
+                PropertyDisplayView.printPropertySet(setTarget);
+                int cardIndexTarget = PlayerInputView.getTargetPropertyCardInPropertySet(setTarget);
+                IPropertyCard cardTarget = CardUtils.getPropertyCardByIndexInPropertySet(setTarget, setIndexTarget);
                 // Take it
-                target.getPropertyDeck().removeCard(propertyTarget);
-                currentPlayer.getPropertyDeck().insertIntoNewSet(propertyTarget);
+                target.getPropertyDeck().removeCard(cardTarget);
+                currentPlayer.getPropertyDeck().insertIntoNewSet(cardTarget);
 
                 // Print the property deck of current player
                 PropertyDisplayView.printPropertyDeck(currentPlayer.getPropertyDeck());
@@ -46,11 +44,11 @@ public class ForcedDeal extends ActionCard {
                 int setIndexCurrent = PlayerInputView.getTargetPropertySet(currentPlayer.getPropertyDeck());
                 PropertySet setCurrent = currentPlayer.getPropertyDeck().getPropertySets().get(setIndexCurrent);
                 //Choose a property card in this property set
-                int propertyIndexCurrent = PlayerInputView.getTargetPropertyCardInPropertySet(setCurrent);
-                IPropertyCard propertyCurrent = setCurrent.getProperties().get(propertyIndexCurrent);
+                int cardIndexCurrent = PlayerInputView.getTargetPropertyCardInPropertySet(setCurrent);
+                IPropertyCard cardCurrent = CardUtils.getPropertyCardByIndexInPropertySet(setCurrent, setIndexCurrent);
                 // Give it to target player
-                currentPlayer.getPropertyDeck().removeCard(propertyCurrent);
-                target.getPropertyDeck().insertIntoNewSet(propertyCurrent);
+                currentPlayer.getPropertyDeck().removeCard(cardCurrent);
+                target.getPropertyDeck().insertIntoNewSet(cardCurrent);
                 return;
             }
             System.out.println("This is a full set, please try again!");
