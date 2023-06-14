@@ -6,20 +6,18 @@ import utils.CardUtils;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class SlyDeal extends ActionCard {
     public SlyDeal() {
         super(ActionCardsName.SLY_DEAL, 3, "Steal a property from the player of your choice." +
-            "(Cannot be part of a full set.)");
+                "(Cannot be part of a full set.)");
     }
 
     @Override
     public void play(Player currentPlayer, List<Player> players) {
         // 0. Print all players without current player
-        List<Player> others = new ArrayList<>(Game.getPlayers());
+        List<Player> others = players;
         others.remove(currentPlayer);
         while (true) {
             PlayerDisplayView.printPlayer(others);
