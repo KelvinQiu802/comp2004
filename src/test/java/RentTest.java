@@ -1,4 +1,5 @@
 import model.*;
+import model.actioncards.Rent;
 import model.actioncards.WildRent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,8 +9,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class WildRentTest {
-    private WildRent wildRent = new WildRent();
+public class RentTest {
+    private Rent rent = new Rent(Colors.GREEN, Colors.BROWN);
     private Player p1;
     private Player p2;
     private MoneyCard m1 = new MoneyCard(2);
@@ -44,7 +45,7 @@ public class WildRentTest {
 
     @Test
     public void testPlay() {
-        wildRent.play(p2, list);
+        rent.play(p2, list);
         // After p1 give $2 and $7 to p2, judge if p2 has $2 and $7
         assertTrue(p2.getBank().getBankCards().get(0).getValue() == 2);
         assertTrue(p2.getBank().getBankCards().get(1).getValue() == 7);
@@ -53,4 +54,5 @@ public class WildRentTest {
         assertTrue(p1.getBank().getBankCards().get(0).getValue() == 3);
         assertTrue(p1.getBank().getBankCards().get(1).getValue() == 4);
     }
+
 }
