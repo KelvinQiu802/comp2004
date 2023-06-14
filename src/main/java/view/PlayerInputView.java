@@ -81,7 +81,7 @@ public class PlayerInputView {
      * @return Color index
      */
     public static Integer getColorIndex(int numOfColors) {
-        String prompt = String.format("Input the color index (0-%d)", numOfColors - 1);
+        String prompt = String.format("Input the color index (0-%d):", numOfColors - 1);
         return getIntegerInput(prompt, 0, numOfColors - 1);
     }
 
