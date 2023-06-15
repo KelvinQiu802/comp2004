@@ -1,5 +1,6 @@
 package model;
 
+import controller.CardController;
 import controller.Game;
 import model.actioncards.*;
 import utils.CardUtils;
@@ -227,7 +228,7 @@ public class Player {
      */
     public void dropToCenter(AbstractCard card, DrawPile pile) {
         handCards.remove(card);
-        pile.add(card);
+        CardController.dropToCenter(card);
     }
 
     /***
