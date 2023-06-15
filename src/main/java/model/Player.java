@@ -155,10 +155,10 @@ public class Player {
      * @return true iff can insert
      */
     private boolean canAddToTargetPropertySet(IPropertyCard card, PropertySet targetSet) {
+        // Check the attributes of cards
         if (checkColor(card, targetSet)
                 && checkHouse(card, targetSet)
                 && checkHotel(card, targetSet)) {
-            // can insert
             return true;
         }
         System.out.println("Cannot add this card in to this property set.");
@@ -172,7 +172,6 @@ public class Player {
      * @return true iff can add, else false
      */
     private boolean checkColor(IPropertyCard card, PropertySet targetSet) {
-        // TODO: 暂时没有加入手动切换双色牌颜色的功能 （不是在这里添加，就在这里随便记一下）
         if (card.getCurrentColor() == Colors.ANY || targetSet.getColor() == Colors.ANY) {
             return true;
         }
@@ -327,6 +326,7 @@ public class Player {
                 int cardIndex = PlayerInputView.getCardIndex(bank.getBankCards().size());
                 AbstractCard card = (AbstractCard) bank.getBankCards().get(cardIndex);
                 count += card.getValue();
+
                 // Give this card to target
                 bank.remove((IBankCard) card);
                 target.bank.add(card);

@@ -24,33 +24,42 @@ public class ForcedDeal extends ActionCard {
         others.remove(currentPlayer);
         while (true) {
             PlayerDisplayView.printPlayer(others);
+
             // 1. Choose a player
             int playerIndex = PlayerInputView.getPlayerIndex(others.size());
             Player target = others.get(playerIndex);
             if (target.sayNo()) {
                 return;
             }
+
             // 2. Print the property deck
             PropertyDisplayView.printPropertyDeck(target.getPropertyDeck());
+
             // 3. Choose a property set of target player which cannot be part of a full set
             int setIndexTarget = PlayerInputView.getTargetPropertySet(target.getPropertyDeck());
             PropertySet setTarget = target.getPropertyDeck().getPropertySets().get(setIndexTarget);
+
             if (!setTarget.isFullSet()) {
                 // 4. Choose a property card in this property set
                 PropertyDisplayView.printPropertySet(setTarget);
                 int cardIndexTarget = PlayerInputView.getTargetPropertyCardInPropertySet(setTarget);
                 IPropertyCard cardTarget = CardUtils.getPropertyCardByIndexInPropertySet(setTarget, setIndexTarget);
+
                 // 5. Take it
                 target.getPropertyDeck().removeCard(cardTarget);
                 currentPlayer.getPropertyDeck().insertIntoNewSet(cardTarget);
+
                 // 6. Print the property deck of current player
                 PropertyDisplayView.printPropertyDeck(currentPlayer.getPropertyDeck());
+
                 // 7. Choose a property set of current player
                 int setIndexCurrent = PlayerInputView.getTargetPropertySet(currentPlayer.getPropertyDeck());
                 PropertySet setCurrent = currentPlayer.getPropertyDeck().getPropertySets().get(setIndexCurrent);
+
                 // 8. Choose a property card in this property set
                 int cardIndexCurrent = PlayerInputView.getTargetPropertyCardInPropertySet(setCurrent);
                 IPropertyCard cardCurrent = CardUtils.getPropertyCardByIndexInPropertySet(setCurrent, setIndexCurrent);
+
                 // 9. Give it to target player
                 currentPlayer.getPropertyDeck().removeCard(cardCurrent);
                 target.getPropertyDeck().insertIntoNewSet(cardCurrent);
