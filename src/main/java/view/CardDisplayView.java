@@ -49,6 +49,10 @@ public class CardDisplayView {
         System.out.println(FlipTable.of(header, data));
     }
 
+    /***
+     * Print all colors in the table
+     * @param colors all colors
+     */
     public static void printColor(List<Colors> colors) {
         String[] header = {"Index", "Color"};
         String[][] data = new String[colors.size()][2];
