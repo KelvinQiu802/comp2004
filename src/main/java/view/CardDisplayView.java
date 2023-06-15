@@ -3,7 +3,9 @@ package view;
 import com.jakewharton.fliptables.FlipTable;
 import model.AbstractCard;
 import model.Colors;
+import model.DoubleColorProperty;
 import model.IPropertyCard;
+import model.actioncards.Rent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +31,17 @@ public class CardDisplayView {
         for (int i = 0; i < cards.size(); i++) {
             AbstractCard card = cards.get(i);
             String color = "NULL";
+            // Special Card
             if (card instanceof IPropertyCard) {
                 color = ((IPropertyCard) card).getCurrentColor().toString();
+            }
+            if (card instanceof Rent) {
+                Rent rent = (Rent) card;
+                color = rent.getFirst() + " OR " + rent.getSecond();
+            }
+            if (card instanceof DoubleColorProperty) {
+                DoubleColorProperty prop = (DoubleColorProperty) card;
+                color = prop.getFirstColor() + " OR " + prop.getSecondColor();
             }
             data[i] = new String[]{String.valueOf(i), card.getName(), String.valueOf(card.getValue()),
                     card.getType().toString(), card.getDescription(), color};

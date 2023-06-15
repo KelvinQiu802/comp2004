@@ -34,4 +34,12 @@ public class Rent extends ActionCard {
             p.payTo(currentPlayer, total);
         }
     }
+
+    public Colors getFirst() {
+        return first;
+    }
+
+    public Colors getSecond() {
+        return second;
+    }
 }
