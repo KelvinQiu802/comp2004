@@ -1,6 +1,9 @@
 package model.actioncards;
 
-import model.*;
+import model.ActionCard;
+import model.IPropertyCard;
+import model.Player;
+import model.PropertySet;
 import utils.CardUtils;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
@@ -24,6 +27,9 @@ public class ForcedDeal extends ActionCard {
             // Choose a player
             int playerIndex = PlayerInputView.getPlayerIndex(others.size());
             Player target = others.get(playerIndex);
+            if (target.sayNo()) {
+                return;
+            }
             // Print the property deck
             PropertyDisplayView.printPropertyDeck(target.getPropertyDeck());
             // Choose a property set of target player which cannot be part of a full set

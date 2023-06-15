@@ -47,7 +47,7 @@ public class Player {
         }
         // if the card is Rent and player have Double The Rent, ask whether play it.
         if (card instanceof Rent
-            && hasCard(ActionCardsName.DOUBLE_THE_RENT.toString())
+                && hasCard(ActionCardsName.DOUBLE_THE_RENT.toString())
         ) {
             System.out.println("Do you want to use Double The Rent?");
             if (PlayerInputView.yesOrNo()) {
@@ -155,8 +155,8 @@ public class Player {
      */
     private boolean canAddToTargetPropertySet(IPropertyCard card, PropertySet targetSet) {
         if (checkColor(card, targetSet)
-            && checkHouse(card, targetSet)
-            && checkHotel(card, targetSet)) {
+                && checkHouse(card, targetSet)
+                && checkHotel(card, targetSet)) {
             // can insert
             return true;
         }
@@ -179,7 +179,7 @@ public class Player {
             // Two Colors Wild Card
             DoubleColorProperty prop = (DoubleColorProperty) card;
             if (prop.getFirstColor().equals(targetSet.getColor())
-                || prop.getSecondColor().equals(targetSet.getColor())) {
+                    || prop.getSecondColor().equals(targetSet.getColor())) {
                 prop.setCurrentColor(targetSet.getColor());
                 return true;
             }
@@ -268,7 +268,39 @@ public class Player {
         return propertyDeck;
     }
 
+    /***
+     * A method to let player say no to an action card.
+     * @return true iff say no
+     */
+    public boolean sayNo() {
+        // Say No
+        if (hasCard(ActionCardsName.JUST_SAY_NO.toString())) {
+            // Ask whether to use
+            System.out.print("Do you want to use the JUST SAY NO card? ");
+            if (PlayerInputView.yesOrNo()) {
+                // remove from hand
+                handCards.removeIf(card -> {
+                    if (card instanceof JustSayNo) {
+                        Game.getDrawPile().add(card);
+                        return true;
+                    }
+                    return false;
+                });
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /***
+     * Pay to other player
+     * @param target target player
+     * @param price price
+     */
     public void payTo(Player target, int price) {
+        if (sayNo()) {
+            return;
+        }
         int count = 0;
         while (count < price) {
             // No cards in the bank and the property, pass
@@ -282,7 +314,7 @@ public class Player {
             System.out.println("==Properties==");
             PropertyDisplayView.printPropertyDeck(propertyDeck);
             // Choose bank or properties
-            System.out.printf("Still need to pay %dM", price - count);
+            System.out.printf("Still need to pay %dM\n", price - count);
             int source = PlayerInputView.getBankOrProperty();
             if (source == 0) {
                 //From bank

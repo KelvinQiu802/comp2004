@@ -1,10 +1,14 @@
 package model.actioncards;
 
-import model.*;
+import model.ActionCard;
+import model.IPropertyCard;
+import model.Player;
+import model.PropertySet;
 import utils.CardUtils;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
+
 import java.util.List;
 
 public class SlyDeal extends ActionCard {
@@ -23,6 +27,9 @@ public class SlyDeal extends ActionCard {
             // 1. Choose a player
             int playerIndex = PlayerInputView.getPlayerIndex(others.size());
             Player target = others.get(playerIndex);
+            if (target.sayNo()) {
+                return;
+            }
             // 2 Print the property deck
             PropertyDisplayView.printPropertyDeck(target.getPropertyDeck());
             // 3. Chose a unfilled set

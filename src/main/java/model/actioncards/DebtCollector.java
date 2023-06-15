@@ -22,6 +22,9 @@ public class DebtCollector extends ActionCard {
         // Choose a player
         int playerIndex = PlayerInputView.getPlayerIndex(others.size());
         Player target = others.get(playerIndex);
+        if (target.sayNo()) {
+            return;
+        }
 
         // Force the target player to pay
         target.payTo(currentPlayer, 5);
