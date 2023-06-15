@@ -6,6 +6,10 @@ import model.Player;
 import java.util.List;
 
 public class PlayerDisplayView {
+    /***
+     * Print all players in the table.
+     * @param players all players
+     */
     public static void printPlayer(List<Player> players) {
         String[] header = {"Index", "Player"};
         String[][] data = new String[players.size()][2];
