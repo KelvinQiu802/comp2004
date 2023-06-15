@@ -4,8 +4,10 @@ import model.AbstractCard;
 import model.DrawPile;
 import model.Player;
 import utils.Printer;
+import view.BankDisplayView;
 import view.CardDisplayView;
 import view.PlayerInputView;
+import view.PropertyDisplayView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,10 +100,10 @@ public class Game {
 
     public static void playerTurn(Player player) {
         player.resetNumberOfPlays();
-        dealCards(player ,2);
+        dealCards(player, 2);
         List<AbstractCard> handCards = player.getHandCards();
         while (true) {
-            System.out.println(player.getName());
+            System.out.println("Player: " + player.getName());
             CardDisplayView.printCard(handCards);
             // Play / Move / Pass
             int choice = PlayerInputView.moveOrPlayOrPass();
@@ -117,6 +119,14 @@ public class Game {
                     PlayerController.playCard(player, drawPile);
                 } else {
                     System.out.println("You're out of turns to play.");
+                }
+            } else if (choice == -1) {
+                // Print other player's card
+                for (Player p : players) {
+                    if (p == player) continue;
+                    System.out.printf("\n===Player: %s===\n", p.getName());
+                    PropertyDisplayView.printPropertyDeck(p.getPropertyDeck());
+                    BankDisplayView.printBank(p.getBank());
                 }
             } else {
                 // Move Property
