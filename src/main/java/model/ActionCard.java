@@ -1,5 +1,4 @@
 package model;
-
 import model.actioncards.ActionCardsName;
 
 import java.util.List;
