@@ -6,8 +6,12 @@ import model.actioncards.DoubleTheRent;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
+/***
+ * Tests the Bank. - Create a bank - Add a bank - Remove a bank - Get bank cards
+ */
 public class BankTest {
     private static Bank bank;
     private static MoneyCard m1;

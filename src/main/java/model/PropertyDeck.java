@@ -22,7 +22,6 @@ public class PropertyDeck {
 
     /**
      * Remove a property card in the deck
-     *
      * @param card card
      */
     public void removeCard(IPropertyCard card) {
@@ -38,5 +37,21 @@ public class PropertyDeck {
                 }
             }
         }
+    }
+
+    /**
+     * InsertSet a property set in the deck
+     * @param set PropertySet
+     */
+    public void insertSet(PropertySet set) {
+        propertySets.add(set);
+    }
+
+    /**
+     * Remove a property set in the deck
+     * @param set PropertySet
+     */
+    public void removeSet(PropertySet set) {
+        propertySets.remove(set);
     }
 }

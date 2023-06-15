@@ -1,6 +1,11 @@
 package model.actioncards;
 
 import model.ActionCard;
+import model.Player;
+import view.PlayerDisplayView;
+import view.PlayerInputView;
+
+import java.util.List;
 
 public class DebtCollector extends ActionCard {
     public DebtCollector() {
@@ -8,7 +13,20 @@ public class DebtCollector extends ActionCard {
     }
 
     @Override
-    public void play() {
+    public void play(Player currentPlayer, List<Player> players) {
+        // 0. Print all players without current player
+        List<Player> others = players;
+        others.remove(currentPlayer);
+        PlayerDisplayView.printPlayer(others);
 
+        // 1. Choose a player
+        int playerIndex = PlayerInputView.getPlayerIndex(others.size());
+        Player target = others.get(playerIndex);
+        if (target.sayNo()) {
+            return;
+        }
+
+        // 2. Force the target player to pay
+        target.payTo(currentPlayer, 5);
     }
 }

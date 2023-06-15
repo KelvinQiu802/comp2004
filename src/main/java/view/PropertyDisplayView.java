@@ -12,13 +12,19 @@ import java.util.List;
 public class PropertyDisplayView {
     public static void printPropertyDeck(PropertyDeck pd) {
         List<PropertySet> sets = pd.getPropertySets();
+        if (sets.size() == 0) {
+            System.out.println("╔═══════╤═══════╤═══════╤═══════╤═════════════╤═══════╗\n" +
+                    "\tThere are no property in the property deck!\n" +
+                    "╚═══════╧═══════╧═══════╧═══════╧═════════════╧═══════╝");
+            return;
+        }
         String[] outerHeader = new String[sets.size()];
         String[][] outerData = new String[1][sets.size()];
         for (int i = 0; i < sets.size(); i++) {
             outerHeader[i] = i + ": " + sets.get(i).getColor().toString();
         }
 
-        String[] innerHeader = {"Index", "Name"};
+        String[] innerHeader = {"Index", "Name ", "Value"};
         int counter = 0;
         for (int i = 0; i < sets.size(); i++) {
             PropertySet ps = sets.get(i);
@@ -31,7 +37,7 @@ public class PropertyDisplayView {
     }
 
     public static void printPropertySet(PropertySet ps) {
-        String[] header = {"Index", "Name"};
+        String[] header = {"Index", "Name", "Values"};
         String[][] data = getPropertySetData(ps, 0);
         System.out.printf("###%s###\n", ps.getColor());
         System.out.println(FlipTable.of(header, data));
@@ -40,10 +46,10 @@ public class PropertyDisplayView {
 
     private static String[][] getPropertySetData(PropertySet ps, int counter) {
         List<IPropertyCard> properties = ps.getProperties();
-        String[][] data = new String[properties.size()][2];
+        String[][] data = new String[properties.size()][3];
         for (int i = 0; i < properties.size(); i++) {
             AbstractCard prop = (AbstractCard) properties.get(i);
-            data[i] = new String[]{String.valueOf(counter++), prop.getName()};
+            data[i] = new String[]{String.valueOf(counter++), prop.getName(), String.valueOf(prop.getValue())};
         }
         return data;
     }

@@ -4,19 +4,23 @@ import model.AbstractCard;
 import model.DrawPile;
 import model.Player;
 import utils.Printer;
+import view.BankDisplayView;
 import view.CardDisplayView;
 import view.PlayerInputView;
+import view.PropertyDisplayView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
     private static List<Player> players = new ArrayList<>();
     private static DrawPile drawPile = new DrawPile(Printer.CardFactory.createCards());
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         createPlayers();
-        dealFiveCardsToAllPlayer();
+        dealThreeCardsToAllPlayer();
         Player winner = gameLoop();
         gameOver(winner);
     }
@@ -73,9 +77,9 @@ public class Game {
     /***
      * Deal five cards to every player at the begining of the game.
      */
-    public static void dealFiveCardsToAllPlayer() {
+    public static void dealThreeCardsToAllPlayer() {
         for (Player player : players) {
-            dealCards(player, 5);
+            dealCards(player, 3);
         }
     }
 
@@ -96,12 +100,17 @@ public class Game {
 
     public static void playerTurn(Player player) {
         player.resetNumberOfPlays();
+        dealCards(player, 2);
         List<AbstractCard> handCards = player.getHandCards();
         while (true) {
+            System.out.println("Player: " + player.getName());
             CardDisplayView.printCard(handCards);
+
             // Play / Move / Pass
             int choice = PlayerInputView.moveOrPlayOrPass();
             if (choice == 0) {
+                // Drop cards if more than seven
+                dropCardsIfMore(player);
                 // PASS
                 System.out.println("PASS");
                 break;
@@ -112,10 +121,36 @@ public class Game {
                 } else {
                     System.out.println("You're out of turns to play.");
                 }
+            } else if (choice == -1) {
+
+                // Print other player's card
+                for (Player p : players) {
+                    if (p == player) continue;
+                    System.out.printf("\n===Player: %s===\n", p.getName());
+                    PropertyDisplayView.printPropertyDeck(p.getPropertyDeck());
+                    BankDisplayView.printBank(p.getBank());
+                }
             } else {
                 // Move Property
                 PlayerController.moveProperty(player);
             }
+        }
+    }
+
+    /***
+     * Drop cards if more than seven
+     * @param player current player
+     */
+    private static void dropCardsIfMore(Player player) {
+        while (player.getHandCards().size() > 7) {
+            int numOfCards = player.getHandCards().size();
+            // Print all cards
+            CardDisplayView.printCard(player.getHandCards());
+            System.out.printf("You have %d cards, please drop %d cards.\n", numOfCards, numOfCards - 7);
+            // Ask to drop which card
+            int cardIndex = PlayerInputView.getCardIndex(player.getHandCards().size());
+            // Drop the card to the center
+            player.dropToCenter(player.getHandCards().get(cardIndex), drawPile);
         }
     }
 
@@ -133,5 +168,9 @@ public class Game {
 
     public static DrawPile getDrawPile() {
         return drawPile;
+    }
+
+    public static Scanner getScanner() {
+        return scanner;
     }
 }

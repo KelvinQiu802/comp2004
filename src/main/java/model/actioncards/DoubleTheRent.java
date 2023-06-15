@@ -1,6 +1,9 @@
 package model.actioncards;
 
 import model.ActionCard;
+import model.Player;
+
+import java.util.List;
 
 public class DoubleTheRent extends ActionCard {
     public DoubleTheRent() {
@@ -8,7 +11,7 @@ public class DoubleTheRent extends ActionCard {
     }
 
     @Override
-    public void play() {
+    public void play(Player currentPlayer, List<Player> players) {
 
     }
 }

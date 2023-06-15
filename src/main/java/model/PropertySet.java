@@ -1,5 +1,9 @@
 package model;
 
+import model.actioncards.ActionCardsName;
+import model.actioncards.Hotel;
+import model.actioncards.House;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -51,5 +55,25 @@ public class PropertySet {
 
     public Colors getColor() {
         return color;
+    }
+
+    public int getSize() {
+        return properties.size();
+    }
+
+    /***
+     * Calculate the rent of a property set
+     * @return price
+     */
+    public int getRent() {
+        Map<Integer, Integer> info = PropertyInfo.getByColor(color);
+        // has a house
+        if (((AbstractCard) properties.get(properties.size() - 1)).getName().equals(ActionCardsName.HOUSE.toString())) {
+            return info.get(properties.size() - 1) + new House().getValue();
+        } else if (((AbstractCard) properties.get(properties.size() - 1)).getName().equals(ActionCardsName.HOTEL.toString())) {
+            return info.get(properties.size() - 2) + new House().getValue() + new Hotel().getValue();
+        } else {
+            return info.get(properties.size());
+        }
     }
 }

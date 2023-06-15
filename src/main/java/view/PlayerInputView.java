@@ -1,5 +1,6 @@
 package view;
 
+import controller.Game;
 import model.IPropertyCard;
 import model.PropertyDeck;
 import model.PropertySet;
@@ -24,13 +25,14 @@ public class PlayerInputView {
             if (number > 1) {
                 break;
             }
-            System.out.println("The number of players MUST greater then 2. PLEASE TRY AGAIN!");
+            System.out.println("The number of players MUST greater than 2. PLEASE TRY AGAIN!");
         }
         return number;
     }
 
     private static int getAnyNumberOfPlayer() {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String numberOfPlayer = "";
         do {
             System.out.print("The Number of Players: ");
@@ -44,7 +46,8 @@ public class PlayerInputView {
      * @return player name
      */
     public static String getPlayerName() {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String playerName;
         do {
             System.out.print("Input Player Name: ");
@@ -59,8 +62,32 @@ public class PlayerInputView {
      * @return Card index.
      */
     public static int getCardIndex(int numOfCards) {
-        String prompt = String.format("Input the Card Index (0-%d):", numOfCards);
+        String prompt = String.format("Input the Card Index (0-%d):", numOfCards - 1);
         return getIntegerInput(prompt, 0, numOfCards - 1);
+    }
+
+    /***
+     * Ask users select bank or  properties
+     * @return 0 for  bank, 1 for properties
+     */
+    public static Integer getBankOrProperty() {
+        String prompt = "Select card from Bank(0) or Properties(1): ";
+        return getIntegerInput(prompt, 0, 1);
+    }
+
+    /***
+     * Get the index of color that player want to choose.
+     * @param numOfColors The number of colors player can select.
+     * @return Color index
+     */
+    public static Integer getColorIndex(int numOfColors) {
+        String prompt = String.format("Input the color index (0-%d):", numOfColors - 1);
+        return getIntegerInput(prompt, 0, numOfColors - 1);
+    }
+
+    public static Integer getPlayerIndex(int numOfPlayers) {
+        String prompt = String.format("Input the player index (0-%d):", numOfPlayers - 1);
+        return getIntegerInput(prompt, 0, numOfPlayers - 1);
     }
 
     /***
@@ -69,8 +96,8 @@ public class PlayerInputView {
      */
     public static int moveOrPlayOrPass() {
         String prompt = "Want to PLAY(1) properties or MOVE(2) a card or PASS(0)?\n" +
-                "1 for PLAY, 2 for MOVE, 0 for PASS: ";
-        return getIntegerInput(prompt, 0, 2);
+                "1 for PLAY, 2 for MOVE, 0 for PASS, -1 to SHOW other players cards: ";
+        return getIntegerInput(prompt, -1, 2);
     }
 
     /***
@@ -84,6 +111,16 @@ public class PlayerInputView {
     }
 
     /***
+     * Get the index of the property set which player wants to add card
+     * @param pd property deck
+     * @return the index of the target set
+     */
+    public static int getFetchPropertySet(PropertyDeck pd) {
+        String prompt = "Select the property set, or enter -1 to go back:";
+        return getIntegerInput(prompt, -1, pd.getPropertySets().size() - 1);
+    }
+
+    /***
      * Get the index of the property card which player choose
      * @param pd property deck
      * @return the index of the property card
@@ -92,6 +129,26 @@ public class PlayerInputView {
         String prompt = "Select the property card: ";
         int num = getNumOfAllPropertyCards(pd);
         return getIntegerInput(prompt, 0, num - 1);
+    }
+
+    /***
+     * Get the index of the property card which player choose
+     * @param ps property deck
+     * @return the index of the property card
+     */
+    public static int getTargetPropertyCardInPropertySet(PropertySet ps) {
+        String prompt = "Select the property card: ";
+        int num = ps.getSize();
+        return getIntegerInput(prompt, 0, num - 1);
+    }
+
+    /***
+     * Get yes or no
+     * @return true iff yes, else no
+     */
+    public static boolean yesOrNo() {
+        int num = getIntegerInput("Yes(1), No(0): ", 0, 1);
+        return num == 1;
     }
 
     /***
@@ -146,7 +203,8 @@ public class PlayerInputView {
      * @return the integer user chose
      */
     private static int getIntegerInputFromList(String prompt, List<Integer> choices) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String result;
         do {
             System.out.print(prompt);
@@ -164,12 +222,14 @@ public class PlayerInputView {
      * @return the integer user input
      */
     private static int getIntegerInput(String prompt, int min, int max) {
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Game.getScanner();
         String result;
         do {
             System.out.print(prompt);
             result = scanner.nextLine();
         } while (!StringChecker.isInteger(result) || !IntegerChecker.inRange(Integer.parseInt(result), min, max));
+        System.out.println("\n");
         Printer.printDashLine();
         return Integer.parseInt(result);
     }

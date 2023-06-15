@@ -1,6 +1,9 @@
 package model.actioncards;
 
 import model.ActionCard;
+import model.Player;
+
+import java.util.List;
 
 public class MyBirthday extends ActionCard {
     public MyBirthday() {
@@ -8,7 +11,11 @@ public class MyBirthday extends ActionCard {
     }
 
     @Override
-    public void play() {
-
+    public void play(Player currentPlayer, List<Player> players) {
+        List<Player> others = players;
+        others.remove(currentPlayer);
+        for (Player p : others) {
+            p.payTo(currentPlayer, 2);
+        }
     }
 }

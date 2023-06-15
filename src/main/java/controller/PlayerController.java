@@ -1,7 +1,8 @@
 package controller;
 
 import model.*;
-import model.actioncards.ActionCardsName;
+import model.actioncards.Hotel;
+import model.actioncards.House;
 import utils.CardUtils;
 import view.PlayerInputView;
 import view.PropertyDisplayView;
@@ -62,8 +63,8 @@ public class PlayerController {
     private static List<Integer> getCardActions(AbstractCard card) {
         List<Integer> actions = new ArrayList<>();
         if (card instanceof ActionCard
-                && !card.getName().equals(ActionCardsName.HOTEL.toString())
-                && !card.getName().equals(ActionCardsName.HOUSE.toString())) {
+                && !(card instanceof Hotel)
+                && !(card instanceof House)) {
             // All action cards except HOTEL and HOUSE can be played in to center.
             actions.add(0);
         }
