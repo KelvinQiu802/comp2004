@@ -37,7 +37,7 @@ public class PropertyDisplayView {
     }
 
     public static void printPropertySet(PropertySet ps) {
-        String[] header = {"Index", "Name"};
+        String[] header = {"Index", "Name", "Values"};
         String[][] data = getPropertySetData(ps, 0);
         System.out.printf("###%s###\n", ps.getColor());
         System.out.println(FlipTable.of(header, data));
