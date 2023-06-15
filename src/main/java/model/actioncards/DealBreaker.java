@@ -28,7 +28,7 @@ public class DealBreaker extends ActionCard {
             if (target.sayNo()) {
                 return;
             }
-            // 2 Print the property deck
+            // 2. Print the property deck
             PropertyDisplayView.printPropertyDeck(target.getPropertyDeck());
             // 3. Choose a full set
             int setIndex = PlayerInputView.getTargetPropertySet(target.getPropertyDeck());
@@ -40,7 +40,6 @@ public class DealBreaker extends ActionCard {
                 return;
             }
             System.out.println("This is NOT a full set, please try again!");
-            // TODO: 如果所有人都没有full set怎么办
         }
     }
 }

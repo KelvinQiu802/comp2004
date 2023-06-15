@@ -1,7 +1,6 @@
 import model.*;
 import model.actioncards.JustSayNo;
 import model.actioncards.MyBirthday;
-import model.actioncards.WildRent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -14,19 +14,19 @@ public class DebtCollector extends ActionCard {
 
     @Override
     public void play(Player currentPlayer, List<Player> players) {
-        // Print all players without current player
+        // 0. Print all players without current player
         List<Player> others = players;
         others.remove(currentPlayer);
         PlayerDisplayView.printPlayer(others);
 
-        // Choose a player
+        // 1. Choose a player
         int playerIndex = PlayerInputView.getPlayerIndex(others.size());
         Player target = others.get(playerIndex);
         if (target.sayNo()) {
             return;
         }
 
-        // Force the target player to pay
+        // 2. Force the target player to pay
         target.payTo(currentPlayer, 5);
     }
 }

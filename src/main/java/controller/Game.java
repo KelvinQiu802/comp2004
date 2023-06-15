@@ -105,6 +105,7 @@ public class Game {
         while (true) {
             System.out.println("Player: " + player.getName());
             CardDisplayView.printCard(handCards);
+
             // Play / Move / Pass
             int choice = PlayerInputView.moveOrPlayOrPass();
             if (choice == 0) {
@@ -121,6 +122,7 @@ public class Game {
                     System.out.println("You're out of turns to play.");
                 }
             } else if (choice == -1) {
+
                 // Print other player's card
                 for (Player p : players) {
                     if (p == player) continue;
