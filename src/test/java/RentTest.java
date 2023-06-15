@@ -2,6 +2,7 @@ import model.*;
 import model.actioncards.Rent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import view.CardDisplayView;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -66,4 +67,8 @@ public class RentTest {
         assertSame(p1.getBank().getBankCards().get(1).getValue(), 4);
     }
 
+    @Test
+    public void testPrint(){
+        CardDisplayView.printCard(rent);
+    }
 }
