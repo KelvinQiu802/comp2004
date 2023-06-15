@@ -9,11 +9,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
- * Tests the success of SlyDeal.
- * - Steal a property from the player
+ * Tests the success of SlyDeal. - Steal a property from the player
  * TODO - Cannot be a full set
  */
 public class SlyDealTest {
@@ -31,7 +30,7 @@ public class SlyDealTest {
     }
 
     @Test
-    public void testPlay(){
+    public void testPlay() {
         PropertySet set1 = new PropertySet(Colors.YELLOW);
         PropertyCard c1 = new SingleColorProperty("1", 1, Colors.YELLOW);
         set1.add(c1);
@@ -41,7 +40,7 @@ public class SlyDealTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        slyDeal.play(p2,list);
+        slyDeal.play(p2, list);
         assertSame(p2.getPropertyDeck().getPropertySets().get(0).getProperties().get(0), c1);
         PropertyDisplayView.printPropertyDeck(p1.getPropertyDeck());
         PropertyDisplayView.printPropertyDeck(p2.getPropertyDeck());

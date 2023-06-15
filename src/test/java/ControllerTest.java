@@ -5,12 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Tests controller.
- * - Create player
- * - Deal five cards to every player
+ * Tests controller. - Create player - Deal five cards to every player
  */
 
 public class ControllerTest {

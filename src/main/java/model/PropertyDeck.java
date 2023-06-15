@@ -42,6 +42,7 @@ public class PropertyDeck {
 
     /**
      * InsertSet a property set in the deck
+     *
      * @param set PropertySet
      */
     public void insertSet(PropertySet set) {
@@ -50,6 +51,7 @@ public class PropertyDeck {
 
     /**
      * Remove a property set in the deck
+     *
      * @param set PropertySet
      */
     public void removeSet(PropertySet set) {

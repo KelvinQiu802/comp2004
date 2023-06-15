@@ -9,12 +9,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
- * Tests the success of Rent.
- * - Choose the color to rent
- * - All players pay rent
+ * Tests the success of Rent. - Choose the color to rent - All players pay rent
  */
 public class RentTest {
     private Rent rent = new Rent(Colors.GREEN, Colors.BROWN);
@@ -68,7 +66,7 @@ public class RentTest {
     }
 
     @Test
-    public void testPrint(){
+    public void testPrint() {
         CardDisplayView.printCard(rent);
     }
 }

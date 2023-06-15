@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JustSayNoTest {
-    private JustSayNo justSayNo=new JustSayNo();
+    private JustSayNo justSayNo = new JustSayNo();
     private MyBirthday myBirthday = new MyBirthday();
     private Player p1;
     private Player p2;
@@ -54,6 +54,6 @@ public class JustSayNoTest {
         String input = "1\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        myBirthday.play(p2,list);
+        myBirthday.play(p2, list);
     }
 }

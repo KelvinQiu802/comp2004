@@ -9,11 +9,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
- * Tests the success of ForcedDeal.
- * - Swap any property with another player
+ * Tests the success of ForcedDeal. - Swap any property with another player
  * TODO- Cannot be a full set
  */
 public class ForcedDealTest {

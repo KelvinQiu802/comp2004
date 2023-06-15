@@ -57,7 +57,7 @@ public class PropertySet {
         return color;
     }
 
-    public int getSize(){
+    public int getSize() {
         return properties.size();
     }
 

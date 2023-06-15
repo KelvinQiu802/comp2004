@@ -8,12 +8,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
- * Tests the success of WildRent.
- * - Choose the color to rent
- * - All players pay rent
+ * Tests the success of WildRent. - Choose the color to rent - All players pay rent
  */
 public class WildRentTest {
     private WildRent wildRent = new WildRent();

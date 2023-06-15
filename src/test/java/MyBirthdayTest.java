@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Tests the success of MyBirthday.
- * - Every player pay 2M
+ * Tests the success of MyBirthday. - Every player pay 2M
  */
 public class MyBirthdayTest {
     private MyBirthday myBirthday = new MyBirthday();
