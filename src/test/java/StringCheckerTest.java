@@ -4,9 +4,10 @@ import utils.StringChecker;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
+/***
  * Tests the success of StringChecker. - Check if a string represents an integer.
  */
+
 public class StringCheckerTest {
     @Test
     public void isInteger() {

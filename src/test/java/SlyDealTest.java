@@ -11,10 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-/**
+/***
  * Tests the success of SlyDeal. - Steal a property from the player
- * TODO - Cannot be a full set
  */
+
 public class SlyDealTest {
     private SlyDeal slyDeal = new SlyDeal();
     Player p1;

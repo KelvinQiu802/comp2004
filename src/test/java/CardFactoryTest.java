@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
+/***
  * Tests card factory. Test if it has 108 cards.
  */
 

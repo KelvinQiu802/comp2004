@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/***
  * Tests the success of MyBirthday. - Every player pay 2M
  */
 public class MyBirthdayTest {

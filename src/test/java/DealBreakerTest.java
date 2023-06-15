@@ -12,8 +12,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-/**
- * Tests the success of DealBreaker. - Steal a complete set of properties from any player - TODO
+/***
+ * Tests the success of DealBreaker. - Steal a complete set of properties from any player
  */
 
 public class DealBreakerTest {

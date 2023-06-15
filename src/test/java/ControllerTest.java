@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
+/***
  * Tests controller. - Create player - Deal five cards to every player
  */
 

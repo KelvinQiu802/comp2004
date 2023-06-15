@@ -11,9 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-/**
+/***
  * Tests the success of DebtCollector. - Choose one player to pay 5M
  */
+
 public class DebtCollectorTest {
     private DebtCollector debtCollector = new DebtCollector();
     private Player p1;

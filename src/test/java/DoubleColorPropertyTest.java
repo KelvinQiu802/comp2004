@@ -4,9 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
+/***
  * Tests the success of DoubleColorProperty. - Switch the Double Color Property Card's color.
  */
+
 public class DoubleColorPropertyTest {
     private DoubleColorProperty doubleColorProperty;
 

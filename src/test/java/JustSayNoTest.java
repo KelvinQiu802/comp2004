@@ -9,6 +9,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * Test the success of JustSayNo. -Disabling the action card.
+ */
+
 public class JustSayNoTest {
     private JustSayNo justSayNo = new JustSayNo();
     private MyBirthday myBirthday = new MyBirthday();
@@ -54,6 +58,7 @@ public class JustSayNoTest {
         String input = "1\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
+
         myBirthday.play(p2, list);
     }
 }

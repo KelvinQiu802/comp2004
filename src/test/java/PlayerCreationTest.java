@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
+/***
  * Tests PlayerCreation. - Get the numbers and names of players - Check the type of input
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

@@ -11,10 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-/**
+/***
  * Tests the success of ForcedDeal. - Swap any property with another player
- * TODO- Cannot be a full set
  */
+
 public class ForcedDealTest {
     private ForcedDeal forcedDeal = new ForcedDeal();
     Player p1;
@@ -50,20 +50,4 @@ public class ForcedDealTest {
         PropertyDisplayView.printPropertyDeck(p1.getPropertyDeck());
         PropertyDisplayView.printPropertyDeck(p2.getPropertyDeck());
     }
-
-//    @Test
-//    public void fullSet() {
-//        DrawPile pile = new DrawPile(Printer.CardFactory.createCards());
-//        PropertySet set1 = new PropertySet(Colors.GREEN);
-//        PropertyCard c1 = new SingleColorProperty("1", 1, Colors.GREEN);
-//        PropertyCard c2 = new SingleColorProperty("2", 2, Colors.GREEN);
-//        PropertyCard c3 = new SingleColorProperty("2", 2, Colors.GREEN);
-//        set1.add(c1);
-//        set1.add(c2);
-//        set1.add(c3);
-//        p1.getPropertyDeck().insertSet(set1);
-//        forcedDeal.play(p2,list);
-//        assertSame(p2.getPropertyDeck().getPropertySets().get(0), null);
-//        PropertyDisplayView.printPropertyDeck(p2.getPropertyDeck());
-//    }
 }

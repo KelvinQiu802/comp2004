@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-/**
+/***
  * Tests the success of Rent. - Choose the color to rent - All players pay rent
  */
 public class RentTest {
