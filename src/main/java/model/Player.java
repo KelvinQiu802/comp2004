@@ -55,6 +55,7 @@ public class Player {
                 System.out.println("Rent is doubled!");
                 doubleTheRent = true;
                 numberOfPlays++;
+                dropToCenter(getCard(ActionCardsName.DOUBLE_THE_RENT.toString()), pile);
             }
         }
 
@@ -76,6 +77,15 @@ public class Player {
             }
         }
         return false;
+    }
+
+    private AbstractCard getCard(String cardName) {
+        for (AbstractCard card : handCards) {
+            if (card.getName().equals(cardName)) {
+                return card;
+            }
+        }
+        return null;
     }
 
     /***
