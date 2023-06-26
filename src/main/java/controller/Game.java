@@ -100,6 +100,8 @@ public class Game {
 
     public static void playerTurn(Player player) {
         player.resetNumberOfPlays();
+        if(player.getHandCards().size()==0)
+            dealCards(player, 3);
         dealCards(player, 2);
         List<AbstractCard> handCards = player.getHandCards();
         while (true) {
