@@ -3,6 +3,7 @@ package model.actioncards;
 import model.ActionCard;
 import model.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyBirthday extends ActionCard {
@@ -12,7 +13,10 @@ public class MyBirthday extends ActionCard {
 
     @Override
     public void play(Player currentPlayer, List<Player> players) {
-        List<Player> others = players;
+        List<Player> others = new ArrayList<>();
+        for(Player player : players){
+            others.add(player);
+        }
         others.remove(currentPlayer);
         for (Player p : others) {
             p.payTo(currentPlayer, 2);

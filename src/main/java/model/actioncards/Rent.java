@@ -4,6 +4,7 @@ import model.ActionCard;
 import model.Colors;
 import model.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Rent extends ActionCard {
@@ -27,7 +28,10 @@ public class Rent extends ActionCard {
         int total = currentPlayer.calculateRent(color);
 
         // 2. Rent
-        List<Player> others = players;
+        List<Player> others = new ArrayList<>();
+        for(Player player : players){
+            others.add(player);
+        }
         others.remove(currentPlayer);
         for (Player p : others) {
             if (p == currentPlayer) continue;
