@@ -6,6 +6,7 @@ import model.Player;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WildRent extends ActionCard {
@@ -25,7 +26,10 @@ public class WildRent extends ActionCard {
         int total = currentPlayer.calculateRent(color);
 
         // 2. Confirm the player who need to pay
-        List<Player> others = players;
+        List<Player> others = new ArrayList<>();
+        for(Player player : players){
+            others.add(player);
+        }
         others.remove(currentPlayer);
         PlayerDisplayView.printPlayer(others);
         int playerIndex = PlayerInputView.getPlayerIndex(others.size());

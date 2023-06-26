@@ -5,6 +5,7 @@ import model.Player;
 import view.PlayerDisplayView;
 import view.PlayerInputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DebtCollector extends ActionCard {
@@ -15,7 +16,10 @@ public class DebtCollector extends ActionCard {
     @Override
     public void play(Player currentPlayer, List<Player> players) {
         // 0. Print all players without current player
-        List<Player> others = players;
+        List<Player> others = new ArrayList<>();
+        for(Player player : players){
+            others.add(player);
+        }
         others.remove(currentPlayer);
         PlayerDisplayView.printPlayer(others);
 
